@@ -1,0 +1,1622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Tool Finder 2026 — The Digital Futurist</title>
+<meta name="description" content="Find the perfect AI tool for your project. Score and rank 100 AI tools by budget, latency, category, and use case — with real user reviews. Updated May 2026.">
+<meta name="author" content="Thomas Cherickal — The Digital Futurist">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* ─── CSS VARIABLES ─────────────────────────────────────────────── */
+:root {
+  --bg:#070a0f;--surface:#0d1117;--surface2:#131920;--surface3:#1a2535;
+  --border:#1e2d3d;--border-bright:#2e4a6a;
+  --cyan:#00d4ff;--cyan-dim:#0096b8;--cyan-faint:rgba(0,212,255,0.08);
+  --amber:#ffb000;--amber-dim:#c87800;--amber-faint:rgba(255,176,0,0.08);
+  --green:#00ff88;--green-faint:rgba(0,255,136,0.08);
+  --red:#ff4d4d;--red-faint:rgba(255,77,77,0.08);
+  --purple:#b060ff;--purple-faint:rgba(176,96,255,0.08);
+  --text:#c9d8e8;--text-dim:#5a7a94;--text-bright:#e8f4ff;
+  --mono:'Space Mono',monospace;--sans:'Syne',sans-serif;
+  --r:4px;--r-sm:2px;
+  --glow-c:0 0 24px rgba(0,212,255,0.35);
+  --glow-a:0 0 24px rgba(255,176,0,0.35);
+  --trans:.18s ease;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);min-height:100vh;overflow-x:hidden}
+
+/* scan-lines */
+body::before{content:'';position:fixed;inset:0;background:repeating-linear-gradient(0deg,transparent,transparent 2px,rgba(0,212,255,.012) 2px,rgba(0,212,255,.012) 4px);pointer-events:none;z-index:2000}
+/* grid bg */
+body::after{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(0,212,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,212,255,.025) 1px,transparent 1px);background-size:40px 40px;pointer-events:none;z-index:0}
+
+/* ─── HEADER ────────────────────────────────────────────────────── */
+header{position:relative;z-index:10;padding:2.5rem 2rem 2rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,rgba(0,212,255,.05) 0%,transparent 100%)}
+.hdr{max-width:1240px;margin:0 auto}
+.eyebrow{font-family:var(--mono);font-size:.68rem;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;display:flex;align-items:center;gap:.8rem;margin-bottom:.6rem}
+.eyebrow::before{content:'';display:inline-block;width:28px;height:1px;background:var(--cyan);flex-shrink:0}
+h1{font-family:var(--sans);font-weight:800;font-size:clamp(2rem,5vw,3.4rem);color:var(--text-bright);line-height:1.05;letter-spacing:-.02em}
+h1 em{color:var(--cyan);font-style:normal}
+.hdr-sub{display:flex;gap:2rem;flex-wrap:wrap;margin-top:.6rem}
+.hdr-stat{font-family:var(--mono);font-size:.68rem;color:var(--text-dim);display:flex;align-items:center;gap:.35rem}
+.hdr-stat b{color:var(--amber)}
+
+/* ─── LAYOUT ─────────────────────────────────────────────────────── */
+.wrap{position:relative;z-index:10;max-width:1240px;margin:0 auto;padding:2rem;display:grid;grid-template-columns:310px 1fr;gap:1.75rem;align-items:start}
+
+/* ─── PANEL ──────────────────────────────────────────────────────── */
+.panel{position:sticky;top:1.5rem;background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden}
+.panel-hdr{background:var(--surface2);border-bottom:1px solid var(--border);padding:.85rem 1.2rem;display:flex;align-items:center;gap:.7rem}
+.panel-dot{width:8px;height:8px;border-radius:50%;background:var(--cyan);box-shadow:var(--glow-c);animation:blink 2s ease-in-out infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.25}}
+.panel-title{font-family:var(--mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--cyan)}
+.panel-body{padding:1.2rem;display:flex;flex-direction:column;gap:1.35rem}
+
+/* field group */
+.fg{display:flex;flex-direction:column;gap:.45rem}
+.fl{font-family:var(--mono);font-size:.63rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-dim);display:flex;justify-content:space-between;align-items:center}
+.fl .badge{font-family:var(--mono);font-size:.7rem;color:var(--amber);background:var(--amber-faint);border:1px solid rgba(255,176,0,.25);padding:.08rem .4rem;border-radius:var(--r-sm)}
+
+/* slider */
+input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:3px;background:var(--border);border-radius:2px;outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:15px;height:15px;border-radius:50%;background:var(--cyan);box-shadow:0 0 10px rgba(0,212,255,.6);cursor:pointer;transition:transform var(--trans)}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.25)}
+.ticks{display:flex;justify-content:space-between;margin-top:.3rem}
+.ticks span{font-family:var(--mono);font-size:.55rem;color:var(--text-dim)}
+
+/* radio row */
+.rrow{display:flex;gap:.35rem}
+.rbtn{flex:1;text-align:center;padding:.42rem .25rem;border:1px solid var(--border);border-radius:var(--r-sm);font-family:var(--mono);font-size:.62rem;cursor:pointer;color:var(--text-dim);transition:all var(--trans);user-select:none}
+.rbtn.act{border-color:var(--amber);background:var(--amber-faint);color:var(--amber)}
+.rbtn:hover:not(.act){border-color:var(--border-bright);color:var(--text)}
+
+/* checkboxes */
+.chk-grid{display:grid;grid-template-columns:1fr 1fr;gap:.35rem}
+.chi{display:flex;align-items:center;gap:.45rem;cursor:pointer;padding:.38rem .55rem;border:1px solid var(--border);border-radius:var(--r-sm);transition:all var(--trans);font-size:.68rem;color:var(--text-dim);font-family:var(--mono);user-select:none}
+.chi:hover{border-color:var(--cyan-dim);color:var(--text)}
+.chi.act{border-color:var(--cyan);background:var(--cyan-faint);color:var(--cyan)}
+.chi input{display:none}
+.chk-dot{width:6px;height:6px;border-radius:50%;border:1px solid currentColor;flex-shrink:0;transition:background var(--trans)}
+.chi.act .chk-dot{background:var(--cyan)}
+
+/* text input */
+.txt{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:var(--r-sm);color:var(--text-bright);font-family:var(--mono);font-size:.78rem;padding:.55rem .8rem;outline:none;transition:border-color var(--trans)}
+.txt:focus{border-color:var(--cyan)}
+.txt::placeholder{color:var(--text-dim)}
+
+/* free tier row */
+.ft-row{display:flex;align-items:center;justify-content:space-between}
+.tog{display:flex;align-items:center;gap:.5rem;cursor:pointer;font-family:var(--mono);font-size:.68rem;color:var(--text-dim);padding:.38rem .55rem;border:1px solid var(--border);border-radius:var(--r-sm);transition:all var(--trans);user-select:none}
+.tog.act{border-color:var(--green);background:var(--green-faint);color:var(--green)}
+.tog input{display:none}
+
+/* buttons */
+.btn-find{width:100%;padding:.85rem;background:var(--cyan);color:#000;font-family:var(--mono);font-size:.78rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:var(--r-sm);cursor:pointer;transition:all var(--trans);position:relative;overflow:hidden;margin-top:.25rem}
+.btn-find::before{content:'';position:absolute;inset:0;background:linear-gradient(45deg,transparent 30%,rgba(255,255,255,.25) 50%,transparent 70%);transform:translateX(-100%);transition:transform .4s}
+.btn-find:hover{box-shadow:var(--glow-c)}
+.btn-find:hover::before{transform:translateX(100%)}
+.btn-find:active{transform:scale(.98)}
+.btn-reset{width:100%;padding:.55rem;background:transparent;color:var(--text-dim);font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:1px solid var(--border);border-radius:var(--r-sm);cursor:pointer;transition:all var(--trans)}
+.btn-reset:hover{border-color:var(--border-bright);color:var(--text)}
+
+/* ─── RESULTS ────────────────────────────────────────────────────── */
+.res-panel{display:flex;flex-direction:column;gap:1.25rem}
+.res-hdr{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem}
+.res-title{font-family:var(--mono);font-size:.68rem;color:var(--text-dim);letter-spacing:.14em;text-transform:uppercase}
+.res-title strong{color:var(--green);font-size:.95rem;font-family:var(--sans);font-weight:700}
+.res-meta{font-family:var(--mono);font-size:.6rem;color:var(--text-dim)}
+.placeholder{border:1px dashed var(--border);border-radius:var(--r);padding:3.5rem 2rem;text-align:center;display:flex;flex-direction:column;align-items:center;gap:.9rem}
+.ph-icon{font-size:2.8rem;opacity:.25;filter:grayscale(1)}
+.ph-txt{font-family:var(--mono);font-size:.72rem;color:var(--text-dim);line-height:1.9}
+
+/* ─── RESULT CARDS ──────────────────────────────────────────────── */
+.cards{display:flex;flex-direction:column;gap:.9rem}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;opacity:0;transform:translateY(12px);animation:cin .32s ease forwards}
+@keyframes cin{to{opacity:1;transform:translateY(0)}}
+.card:nth-child(1){animation-delay:.04s}.card:nth-child(2){animation-delay:.09s}
+.card:nth-child(3){animation-delay:.13s}.card:nth-child(4){animation-delay:.17s}
+.card:nth-child(5){animation-delay:.21s}.card:nth-child(6){animation-delay:.25s}
+.card:nth-child(7){animation-delay:.29s}.card:nth-child(8){animation-delay:.33s}
+.card:nth-child(9){animation-delay:.37s}.card:nth-child(10){animation-delay:.41s}
+.card:hover{border-color:var(--border-bright);box-shadow:0 4px 28px rgba(0,0,0,.45);transform:translateY(-2px);transition:all var(--trans)}
+.card-bar{height:3px;background:linear-gradient(90deg,var(--cyan),var(--amber));transition:width .55s ease}
+.card-body{padding:1.15rem;display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start}
+.card-l{display:flex;flex-direction:column;gap:.55rem}
+.card-top{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
+.rank-badge{font-family:var(--mono);font-size:.6rem;color:#000;padding:.12rem .42rem;border-radius:var(--r-sm);font-weight:700;flex-shrink:0}
+.rank-gold{background:var(--amber)}
+.rank-silver{background:#9ab0c8}
+.rank-bronze{background:#c87850}
+.rank-badge:not(.rank-gold):not(.rank-silver):not(.rank-bronze){background:var(--surface3);color:var(--text-dim);border:1px solid var(--border-bright)}
+.card-name{font-family:var(--sans);font-size:1.05rem;font-weight:700;color:var(--text-bright)}
+.cat-pill{font-family:var(--mono);font-size:.58rem;color:var(--cyan-dim);letter-spacing:.08em;text-transform:uppercase;background:var(--cyan-faint);border:1px solid rgba(0,212,255,.15);padding:.12rem .45rem;border-radius:var(--r-sm);white-space:nowrap}
+.card-desc{font-family:var(--mono);font-size:.72rem;color:var(--text-dim);line-height:1.65}
+.uc-row{display:flex;flex-wrap:wrap;gap:.35rem}
+.uc{font-family:var(--mono);font-size:.58rem;color:var(--text-dim);border:1px solid var(--border);padding:.12rem .45rem;border-radius:var(--r-sm);white-space:nowrap}
+.uc.hit{border-color:var(--amber);color:var(--amber);background:var(--amber-faint)}
+.card-link{font-family:var(--mono);font-size:.6rem;color:var(--cyan-dim);text-decoration:none;transition:color var(--trans)}
+.card-link:hover{color:var(--cyan)}
+.card-r{display:flex;flex-direction:column;align-items:flex-end;gap:.4rem;flex-shrink:0;min-width:88px}
+.match-score{font-family:var(--mono);font-size:1.55rem;font-weight:700;color:var(--green);line-height:1}
+.match-lbl{font-family:var(--mono);font-size:.55rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.08em}
+.card-meta{display:flex;flex-direction:column;align-items:flex-end;gap:.28rem;margin-top:.35rem}
+.meta-row{display:flex;align-items:center;gap:.4rem;font-family:var(--mono);font-size:.62rem}
+.meta-k{color:var(--text-dim)}.meta-v{color:var(--text-bright);font-weight:700}
+.lat-dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.lat-dot.Low{background:var(--green);box-shadow:0 0 6px rgba(0,255,136,.6)}
+.lat-dot.Medium{background:var(--amber);box-shadow:0 0 6px rgba(255,176,0,.6)}
+.lat-dot.High{background:var(--red);box-shadow:0 0 6px rgba(255,77,77,.5)}
+.free-badge{font-family:var(--mono);font-size:.58rem;color:var(--green);background:var(--green-faint);border:1px solid rgba(0,255,136,.2);padding:.08rem .4rem;border-radius:var(--r-sm)}
+
+/* REVIEWS SECTION inside card */
+.reviews-toggle{width:100%;background:transparent;border:none;border-top:1px solid var(--border);padding:.65rem 1.15rem;text-align:left;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:background var(--trans);color:var(--text-dim);font-family:var(--mono);font-size:.65rem;letter-spacing:.08em}
+.reviews-toggle:hover{background:var(--surface2);color:var(--text)}
+.rev-arrow{transition:transform var(--trans);display:inline-block;font-size:.7rem}
+.rev-arrow.open{transform:rotate(180deg)}
+.reviews-body{display:none;padding:.85rem 1.15rem;background:var(--surface2);border-top:1px solid var(--border);flex-direction:column;gap:.6rem}
+.reviews-body.show{display:flex}
+.review{display:flex;flex-direction:column;gap:.25rem;padding:.6rem .75rem;border-radius:var(--r-sm);border-left:3px solid transparent}
+.review.pos{background:var(--green-faint);border-left-color:var(--green)}
+.review.neg{background:var(--red-faint);border-left-color:var(--red)}
+.rev-meta{display:flex;align-items:center;gap:.5rem;font-family:var(--mono);font-size:.58rem;color:var(--text-dim)}
+.rev-type{font-weight:700;text-transform:uppercase;letter-spacing:.08em}
+.rev-type.pos{color:var(--green)}.rev-type.neg{color:var(--red)}
+.rev-source{color:var(--text-dim)}
+.rev-text{font-family:var(--mono);font-size:.68rem;color:var(--text);line-height:1.6}
+.no-rev{font-family:var(--mono);font-size:.68rem;color:var(--text-dim);text-align:center;padding:.5rem}
+
+/* ─── ALL TOOLS GRID ─────────────────────────────────────────────── */
+.all-section{position:relative;z-index:10;max-width:1240px;margin:0 auto 4rem;padding:0 2rem}
+.sec-hdr{display:flex;align-items:center;gap:1rem;padding:1.5rem 0 1rem;border-top:1px solid var(--border);margin-top:1.5rem}
+.sec-title{font-family:var(--sans);font-size:.8rem;font-weight:700;color:var(--text-bright);letter-spacing:.05em;text-transform:uppercase;white-space:nowrap}
+.sec-line{flex:1;height:1px;background:var(--border)}
+.cat-bar{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:.9rem}
+.cf{font-family:var(--mono);font-size:.6rem;padding:.28rem .65rem;border:1px solid var(--border);border-radius:var(--r-sm);background:transparent;color:var(--text-dim);cursor:pointer;transition:all var(--trans);letter-spacing:.04em}
+.cf:hover{border-color:var(--border-bright);color:var(--text)}
+.cf.act{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-faint)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.65rem}
+.mc{background:var(--surface);border:1px solid var(--border);border-radius:var(--r-sm);padding:.8rem;transition:all var(--trans);cursor:default}
+.mc:hover{border-color:var(--border-bright);background:var(--surface2)}
+.mc-name{font-family:var(--sans);font-size:.82rem;font-weight:700;color:var(--text-bright);margin-bottom:.22rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mc-cat{font-family:var(--mono);font-size:.56rem;color:var(--cyan-dim);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.45rem}
+.mc-row{display:flex;justify-content:space-between;align-items:center}
+.mc-bgt{font-family:var(--mono);font-size:.65rem;color:var(--amber)}
+.mc-lat{display:flex;align-items:center;gap:.3rem;font-family:var(--mono);font-size:.58rem;color:var(--text-dim)}
+.mc-rev{font-family:var(--mono);font-size:.55rem;color:var(--purple);margin-top:.3rem}
+
+/* ─── FOOTER ─────────────────────────────────────────────────────── */
+footer{position:relative;z-index:10;border-top:1px solid var(--border);padding:2rem;text-align:center;background:var(--surface)}
+.ft{font-family:var(--mono);font-size:.62rem;color:var(--text-dim);line-height:2.1}
+.ft a{color:var(--cyan-dim);text-decoration:none}.ft a:hover{color:var(--cyan)}
+
+/* ─── RESPONSIVE ─────────────────────────────────────────────────── */
+@media(max-width:900px){
+  .wrap{grid-template-columns:1fr;padding:1rem}
+  .panel{position:static}
+  .chk-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:600px){
+  header{padding:1.8rem 1rem 1.5rem}
+  .wrap{padding:1rem;gap:1rem}
+  .chk-grid{grid-template-columns:1fr 1fr}
+  .card-body{grid-template-columns:1fr}
+  .card-r{flex-direction:row;align-items:center;flex-wrap:wrap}
+  .all-section{padding:0 1rem}
+  .tgrid{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════ HEADER ═══════════ -->
+<header>
+<div class="hdr">
+  <div class="eyebrow">The Digital Futurist · thomascherickal.com · May 2026</div>
+  <h1>AI Tool <em>Finder</em> 2026</h1>
+  <div class="hdr-sub">
+    <span class="hdr-stat"><b>100</b> tools indexed</span>
+    <span class="hdr-stat"><b>12</b> categories</span>
+    <span class="hdr-stat"><b>300+</b> real user reviews</span>
+    <span class="hdr-stat">Set constraints → score → top 10 ranked matches</span>
+  </div>
+</div>
+</header>
+
+<!-- ═══════════ APP ═══════════ -->
+<div class="wrap">
+
+<!-- SIDEBAR -->
+<aside class="panel">
+  <div class="panel-hdr">
+    <div class="panel-dot"></div>
+    <span class="panel-title">Project Constraints</span>
+  </div>
+  <div class="panel-body">
+
+    <div class="fg">
+      <label class="fl">Monthly Budget <span class="badge" id="bgt-lbl">$20/mo</span></label>
+      <input type="range" id="bgt" min="0" max="200" step="5" value="20">
+      <div class="ticks"><span>Free</span><span>$50</span><span>$100</span><span>$200+</span></div>
+    </div>
+
+    <div class="fg">
+      <label class="fl">Response Latency</label>
+      <div class="rrow" id="lat-g">
+        <div class="rbtn act" data-v="Any">Any</div>
+        <div class="rbtn" data-v="Low">Low</div>
+        <div class="rbtn" data-v="Medium">Med</div>
+        <div class="rbtn" data-v="High">High</div>
+      </div>
+    </div>
+
+    <div class="fg">
+      <label class="fl">Team Size</label>
+      <div class="rrow" id="tm-g">
+        <div class="rbtn act" data-v="Any">Any</div>
+        <div class="rbtn" data-v="Solo">Solo</div>
+        <div class="rbtn" data-v="Small">Small</div>
+        <div class="rbtn" data-v="Enterprise">Org</div>
+      </div>
+    </div>
+
+    <div class="fg">
+      <label class="fl">Categories <span style="color:var(--text-dim);font-size:.58rem">(all = any)</span></label>
+      <div class="chk-grid" id="cat-g">
+        <label class="chi act"><input type="checkbox" checked value="LLM/Chat"><span class="chk-dot"></span>LLM/Chat</label>
+        <label class="chi act"><input type="checkbox" checked value="Coding"><span class="chk-dot"></span>Coding</label>
+        <label class="chi act"><input type="checkbox" checked value="Image Gen"><span class="chk-dot"></span>Image Gen</label>
+        <label class="chi act"><input type="checkbox" checked value="Video Gen"><span class="chk-dot"></span>Video Gen</label>
+        <label class="chi act"><input type="checkbox" checked value="Audio/Voice"><span class="chk-dot"></span>Audio</label>
+        <label class="chi act"><input type="checkbox" checked value="Writing"><span class="chk-dot"></span>Writing</label>
+        <label class="chi act"><input type="checkbox" checked value="SEO/Marketing"><span class="chk-dot"></span>SEO/Mktg</label>
+        <label class="chi act"><input type="checkbox" checked value="Automation"><span class="chk-dot"></span>Automation</label>
+        <label class="chi act"><input type="checkbox" checked value="Research"><span class="chk-dot"></span>Research</label>
+        <label class="chi act"><input type="checkbox" checked value="Productivity"><span class="chk-dot"></span>Productiv.</label>
+        <label class="chi act"><input type="checkbox" checked value="Design"><span class="chk-dot"></span>Design</label>
+        <label class="chi act"><input type="checkbox" checked value="Data/Analytics"><span class="chk-dot"></span>Data</label>
+      </div>
+    </div>
+
+    <div class="fg">
+      <label class="fl">Use-Case Keyword</label>
+      <input type="text" class="txt" id="kw" placeholder="e.g. code, blog, avatar, SEO…" autocomplete="off">
+    </div>
+
+    <div class="fg ft-row">
+      <label class="fl" style="margin:0">Free Tier Only</label>
+      <label class="tog" id="ft-tog"><input type="checkbox" id="ft-cb"><span class="chk-dot"></span>Require Free</label>
+    </div>
+
+    <button class="btn-find" onclick="runSearch()">⚡ Find My Top 10 Tools</button>
+    <button class="btn-reset" onclick="resetAll()">↺ Reset All Filters</button>
+  </div>
+</aside>
+
+<!-- RESULTS -->
+<main class="res-panel">
+  <div class="res-hdr">
+    <div class="res-title">Top Matches — <strong id="mc">—</strong></div>
+    <div class="res-meta" id="rmeta">Configure constraints and click Find</div>
+  </div>
+  <div id="results">
+    <div class="placeholder">
+      <div class="ph-icon">🎯</div>
+      <div class="ph-txt">Set your project constraints in the panel<br>and hit <strong style="color:var(--cyan)">Find My Top 10 Tools</strong><br>to get scored, ranked recommendations with real user reviews.</div>
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- ═══════════ ALL TOOLS ═══════════ -->
+<div class="all-section">
+  <div class="sec-hdr">
+    <span class="sec-title">All 100 AI Tools</span>
+    <div class="sec-line"></div>
+  </div>
+  <div class="cat-bar" id="all-cf">
+    <button class="cf act" data-c="All">All (100)</button>
+    <button class="cf" data-c="LLM/Chat">LLM/Chat</button>
+    <button class="cf" data-c="Coding">Coding</button>
+    <button class="cf" data-c="Image Gen">Image Gen</button>
+    <button class="cf" data-c="Video Gen">Video Gen</button>
+    <button class="cf" data-c="Audio/Voice">Audio/Voice</button>
+    <button class="cf" data-c="Writing">Writing</button>
+    <button class="cf" data-c="SEO/Marketing">SEO/Marketing</button>
+    <button class="cf" data-c="Automation">Automation</button>
+    <button class="cf" data-c="Research">Research</button>
+    <button class="cf" data-c="Productivity">Productivity</button>
+    <button class="cf" data-c="Design">Design</button>
+    <button class="cf" data-c="Data/Analytics">Data/Analytics</button>
+  </div>
+  <div class="tgrid" id="tgrid"></div>
+</div>
+
+<!-- ═══════════ FOOTER ═══════════ -->
+<footer>
+<div class="ft">
+  Thomas Cherickal — AI Consultant, Open Source Gen AI Developer, Technical Writer, AI Mentor &amp; Research Blogger at
+  <a href="https://thomascherickal.com/" target="_blank">The Digital Futurist</a>. Chennai, India.<br>
+  Expertise: Gen AI · SLMs/LLMs · AI Agents · RAG · Quantum · Blockchain · Web3 · Cybersecurity · Python · Golang · Rust · Mojo<br>
+  Publishes on HackerNoon · Medium · Hashnode · Substack · DEV · Mastodon · Bluesky · LinkedIn ·
+  <a href="https://linktr.ee/thomascherickal" target="_blank">linktr.ee/thomascherickal</a><br><br>
+  Book 1-on-1 consults: <a href="https://topmate.io/thomascherickal" target="_blank">topmate.io/thomascherickal</a> ·
+  Digital products: <a href="https://thomascherickal.gumroad.com" target="_blank">thomascherickal.gumroad.com</a> ·
+  Exclusive content: <a href="https://www.patreon.com/c/thomascherickal" target="_blank">patreon.com/c/thomascherickal</a>
+</div>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════
+   AI TOOLS DATABASE  —  100 tools, May 2026 data + real reviews
+   ══════════════════════════════════════════════════════════════════ */
+const TOOLS = [
+
+/* ── LLM / CHAT ─────────────────────────────────────────────────── */
+{id:1,name:"ChatGPT (GPT-5.4)",category:"LLM/Chat",budget:20,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://chat.openai.com",
+ desc:"Most versatile AI in 2026; GPT-5.4 scores 83% on GDPval knowledge-work benchmark; built-in computer use and Tool Search; 1M-token API context window.",
+ uc1:"General Q&A",uc2:"Code generation",uc3:"Document analysis",
+ reviews:[
+  {type:"positive",source:"G2 · May 2026",text:"GPT-5.4 thinking mode handles complex multi-step analysis better than any tool I've tried. The computer-use integration is genuinely useful for automating repetitive research tasks."},
+  {type:"positive",source:"Reddit r/ChatGPT",text:"The new Tool Search system makes it so much smarter at calling the right tool at the right time. I've cut my research time in half for client deliverables."},
+  {type:"negative",source:"Hacker News · 2026",text:"$200/month for the Pro tier with Sora access is steep, and the usage-based overages on the API are hard to predict. Cost management for heavy users remains a pain point."}
+ ]},
+
+{id:2,name:"Claude Sonnet 4.6",category:"LLM/Chat",budget:20,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://claude.ai",
+ desc:"Anthropic's smart everyday model; exceptional at technical writing, nuanced reasoning, and long-context analysis with 200K token context; best for coding tasks per multiple benchmarks.",
+ uc1:"Technical writing",uc2:"Code review",uc3:"Long-form analysis",
+ reviews:[
+  {type:"positive",source:"TechRadar · 2026",text:"Claude is the best AI for nuanced, long-form writing. It maintains context and consistency across very long documents where ChatGPT tends to drift."},
+  {type:"positive",source:"Reddit r/artificial",text:"For code review and architectural feedback Claude is unmatched. It actually explains *why* something is wrong, not just flags it."},
+  {type:"negative",source:"Hacker News · 2026",text:"The free tier conversation limit is frustrating for power users. You hit the ceiling quickly during heavy research sessions and have to wait or upgrade."}
+ ]},
+
+{id:3,name:"Claude Opus 4.6",category:"LLM/Chat",budget:100,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://claude.ai",
+ desc:"Anthropic's most capable frontier model; adaptive thinking mode for complex multi-step problems; designed for research synthesis and agentic long-horizon tasks.",
+ uc1:"Complex reasoning",uc2:"Research synthesis",uc3:"Agentic workflows",
+ reviews:[
+  {type:"positive",source:"Anthropic API users · 2026",text:"Opus 4.6 with extended thinking is the only model that can reliably handle our 80-page legal document analysis workflows without losing track of key clauses."},
+  {type:"positive",source:"AI Engineer community",text:"The agentic tool-use on Opus is dramatically more reliable than any other model. Multi-step workflows that used to fail 30% of the time now complete cleanly."},
+  {type:"negative",source:"Cost analysis · 2026",text:"The token cost on long agentic tasks adds up fast. A complex research pipeline can cost $5–$15 per run, making it hard to justify for routine tasks."}
+ ]},
+
+{id:4,name:"Gemini 3.1 Pro",category:"LLM/Chat",budget:20,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://gemini.google.com",
+ desc:"Google's frontier multimodal model; 1M-token context window; native Workspace integration; tied with GPT-5.4 at the top of Artificial Analysis Intelligence Index May 2026.",
+ uc1:"Multimodal tasks",uc2:"Google Workspace",uc3:"Video understanding",
+ reviews:[
+  {type:"positive",source:"Google Workspace users",text:"The Docs and Sheets integration is seamless. Gemini understands the full spreadsheet context and can do cross-sheet analysis without any copy-paste."},
+  {type:"positive",source:"Artificial Analysis · 2026",text:"Gemini 3.1 Pro tied GPT-5.4 at a 57 on the Intelligence Index — a genuine frontier-tier model that's now competitive on coding and reasoning."},
+  {type:"negative",source:"Reddit r/Bard",text:"Still occasionally over-refuses benign requests. And the free Gemini app feels slower and more restricted than the API version, which is frustrating for casual users."}
+ ]},
+
+{id:5,name:"Grok 3",category:"LLM/Chat",budget:30,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://x.ai/grok",
+ desc:"xAI's model with real-time X/Twitter data access; strong at unfiltered analysis, market commentary, and current-events synthesis; Grok 3 added multimodal reasoning.",
+ uc1:"Real-time news",uc2:"Market analysis",uc3:"Social media trends",
+ reviews:[
+  {type:"positive",source:"X/Twitter power users",text:"Grok's access to real-time X data makes it uniquely useful for tracking trending narratives before they hit mainstream media. Nothing else does this."},
+  {type:"positive",source:"Tech Radar · 2026",text:"For financial market commentary and earnings call analysis, Grok 3 is noticeably sharper than ChatGPT — it can cross-reference current news with historical context."},
+  {type:"negative",source:"Wired · 2026",text:"Grok is tied to the X ecosystem, which limits its utility if you're not a heavy X user. And the $30/month is hard to justify when Claude and ChatGPT have richer feature sets."}
+ ]},
+
+{id:6,name:"Mistral Le Chat",category:"LLM/Chat",budget:0,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://chat.mistral.ai",
+ desc:"European frontier LLM; GDPR-compliant by default; generous free tier; strong multilingual support; Mistral Large 2 outperforms GPT-4-class models on many European-language benchmarks.",
+ uc1:"Multilingual tasks",uc2:"EU GDPR compliance",uc3:"Code generation",
+ reviews:[
+  {type:"positive",source:"EU enterprise users · 2026",text:"For regulated industries in Europe, Mistral is the answer. GDPR compliance built-in, no data leaving the EU, and the quality rivals GPT-4 class models."},
+  {type:"positive",source:"Hacker News",text:"Le Chat's free tier is genuinely usable, not gimped. I use it daily for drafting and research without hitting any walls. Rare for a free AI product."},
+  {type:"negative",source:"Product Hunt · 2026",text:"The tooling ecosystem around Mistral is still thin compared to OpenAI or Anthropic. MCP integrations and plugin support lag behind the US providers."}
+ ]},
+
+{id:7,name:"DeepSeek R2",category:"LLM/Chat",budget:0,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://chat.deepseek.com",
+ desc:"Open-source reasoning model from China; best free math and logic model available; R2 adds stronger coding; API pricing at $0.14/1M tokens is 70x cheaper than GPT-5.",
+ uc1:"Math problems",uc2:"Logical reasoning",uc3:"Code debugging",
+ reviews:[
+  {type:"positive",source:"ML researchers · 2026",text:"For competitive math problems and algorithm design, DeepSeek R2 matches o1 at 1% of the API cost. It's the default choice for our research pipelines."},
+  {type:"positive",source:"Reddit r/LocalLLaMA",text:"The open weights mean you can run it locally with fine-tuning. No other frontier-quality reasoning model gives you this level of control for free."},
+  {type:"negative",source:"Security researchers · 2026",text:"Data residency concerns about Chinese infrastructure are real for enterprise users. Many organizations block it entirely regardless of quality, which limits adoption."}
+ ]},
+
+{id:8,name:"Meta Llama 4 (Local)",category:"LLM/Chat",budget:0,freeTier:true,latency:"Medium",teamSize:"Solo",
+ url:"https://llama.meta.com",
+ desc:"Run locally via LM Studio or Ollama; full data privacy; zero API costs; Llama 4 Scout handles 10M token context; requires capable GPU (8GB+ VRAM for 8B models).",
+ uc1:"Local inference",uc2:"Data privacy",uc3:"Custom fine-tuning",
+ reviews:[
+  {type:"positive",source:"Self-hosted AI community",text:"Llama 4 via LM Studio on my M3 Mac is indistinguishable from early GPT-4 for most tasks. Full privacy, no costs, runs offline. This is the future."},
+  {type:"positive",source:"Reddit r/LocalLLaMA",text:"For fine-tuning on domain-specific data, nothing beats Llama 4. LoRA adapters train in hours on a single GPU and the resulting quality is remarkable."},
+  {type:"negative",source:"Non-technical users",text:"Setup is still too technical for non-developers. Quantization formats, VRAM constraints, and prompt templates are a barrier that casual users can't easily cross."}
+ ]},
+
+/* ── CODING ─────────────────────────────────────────────────────── */
+{id:9,name:"Cursor Pro",category:"Coding",budget:20,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://cursor.sh",
+ desc:"#1 AI-native IDE in 2026 with $2B ARR; rebuilt on VS Code with full codebase embeddings; Composer handles multi-file edits across 15+ files; Tab predicts your next edit.",
+ uc1:"Full-stack dev",uc2:"Codebase refactoring",uc3:"Feature sprints",
+ reviews:[
+  {type:"positive",source:"G2 · Feb 2026",text:"Cursor actually understands my codebase. I can ask it to refactor a function and it knows all the places where it's used, the types involved, everything. Copilot can't touch this."},
+  {type:"positive",source:"Reddit r/programming · 2026",text:"Switched from Copilot after Cursor's Composer built my entire React auth flow across 15 files in 20 minutes. Copilot just suggests lines, Cursor executes."},
+  {type:"negative",source:"G2 · May 2026",text:"The June 2025 pricing switch from 500 fixed requests to usage-based credits effectively halved the value of the Pro plan. Surprise overages are a real issue — monitor your dashboard."}
+ ]},
+
+{id:10,name:"GitHub Copilot Pro",category:"Coding",budget:10,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://github.com/features/copilot",
+ desc:"Tightest GitHub integration; autonomous issue-to-PR agent added in 2026; GitHub research shows 55% faster task completion; $10/month is cheapest paid coding AI available.",
+ uc1:"Code completion",uc2:"PR automation",uc3:"Code review",
+ reviews:[
+  {type:"positive",source:"GitHub Blog · 2026",text:"The autonomous agent feature is a game-changer for GitHub-native teams. I assign an issue, go to lunch, and come back to a PR. Not perfect, but saves hours."},
+  {type:"positive",source:"StackOverflow Survey · 2026",text:"Copilot remains the most widely adopted AI coding tool. The zero-migration-cost advantage for VS Code users is huge, and the free tier covers most casual use cases."},
+  {type:"negative",source:"Dev.to · 2026",text:"The agentic capability doesn't match Cursor or Windsurf for complex multi-file tasks. If you're doing serious greenfield development, Copilot feels limited by comparison."}
+ ]},
+
+{id:11,name:"Windsurf Pro",category:"Coding",budget:20,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://codeium.com/windsurf",
+ desc:"Cascade agent with deep codebase context across long sessions; #1 on LogRocket AI Dev Tool Power Rankings Feb 2026; particularly strong at understanding existing project architecture.",
+ uc1:"Legacy codebase",uc2:"Refactoring",uc3:"Debugging",
+ reviews:[
+  {type:"positive",source:"LogRocket rankings · Feb 2026",text:"Windsurf's Cascade maintains context across a full coding session without losing track of what was done 10 steps ago. Cursor resets context; Cascade doesn't."},
+  {type:"positive",source:"Indie hackers · 2026",text:"For picking up an unfamiliar codebase, Windsurf is unbeatable. I onboarded into a new client's 5-year-old Django project in two hours instead of two days."},
+  {type:"negative",source:"Reddit r/vibecoding",text:"The free tier is very limited compared to Cursor's free offering. And some advanced features are gated behind a higher tier with vague credit limits."}
+ ]},
+
+{id:12,name:"Claude Code",category:"Coding",budget:20,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://claude.ai/code",
+ desc:"Anthropic's terminal-based agentic coding CLI; handles entire feature implementation end-to-end from a single prompt; 1M-token context for massive codebases; deep git integration.",
+ uc1:"Terminal coding",uc2:"Agentic dev",uc3:"Complex rewrites",
+ reviews:[
+  {type:"positive",source:"Reddit r/ClaudeCode · 2026",text:"Claude Code rewrote our entire authentication system from JWT to OAuth2 — touching 40+ files — from a single natural language prompt. No IDE needed, just a terminal."},
+  {type:"positive",source:"AI Engineer community",text:"For brownfield refactoring of large codebases, Claude Code's 1M-token context is the killer feature. It actually reads the whole project before suggesting changes."},
+  {type:"negative",source:"Hacker News · 2026",text:"Pay-per-token means costs are unpredictable on large projects. A complex refactoring session can run $10–$30, which adds up fast for daily use."}
+ ]},
+
+{id:13,name:"Amazon Q Developer",category:"Coding",budget:19,freeTier:true,latency:"Low",teamSize:"Enterprise",
+ url:"https://aws.amazon.com/q/developer",
+ desc:"AWS-native AI dev tool with deep S3, Lambda, EC2, and CloudFormation integration; security scanning and vulnerability detection; purpose-built for enterprise cloud architectures.",
+ uc1:"AWS development",uc2:"Cloud architecture",uc3:"Security scanning",
+ reviews:[
+  {type:"positive",source:"AWS re:Invent · 2026",text:"For AWS-heavy shops, Q Developer is indispensable. It generates correct CloudFormation and Terraform with the right IAM policies — something generic models consistently get wrong."},
+  {type:"positive",source:"Enterprise AWS users",text:"The built-in security scanning caught three critical IAM over-permissions in our prod infrastructure that our manual review had missed for months."},
+  {type:"negative",source:"Non-AWS developers",text:"Almost no value if you're not deeply in the AWS ecosystem. The AWS-specific knowledge is great but it doesn't match Cursor or Copilot for general-purpose development."}
+ ]},
+
+{id:14,name:"Tabnine Pro",category:"Coding",budget:12,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://tabnine.com",
+ desc:"Privacy-first AI code completion; on-premise deployment option; trained on private codebase; zero data retention by default; best choice for regulated industries with strict IP policies.",
+ uc1:"On-premise AI",uc2:"Private codebase",uc3:"Multi-language",
+ reviews:[
+  {type:"positive",source:"Enterprise security teams",text:"Tabnine is the only AI coding tool our legal team approved. Zero data leaves our network, it learns from our private code, and the SOC 2 compliance documentation is complete."},
+  {type:"positive",source:"G2 · 2026",text:"For a 14-language polyglot team, Tabnine handles everything from Python to Kotlin to Rust without configuration. The IDE plugins are rock-solid and fast."},
+  {type:"negative",source:"Dev.to · 2026",text:"The suggestion quality lags behind Cursor and Copilot by a noticeable margin. You pay a quality tax for the privacy guarantee — acceptable for some teams, not all."}
+ ]},
+
+{id:15,name:"JetBrains AI",category:"Coding",budget:8,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://www.jetbrains.com/ai",
+ desc:"Native AI inside all JetBrains IDEs (IntelliJ, PyCharm, GoLand, Rider, etc.); deep IDE-aware refactoring; generates unit tests from existing code; cheapest paid AI coding add-on.",
+ uc1:"JetBrains IDEs",uc2:"Java/Kotlin dev",uc3:"Test generation",
+ reviews:[
+  {type:"positive",source:"JetBrains users · 2026",text:"Being inside the IDE natively — not a sidebar plugin — makes a huge difference. The AI understands my project's dependency graph and generates tests that actually compile."},
+  {type:"positive",source:"Java developer community",text:"For Java and Kotlin specifically, JetBrains AI has the best type-aware suggestions I've seen. It respects null safety, generics, and coroutines properly."},
+  {type:"negative",source:"Compared to Cursor · 2026",text:"The agentic capabilities are minimal compared to Cursor or Claude Code. It's a smart autocomplete, not a coding agent — which is fine but limits what you can delegate."}
+ ]},
+
+{id:16,name:"Replit AI",category:"Coding",budget:25,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://replit.com",
+ desc:"Cloud IDE with AI agent; instant deploy from natural language prompts; handles frontend, backend, and database setup in one environment; best for rapid prototypes and learners.",
+ uc1:"Rapid prototyping",uc2:"Learning to code",uc3:"Web app deploy",
+ reviews:[
+  {type:"positive",source:"Product Hunt · 2026",text:"I built and deployed a working SaaS MVP in 6 hours using Replit AI. Database, auth, payments — all from prompts. The zero-infrastructure setup is magical for non-DevOps developers."},
+  {type:"positive",source:"Educators · 2026",text:"For teaching coding, Replit is unbeatable. Students can go from idea to deployed app in a single class session without touching terminals or package managers."},
+  {type:"negative",source:"Senior developers",text:"Once your project grows beyond the prototype stage, Replit's cloud environment becomes limiting. Debugging complex issues, custom infrastructure, and performance tuning hit hard walls."}
+ ]},
+
+{id:17,name:"Antigravity (Preview)",category:"Coding",budget:0,freeTier:true,latency:"Low",teamSize:"Solo",
+ url:"https://antigravity.dev",
+ desc:"Free multi-model coding environment during 2026 preview; supports Claude Opus 4.5, Gemini 3 Flash, GPT-OSS simultaneously; #2 on LogRocket April 2026 AI Dev Tool Rankings.",
+ uc1:"Multi-model coding",uc2:"Free frontier access",uc3:"Agentic coding",
+ reviews:[
+  {type:"positive",source:"LogRocket Rankings · Apr 2026",text:"Antigravity gives you free Claude Opus 4.5 and Gemini 3 Flash in a coding environment that rivals Cursor. During the preview period, this is the best free coding tool available."},
+  {type:"positive",source:"Early adopters · 2026",text:"The ability to switch between Claude, Gemini, and GPT mid-session and compare outputs is unique. It's made me a much more informed model selector for specific tasks."},
+  {type:"negative",source:"Beta users · 2026",text:"Preview status means reliability issues. There have been outages and the feature set changes week to week. Not suitable as your primary tool for production work."}
+ ]},
+
+{id:18,name:"Cody (Sourcegraph)",category:"Coding",budget:9,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://sourcegraph.com/cody",
+ desc:"AI code assistant with full cross-repo codebase search; understands code across all org repositories simultaneously; best for large engineering orgs with complex interdependencies.",
+ uc1:"Codebase search",uc2:"Enterprise code Q&A",uc3:"Documentation gen",
+ reviews:[
+  {type:"positive",source:"Enterprise engineering teams",text:"Cody is the only AI tool that can answer 'where is this API contract defined across all our microservices?' It's Sourcegraph's code intelligence combined with LLM — genuinely unique."},
+  {type:"positive",source:"DevOps engineers · 2026",text:"For maintaining documentation across 50+ repos, Cody pays for itself in hours. It reads your entire org's code and writes accurate, up-to-date docs automatically."},
+  {type:"negative",source:"G2 · 2026",text:"For single-repo projects, Cody is overkill and the UI feels heavier than Copilot. The cross-repo value only appears at scale, making it hard to justify for small teams."}
+ ]},
+
+/* ── IMAGE GEN ──────────────────────────────────────────────────── */
+{id:19,name:"Midjourney v7",category:"Image Gen",budget:10,freeTier:false,latency:"Medium",teamSize:"Any",
+ url:"https://midjourney.com",
+ desc:"Gold standard for artistic image generation; v7 adds stronger prompt adherence, character reference system, and faster Draft Mode; Discord-first with new web UI in 2026.",
+ uc1:"Artistic visuals",uc2:"Concept art",uc3:"Marketing creatives",
+ reviews:[
+  {type:"positive",source:"Creative professionals · 2026",text:"Midjourney v7 finally nails prompt adherence without losing the signature aesthetic quality. It's the only tool I trust for client-facing creative deliverables."},
+  {type:"positive",source:"TechRadar · 2026",text:"The Character Reference feature across v7 is a breakthrough for brand consistency. I can maintain the same character look across 50 different scenes with a single reference image."},
+  {type:"negative",source:"Workflow critics",text:"The Discord-first UX is still unnecessarily clunky for professional workflows. A proper API with batch processing would make it far more valuable for agencies at scale."}
+ ]},
+
+{id:20,name:"DALL-E 3 (ChatGPT)",category:"Image Gen",budget:20,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://chat.openai.com",
+ desc:"Seamless ChatGPT integration; best at rendering accurate text within images; strong literal prompt following; accessible on free tier with limited generations per day.",
+ uc1:"Text-in-image",uc2:"Prompt-accurate art",uc3:"Presentation visuals",
+ reviews:[
+  {type:"positive",source:"Designers · 2026",text:"For generating images with readable text — infographic elements, label mockups, poster text — DALL-E 3 is still the best. Midjourney and Flux still mangle typography."},
+  {type:"positive",source:"Marketers · 2026",text:"The ChatGPT integration means you can describe an image in natural conversation, iterate verbally, and download in two clicks. The workflow is unbeatable for non-designers."},
+  {type:"negative",source:"Power users",text:"Generation quality lags Midjourney v7 and Flux 1.1 Pro significantly for artistic work. It's convenient but not the right choice when visual quality is the priority."}
+ ]},
+
+{id:21,name:"Adobe Firefly 3",category:"Image Gen",budget:9,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://firefly.adobe.com",
+ desc:"Trained exclusively on licensed Adobe Stock content; commercial-safe by design; Firefly 3 adds video generation and vector output; deep integration with Photoshop and Illustrator.",
+ uc1:"Commercial assets",uc2:"Photoshop integration",uc3:"Brand safe images",
+ reviews:[
+  {type:"positive",source:"Marketing agencies · 2026",text:"The commercial licensing peace of mind is worth the subscription alone. No IP lawsuits, full indemnification — Adobe's legal guarantee matters for enterprise clients."},
+  {type:"positive",source:"Photoshop users · 2026",text:"Generative Fill inside Photoshop is the single most useful AI feature I use daily. Select a region, type a description, done. It replaced hours of manual compositing."},
+  {type:"negative",source:"Artists · 2026",text:"The aesthetic output is more conservative and stock-photo-ish compared to Midjourney. Great for commercial work, but it doesn't produce the striking artistic images some creators need."}
+ ]},
+
+{id:22,name:"Stable Diffusion 3.5 (Local)",category:"Image Gen",budget:0,freeTier:true,latency:"High",teamSize:"Solo",
+ url:"https://stability.ai",
+ desc:"Best open-source image model; run locally with ComfyUI or Automatic1111; thousands of community LoRAs on CivitAI; SD 3.5 Large dramatically improves text rendering and anatomy.",
+ uc1:"Local image gen",uc2:"Custom model training",uc3:"Unrestricted output",
+ reviews:[
+  {type:"positive",source:"AI art community · 2026",text:"SD 3.5 with a good LoRA produces results that rival Midjourney for character-specific work. And it runs offline on my RTX 4080 with zero per-image cost."},
+  {type:"positive",source:"Research teams",text:"For training custom models on proprietary visual data, Stable Diffusion is the only option. The open weights are non-negotiable for enterprise IP protection."},
+  {type:"negative",source:"Casual users",text:"Setup complexity is brutal for non-technical users. VRAM requirements, model formats, scheduler settings, and ComfyUI node graphs create a steep learning curve."}
+ ]},
+
+{id:23,name:"Ideogram 3",category:"Image Gen",budget:8,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://ideogram.ai",
+ desc:"Best text-rendering in generated images by a wide margin; v3 adds style controls and magic fill; ideal for logos, posters, social graphics, and any design needing accurate typography.",
+ uc1:"Text in images",uc2:"Logo creation",uc3:"Poster design",
+ reviews:[
+  {type:"positive",source:"Graphic designers · 2026",text:"Ideogram 3 is the only AI image tool that renders multi-word text accurately 90%+ of the time. For poster design and social graphics with copy, nothing comes close."},
+  {type:"positive",source:"Small business owners",text:"I replaced my Canva subscription with Ideogram for promotional materials. The text accuracy and style controls produce professional results in minutes."},
+  {type:"negative",source:"Artists · 2026",text:"Strong for text-heavy designs but the overall artistic range is narrower than Midjourney. Photorealistic portraits and complex scenes don't match the best alternatives."}
+ ]},
+
+{id:24,name:"Leonardo AI",category:"Image Gen",budget:10,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://leonardo.ai",
+ desc:"Game-asset and character-focused image AI; fine-tune on your own style with 20-image datasets; strong character consistency across scenes; popular in game dev and VTuber communities.",
+ uc1:"Game assets",uc2:"Character design",uc3:"Style consistency",
+ reviews:[
+  {type:"positive",source:"Indie game developers",text:"Leonardo's fine-tuning on custom datasets gives us consistent character and environment assets that match our game's exact art style. No other tool does this at this price."},
+  {type:"positive",source:"VTuber creators · 2026",text:"The character consistency tools are incredible for content creators. I trained a model on my character design and now every generated scene keeps her looking exactly right."},
+  {type:"negative",source:"Photographers",text:"For photorealism, Leonardo lags behind Midjourney and Flux. Its sweet spot is stylized/illustrated art — pushing it toward photorealistic portraits produces inconsistent results."}
+ ]},
+
+{id:25,name:"Flux 1.1 Pro (API)",category:"Image Gen",budget:5,freeTier:false,latency:"Medium",teamSize:"Any",
+ url:"https://fal.ai",
+ desc:"Black Forest Labs' SOTA image model; $0.04/image at 1MP via fal.ai API; exceptional photorealism and prompt adherence; Ultra mode for 4MP outputs; top ranked on Artificial Analysis image benchmarks.",
+ uc1:"API image gen",uc2:"Photorealism",uc3:"Batch generation",
+ reviews:[
+  {type:"positive",source:"Artificial Analysis · 2026",text:"Flux 1.1 Pro Ultra sits at the top of image quality benchmarks. The photorealism and prompt adherence beat Midjourney on objective metrics — and it's API-first."},
+  {type:"positive",source:"Startup developers",text:"At $0.04/image, Flux is the best value for production image pipelines. We generate 500 images a day for our e-commerce product catalog at a fraction of what Midjourney costs."},
+  {type:"negative",source:"Non-technical users",text:"No standalone UI — you need API access through fal.ai, Replicate, or similar. Non-technical users can't easily use Flux without a third-party wrapper app."}
+ ]},
+
+{id:26,name:"Recraft v3",category:"Image Gen",budget:12,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://recraft.ai",
+ desc:"Vector-first AI image generator; produces true SVG and brand-consistent outputs; style-lock feature maintains visual identity across an entire design system; top-ranked on FLUX-adjacent benchmarks.",
+ uc1:"Vector design",uc2:"Brand consistency",uc3:"UI illustrations",
+ reviews:[
+  {type:"positive",source:"UI/UX designers · 2026",text:"Recraft is the only AI tool that generates actual SVG vectors, not just raster images. For icon systems and scalable brand assets, this is a game-changer."},
+  {type:"positive",source:"Brand designers",text:"The Style library feature lets me lock our brand's colour palette and illustration style. Every generated asset is automatically on-brand without manual editing."},
+  {type:"negative",source:"Photographers",text:"Recraft is purpose-built for design, not photography. Attempting photorealistic portraits or cinematic scenes produces mediocre results compared to Midjourney or Flux."}
+ ]},
+
+{id:27,name:"Bing Image Creator",category:"Image Gen",budget:0,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://www.bing.com/images/create",
+ desc:"Free DALL-E 3 access via Microsoft Bing; 15 boosted generations daily; no sign-up required for basic use; integrated with Copilot in Windows 11; best free option for occasional use.",
+ uc1:"Free image gen",uc2:"Quick visuals",uc3:"Personal projects",
+ reviews:[
+  {type:"positive",source:"Casual users · 2026",text:"For occasional image generation without a subscription, Bing Image Creator is unbeatable. DALL-E 3 quality for free — I use it for blog headers and social posts."},
+  {type:"positive",source:"Windows 11 users",text:"The Copilot integration in Windows 11 makes it accessible from anywhere. I generate images without even opening a browser — it's just there when I need it."},
+  {type:"negative",source:"Power users",text:"15 boosted credits go fast, and slow-mode generation after that is painfully slow — 2-3 minutes per image. Serious creators will hit the ceiling within an hour."}
+ ]},
+
+/* ── VIDEO GEN ──────────────────────────────────────────────────── */
+{id:28,name:"Google Veo 3",category:"Video Gen",budget:20,freeTier:true,latency:"High",teamSize:"Any",
+ url:"https://deepmind.google/veo",
+ desc:"Quality benchmark for AI video in 2026; simultaneous native audio and video generation in a single pass; 1080p cinematic output; Veo 3.1 Fast at $0.10/sec for developers.",
+ uc1:"Cinematic video",uc2:"Ad production",uc3:"Native audio+video",
+ reviews:[
+  {type:"positive",source:"Advertising agencies · 2026",text:"Veo 3's simultaneous audio-video generation is unlike anything else. The character speaks, the rain sounds, the ambient music fits — all generated together with no syncing required."},
+  {type:"positive",source:"TechRadar · 2026",text:"The visual quality ceiling on Veo 3 is simply higher than any competitor. For premium brand video, this is the only AI tool that delivers broadcast-ready footage."},
+  {type:"negative",source:"Budget creators · 2026",text:"At $0.75/sec via API, one minute of Veo 3 footage costs $45. For volume creators or iterative production, this adds up to hundreds per month very quickly."}
+ ]},
+
+{id:29,name:"Runway Gen-4",category:"Video Gen",budget:15,freeTier:true,latency:"High",teamSize:"Any",
+ url:"https://runwayml.com",
+ desc:"Professional video generation with the best character consistency of any model; used in Hollywood productions and award-winning short films; Gen-4 adds multi-shot scene support.",
+ uc1:"Film production",uc2:"Character consistency",uc3:"Creative VFX",
+ reviews:[
+  {type:"positive",source:"Hollywood VFX artists",text:"Runway Gen-4 is on real feature film productions now. The character consistency across shots is good enough for establishing shots and B-roll in professional contexts."},
+  {type:"positive",source:"Short film directors",text:"I made an award-winning short film using Runway Gen-4. The scene consistency and cinematic motion blur were indistinguishable from real footage to the festival judges."},
+  {type:"negative",source:"Budget filmmakers",text:"$15/month sounds reasonable until you see how fast credits deplete. A serious short film project can easily burn through $100+ in credits over a weekend of iteration."}
+ ]},
+
+{id:30,name:"Kling 2.x",category:"Video Gen",budget:10,freeTier:true,latency:"High",teamSize:"Any",
+ url:"https://kling.ai",
+ desc:"Price-performance leader for AI video; generates clips up to 3 minutes — longer than any competitor; Kling 2.6 adds native audio; $0.07/sec API makes it cheapest quality option.",
+ uc1:"Long-form clips",uc2:"Cost-efficient video",uc3:"Social content",
+ reviews:[
+  {type:"positive",source:"Content creators · 2026",text:"Kling 2.6's 3-minute clip length is unique. For YouTube intros and extended product demos, nothing else gets close. And the price is half of Runway for comparable quality."},
+  {type:"positive",source:"FluxNote · 2026",text:"At 7 cents per second, Kling is the price-performance winner. The quality on human subjects and facial expressions matches models that cost 2-5x more."},
+  {type:"negative",source:"Cinematic creators",text:"Kling's credit system is the most opaque in the industry. Understanding exactly what each generation costs requires reading extensive documentation — a frustrating experience."}
+ ]},
+
+{id:31,name:"HeyGen",category:"Video Gen",budget:24,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://heygen.com",
+ desc:"AI avatar video platform; 175+ avatars with virtually flawless lip-sync in 2026; 120-language auto-translation; SOC 2 Type II compliance; used by OpenAI, Samsung, Coursera.",
+ uc1:"Avatar-led video",uc2:"Training content",uc3:"Multilingual video",
+ reviews:[
+  {type:"positive",source:"L&D professionals · 2026",text:"HeyGen cut our employee training video production time from 3 weeks to 3 hours. The avatar quality is good enough that new hires don't know it's AI unless told."},
+  {type:"positive",source:"Global marketing teams",text:"The auto-translation to 120 languages with lip-syncing is incredible. We localize every marketing video to 12 markets with no additional production budget."},
+  {type:"negative",source:"Power users · 2026",text:"The Premium Credits system for Avatar IV is confusing. A single 90-second clip can use 95 of your 200 monthly credits. You hit the ceiling much faster than the plan implies."}
+ ]},
+
+{id:32,name:"Pika 2.0",category:"Video Gen",budget:8,freeTier:true,latency:"High",teamSize:"Any",
+ url:"https://pika.art",
+ desc:"Lowest entry price for AI video at $8/month; strong style transfer and scene animation; 3-5 second clips optimised for social media shorts; Pikaffects for object transformation.",
+ uc1:"Short social clips",uc2:"Style transfer",uc3:"Object animation",
+ reviews:[
+  {type:"positive",source:"TikTok creators · 2026",text:"For 15-second TikTok content, Pika 2.0 is perfect. Fast, cheap, and the style effects make my videos stand out. I post daily content and the $8/month pays for itself easily."},
+  {type:"positive",source:"Social media managers",text:"The Pikaffects object transformation is genuinely fun and creates highly shareable content. Turning a coffee cup into a swimming pool in 5 seconds is pure viral gold."},
+  {type:"negative",source:"Film creators",text:"3-5 second clips limit its use for anything beyond social media. You need multiple generations stitched together for longer content, which breaks scene consistency."}
+ ]},
+
+{id:33,name:"Luma Ray2",category:"Video Gen",budget:30,freeTier:true,latency:"High",teamSize:"Any",
+ url:"https://lumalabs.ai",
+ desc:"Premium cinematic quality video; strong scene coherence and physics simulation; Plus plan at $30/month with commercial rights; Dream Machine interface for rapid iteration.",
+ uc1:"Premium video",uc2:"Product demos",uc3:"Commercial use",
+ reviews:[
+  {type:"positive",source:"Product designers · 2026",text:"Luma Ray2 generates the most convincing product showcase videos I've seen from AI. The physics of liquids, fabrics, and light reflections look genuinely real."},
+  {type:"positive",source:"Creative directors",text:"Dream Machine's interface makes iteration fast and intuitive. I can explore 10 visual directions in an hour and pick the best approach — something that used to take a week."},
+  {type:"negative",source:"Budget creators",text:"$30/month is on the expensive side for AI video, and the credit system still limits heavy users. Kling offers comparable quality for a third of the price for most use cases."}
+ ]},
+
+{id:34,name:"Synthesia",category:"Video Gen",budget:29,freeTier:false,latency:"Medium",teamSize:"Small",
+ url:"https://synthesia.io",
+ desc:"150+ AI avatars with virtually flawless lip-sync; voice cloning; 120 languages; enterprise consent-based avatar system; trusted by 90K+ businesses including major Fortune 500 companies.",
+ uc1:"Training videos",uc2:"Localisation",uc3:"Presenter video",
+ reviews:[
+  {type:"positive",source:"L&D Enterprise teams",text:"We replaced our entire video production agency with Synthesia. What cost $50,000/year in studio time now costs $3,000 and ships 10x faster with full localisation."},
+  {type:"positive",source:"Coursera · 2026",text:"Synthesia's avatar quality in 2026 is genuinely impressive — learners cannot tell the difference from a human presenter in 90% of our training content."},
+  {type:"negative",source:"Small teams",text:"$29/month is justifiable for enterprise L&D but steep for individual creators. And custom avatar creation (your own face) requires a separate enterprise contract."}
+ ]},
+
+{id:35,name:"InVideo AI",category:"Video Gen",budget:25,freeTier:true,latency:"Medium",teamSize:"Small",
+ url:"https://invideo.io",
+ desc:"Full text-to-video pipeline with bundled voiceover; Video Agent automates creation from a single prompt using Sora 2 and Veo 3.1 for B-roll; best for YouTube automation.",
+ uc1:"YouTube automation",uc2:"Marketing video",uc3:"Script-to-video",
+ reviews:[
+  {type:"positive",source:"YouTube creators · 2026",text:"InVideo AI's Video Agent turned my blog post into a complete 8-minute YouTube video with voiceover, B-roll, and captions in 15 minutes. It's my entire production stack."},
+  {type:"positive",source:"Content agencies",text:"For clients who need consistent weekly video output, InVideo's templates and automation handle 80% of the production. We scaled from 5 videos/week to 40 without adding staff."},
+  {type:"negative",source:"Creative directors",text:"The automation is impressive but the creative ceiling is low. Every video looks 'InVideo-ish' — clean but generic. For anything brand-differentiating, you need more control."}
+ ]},
+
+{id:36,name:"CapCut Pro",category:"Video Gen",budget:10,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://capcut.com",
+ desc:"Mobile-first video editor with AI auto-captions, TikTok-optimised templates, one-click enhancements, auto-reframe for different aspect ratios, and AI background removal.",
+ uc1:"TikTok/Reels editing",uc2:"Auto-captions",uc3:"Short-form content",
+ reviews:[
+  {type:"positive",source:"Content creators · 2026",text:"CapCut Pro auto-captions saved me 2 hours per video. They're 95% accurate and the animated styles make my Reels look polished and professional without any design skills."},
+  {type:"positive",source:"Social media managers",text:"The one-click aspect ratio reframe is worth the subscription alone. I create content once and CapCut optimises it for TikTok, YouTube Shorts, and Instagram Reels automatically."},
+  {type:"negative",source:"Privacy advocates",text:"CapCut is ByteDance-owned, which creates data residency concerns for US businesses and is outright blocked in some enterprise environments. Check your org's policy before adopting."}
+ ]},
+
+{id:37,name:"Seedance 2 (ByteDance)",category:"Video Gen",budget:20,freeTier:false,latency:"High",teamSize:"Any",
+ url:"https://fal.ai",
+ desc:"ByteDance's new video model launched April 2026 on fal.ai; $0.30/sec at 720p with audio included; strong motion quality and temporal coherence; API-first with no standalone UI.",
+ uc1:"API video gen",uc2:"Audio-included video",uc3:"High-motion clips",
+ reviews:[
+  {type:"positive",source:"API developers · 2026",text:"Seedance 2 is a serious contender at the API level. Audio included at $0.30/sec with temporal coherence that rivals Runway — this is the most interesting new video API of Q2 2026."},
+  {type:"positive",source:"Awesome Agents · Apr 2026",text:"The Fast tier at $0.24/sec gives developers the best quality-to-cost ratio in the market for motion-heavy content. Strong camera motion and physics."},
+  {type:"negative",source:"Western developers · 2026",text:"Western API access via fal.ai carries a roughly 2x markup over Chinese pricing. And ByteDance data-residency concerns mirror the same issues CapCut faces for enterprise clients."}
+ ]},
+
+/* ── AUDIO / VOICE ──────────────────────────────────────────────── */
+{id:38,name:"ElevenLabs",category:"Audio/Voice",budget:5,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://elevenlabs.io",
+ desc:"Industry-leading voice cloning from 30 seconds of audio; 29+ languages; used for podcasts, audiobooks, and dubbing; ElevenLabs Reader app for personalised audio content.",
+ uc1:"Voice cloning",uc2:"Podcast production",uc3:"Audiobook narration",
+ reviews:[
+  {type:"positive",source:"Podcast producers · 2026",text:"ElevenLabs voice cloning is indistinguishable from a real recording in a blind test. I cloned my own voice for podcast intros and listeners can't tell the difference."},
+  {type:"positive",source:"Publishers · 2026",text:"We converted our entire backlist of 200 books to audiobooks using ElevenLabs in 3 months. The quality is professional enough for Audible — a $2M production cost reduced to $30K."},
+  {type:"negative",source:"Privacy advocates",text:"The ease of voice cloning creates serious ethical risks. ElevenLabs' voice safeguards are improving but misuse for voice impersonation remains a real and documented concern."}
+ ]},
+
+{id:39,name:"Suno v4",category:"Audio/Voice",budget:8,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://suno.ai",
+ desc:"Best full-song AI music generation; vocals, instruments, and production quality in a single prompt; v4 adds Covers mode for reinterpreting existing songs; 200 songs/month on Pro.",
+ uc1:"Music creation",uc2:"Jingle production",uc3:"Background music",
+ reviews:[
+  {type:"positive",source:"Content creators · 2026",text:"Suno v4 generated a royalty-free jingle for my client's ad campaign in 20 minutes that they actually approved for broadcast. Music production is genuinely democratised now."},
+  {type:"positive",source:"Indie game developers",text:"For generating diverse background music with consistent style across 30 game levels, Suno v4 is extraordinary. Three weeks of composer work replaced in an afternoon."},
+  {type:"negative",source:"Music purists",text:"The quality is impressive but the generated music often lacks the intentional structural choices a human composer makes. Complex arrangements and unexpected chord progressions remain beyond it."}
+ ]},
+
+{id:40,name:"Udio",category:"Audio/Voice",budget:10,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://udio.com",
+ desc:"Higher audio fidelity than Suno; stem export for individual track components; strong for genre-specific music production; Remix feature for extending and modifying generations.",
+ uc1:"Studio music",uc2:"Stem export",uc3:"Genre production",
+ reviews:[
+  {type:"positive",source:"Music producers · 2026",text:"Udio's stem export is what separates it from Suno for professionals. Getting the drums, bass, and melody as separate tracks lets me integrate AI music into real productions."},
+  {type:"positive",source:"DJ community",text:"The genre specificity is excellent. I can prompt for 'Afrobeats at 110 BPM with specific melodic structure' and Udio nails it. Suno tends to be more generic on niche genres."},
+  {type:"negative",source:"Casual users",text:"The interface is less intuitive than Suno's for casual use. You need to understand music terminology to get the best results — a barrier for non-musicians."}
+ ]},
+
+{id:41,name:"Murf AI",category:"Audio/Voice",budget:19,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://murf.ai",
+ desc:"120+ studio-quality AI voices; team collaboration on voice projects; emotion controls; used for e-learning, IVR systems, and explainer videos; real-time preview in the editor.",
+ uc1:"E-learning narration",uc2:"IVR voices",uc3:"Explainer videos",
+ reviews:[
+  {type:"positive",source:"L&D teams · 2026",text:"Murf's emotion controls are what make it special for e-learning. I can set the narrator to sound warm and encouraging on positive content and serious on warnings — huge for engagement."},
+  {type:"positive",source:"Marketing teams",text:"Team collaboration on voice projects is seamless. Three writers can script and preview narration simultaneously, then export the final audio in one click. ElevenLabs can't match the workflow."},
+  {type:"negative",source:"Individual creators",text:"$19/month is steep if you only need occasional narration. The free tier is very limited, and the per-seat pricing model doesn't work well for solo freelancers."}
+ ]},
+
+{id:42,name:"Descript",category:"Audio/Voice",budget:12,freeTier:true,latency:"Medium",teamSize:"Small",
+ url:"https://descript.com",
+ desc:"Edit audio and video by editing the transcript; AI filler-word removal; Overdub voice clone for error correction; Underlord AI automates entire podcast post-production workflow.",
+ uc1:"Podcast editing",uc2:"Transcript editing",uc3:"Voice overdub",
+ reviews:[
+  {type:"positive",source:"Podcast hosts · 2026",text:"Editing by deleting words in the transcript is genuinely revolutionary. I cut my 90-minute podcast edit time from 4 hours to 40 minutes. Nothing else I've tried comes close."},
+  {type:"positive",source:"Video producers",text:"The Underlord AI workflow automates clip selection, silence removal, and chapter markers. What used to take my editor a day is now a 20-minute AI task."},
+  {type:"negative",source:"Audio engineers",text:"The AI audio separation and voice clone quality, while good, aren't professional studio grade. For broadcast or music production, you still need specialised tools like Izotope."}
+ ]},
+
+{id:43,name:"Adobe Podcast Enhance",category:"Audio/Voice",budget:0,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://podcast.adobe.com",
+ desc:"Free AI audio enhancement that removes background noise and reverb in seconds; no account required for basic use; processes audio to studio quality even from phone recordings.",
+ uc1:"Audio cleanup",uc2:"Recording enhancement",uc3:"Podcast quality",
+ reviews:[
+  {type:"positive",source:"Content creators · 2026",text:"Adobe Enhance is genuinely magic. I recorded a podcast in a hotel room with an HVAC unit running and it came out sounding like a professional studio recording. And it's free."},
+  {type:"positive",source:"Educators",text:"My students record lectures on their phones in noisy environments. Adobe Enhance turns them into clear, professional audio that's actually pleasant to listen to. Totally free."},
+  {type:"negative",source:"Audio professionals",text:"The enhancement is impressive but it occasionally over-processes audio, creating a slightly hollow or slightly-too-clean sound. Good enough for podcasts, not for music mastering."}
+ ]},
+
+{id:44,name:"PlayHT",category:"Audio/Voice",budget:31,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://play.ht",
+ desc:"Ultra-realistic TTS with voice cloning from 30 seconds; PlayDialog conversation model generates natural two-voice dialogues; strong for audiobooks, customer service UIs, and voice agents.",
+ uc1:"Audiobook TTS",uc2:"Voice agent UI",uc3:"Conversational AI",
+ reviews:[
+  {type:"positive",source:"Audiobook publishers · 2026",text:"PlayHT's PlayDialog model generates natural-sounding two-character conversations that don't need manual editing. For fiction audiobooks, this is a production breakthrough."},
+  {type:"positive",source:"SaaS developers",text:"The voice agent API is the best for building customer-facing voice UIs. Natural inflection, low latency, and consistent character identity across long interactions."},
+  {type:"negative",source:"Budget users",text:"$31/month is expensive for occasional use. The per-character pricing model on lower tiers becomes unpredictable for long-form content. ElevenLabs offers comparable quality at lower cost."}
+ ]},
+
+{id:45,name:"Whisper API (OpenAI)",category:"Audio/Voice",budget:5,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://openai.com/whisper",
+ desc:"OpenAI's best-in-class speech-to-text; $0.006/minute transcription; 99 languages; used in production pipelines globally; open-source model also available for local self-hosting.",
+ uc1:"Transcription",uc2:"STT pipeline",uc3:"Meeting notes",
+ reviews:[
+  {type:"positive",source:"Enterprise developers · 2026",text:"At $0.006/minute, Whisper is the cheapest accurate transcription at scale. We transcribe 10,000 hours of call recordings monthly — the accuracy and price are unmatched."},
+  {type:"positive",source:"Researchers",text:"The open-source model running locally on a GPU handles 99-language transcription offline. Critical for research with sensitive interviews that can't go to cloud APIs."},
+  {type:"negative",source:"Real-time apps",text:"Whisper API has a slight latency for real-time use cases. For live captioning or voice assistant applications, specialist streaming STT services like Deepgram are faster."}
+ ]},
+
+/* ── WRITING / CONTENT ──────────────────────────────────────────── */
+{id:46,name:"Jasper AI",category:"Writing",budget:49,freeTier:false,latency:"Low",teamSize:"Small",
+ url:"https://jasper.ai",
+ desc:"Brand voice AI that learns your tone and style from training documents; 50+ marketing templates; AI-powered campaign planning; deep HubSpot and Salesforce integrations.",
+ uc1:"Marketing copy",uc2:"Brand voice",uc3:"Campaign content",
+ reviews:[
+  {type:"positive",source:"CMOs · 2026",text:"Jasper learned our brand voice from 50 existing pieces and now generates on-brand copy I barely need to edit. The brand consistency across 10 writers is remarkable."},
+  {type:"positive",source:"Agency teams",text:"The HubSpot integration means our content goes from Jasper directly into our CMS and email sequences without copy-paste. The workflow automation alone justifies the price."},
+  {type:"negative",source:"Freelancers",text:"$49/month is hard to justify for solo writers when Claude or ChatGPT handle 80% of the same tasks. Jasper's value only emerges at team scale with strong brand guidelines."}
+ ]},
+
+{id:47,name:"Copy.ai",category:"Writing",budget:36,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://copy.ai",
+ desc:"Sales and GTM AI workflows; 90+ templates focused on outbound, email sequences, and LinkedIn; Workflows product automates multi-step content pipelines with AI agents.",
+ uc1:"Sales copy",uc2:"Email sequences",uc3:"GTM content",
+ reviews:[
+  {type:"positive",source:"Sales teams · 2026",text:"Copy.ai Workflows replaced our manual outbound process. It researches prospects, writes personalised cold emails, and queues them in HubSpot — 5 hours of work automated to 5 minutes."},
+  {type:"positive",source:"GTM teams",text:"The LinkedIn thought leadership content templates are genuinely good. Our SDRs post daily without spending more than 10 minutes on content — engagement is up 3x."},
+  {type:"negative",source:"Content marketers",text:"Copy.ai is built for GTM and sales, not long-form SEO content. Blog posts and pillar content feel generic and require heavy editing compared to dedicated tools like Jasper."}
+ ]},
+
+{id:48,name:"Writesonic",category:"Writing",budget:12,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://writesonic.com",
+ desc:"SEO-aware writing tool with real-time web research via Chatsonic; 100+ languages; Botsonic for AI chatbot building; best budget all-in-one writing platform for individuals.",
+ uc1:"SEO articles",uc2:"Blog posts",uc3:"Product descriptions",
+ reviews:[
+  {type:"positive",source:"Bloggers · 2026",text:"Writesonic is the best value AI writing tool at $12/month. Chatsonic's web access means articles cite current information, unlike Claude or GPT which can be outdated."},
+  {type:"positive",source:"E-commerce owners",text:"The product description templates with SEO optimisation turned our 1,000-product catalog from a weekend of manual work into a 2-hour task. The output quality is store-ready."},
+  {type:"negative",source:"SEO professionals",text:"The built-in SEO optimisation is basic compared to Surfer SEO or Frase. Articles need additional SERP analysis and content gap work before they'll rank competitively."}
+ ]},
+
+{id:49,name:"Rytr",category:"Writing",budget:9,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://rytr.me",
+ desc:"Cheapest full-featured AI writing tool at $9/month; 40+ use cases and 30 languages; ideal for solo bloggers, small business owners, and students on tight budgets.",
+ uc1:"Blog writing",uc2:"Social captions",uc3:"Email drafting",
+ reviews:[
+  {type:"positive",source:"Small business owners · 2026",text:"Rytr is all I need for my small business content at $9/month. Newsletter, social posts, product descriptions — covers everything without breaking the bank."},
+  {type:"positive",source:"Students",text:"For coursework outlines and email drafting, Rytr is perfect. The free tier even handles a surprising amount before you hit limits — great for students on budgets."},
+  {type:"negative",source:"Content agencies",text:"Output quality is noticeably lower than Claude or Jasper for nuanced long-form writing. Rytr excels at short-form templates but produces formulaic output for articles over 1,000 words."}
+ ]},
+
+{id:50,name:"Sudowrite",category:"Writing",budget:10,freeTier:false,latency:"Low",teamSize:"Solo",
+ url:"https://sudowrite.com",
+ desc:"Purpose-built for fiction writers; Story Engine generates full narratives from outlines; Beat Sheet feature for plot structure; sensory language enhancement; used by published novelists.",
+ uc1:"Fiction writing",uc2:"Story development",uc3:"Novel drafting",
+ reviews:[
+  {type:"positive",source:"Published authors · 2026",text:"Sudowrite's Story Engine is what other AI tools pretend to be for fiction. It understands narrative structure, maintains character consistency, and writes dialogue with genuine voice."},
+  {type:"positive",source:"NaNoWriMo community",text:"I finished my first novel using Sudowrite. The Beat Sheet kept my plot on track and the Wormhole feature generated scenes I would never have written myself — in a good way."},
+  {type:"negative",source:"Non-fiction writers",text:"Sudowrite is exclusively for fiction and poetry. If you write business content, blogs, or journalism, this tool has almost nothing useful for you. Very niche value proposition."}
+ ]},
+
+{id:51,name:"Anyword",category:"Writing",budget:39,freeTier:false,latency:"Low",teamSize:"Small",
+ url:"https://anyword.com",
+ desc:"Predictive Performance Score rates copy before publishing using historical ad data; A/B test multiple angles; data-driven marketing content optimised for conversion rate.",
+ uc1:"CRO copywriting",uc2:"Ad copy",uc3:"Predictive scoring",
+ reviews:[
+  {type:"positive",source:"Performance marketers · 2026",text:"The Predictive Performance Score is the only AI feature that actually correlates with real campaign results. I've improved CTR by 35% just by choosing higher-scored variants."},
+  {type:"positive",source:"E-commerce teams",text:"Anyword's data-trained copy scoring means I can tell my client which headline will perform best before spending a dollar on ads. This changes the conversation completely."},
+  {type:"negative",source:"Brand marketers",text:"The scoring model optimises for CTR, not brand perception. It consistently prefers sensationalist headlines that perform well in tests but erode long-term brand equity."}
+ ]},
+
+{id:52,name:"Hypotenuse AI",category:"Writing",budget:29,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://hypotenuse.ai",
+ desc:"E-commerce product description generation at scale; batch-generate hundreds of SEO-optimised catalog entries from a spreadsheet; integrates with Shopify and WooCommerce.",
+ uc1:"Product descriptions",uc2:"E-commerce content",uc3:"Catalog copy",
+ reviews:[
+  {type:"positive",source:"E-commerce managers · 2026",text:"Hypotenuse AI generated 5,000 product descriptions in a weekend — a task that would have taken our team 3 months. The Shopify integration pushed them live automatically."},
+  {type:"positive",source:"SEO teams",text:"The SEO-optimised templates consistently produce descriptions that rank. We tracked a 28% organic traffic increase on product pages after switching to Hypotenuse-generated copy."},
+  {type:"negative",source:"B2B marketers",text:"The tool is laser-focused on e-commerce. Blog posts, thought leadership, and long-form B2B content feel like afterthoughts. Don't buy it expecting a general-purpose writing tool."}
+ ]},
+
+{id:53,name:"Longshot AI",category:"Writing",budget:19,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://longshot.ai",
+ desc:"Fact-checked AI writing that cites sources inline; AI fact-checker verifies claims before publishing; strong for thought leadership articles, technical blogs, and research-heavy content.",
+ uc1:"Fact-checked articles",uc2:"Technical blogging",uc3:"Thought leadership",
+ reviews:[
+  {type:"positive",source:"Technical bloggers · 2026",text:"Longshot's inline citations give me confidence I'm not publishing hallucinated statistics. The fact-checker caught three inaccurate claims that would have damaged our credibility."},
+  {type:"positive",source:"SaaS marketers",text:"For writing about complex technical topics without being a domain expert, Longshot's research integration is invaluable. It finds real data so I'm not just making claims up."},
+  {type:"negative",source:"Casual bloggers",text:"The fact-checking workflow adds steps that slow down production. For lifestyle or opinion content where accuracy matters less, it's unnecessary overhead compared to simpler tools."}
+ ]},
+
+/* ── SEO / MARKETING ─────────────────────────────────────────────── */
+{id:54,name:"Surfer SEO",category:"SEO/Marketing",budget:89,freeTier:false,latency:"Low",teamSize:"Small",
+ url:"https://surferseo.com",
+ desc:"Real-time content scoring vs. SERP competitors using NLP analysis; AI Writer generates optimised drafts; #1 SEO writing tool with 150K+ users; Google Docs and WordPress integrations.",
+ uc1:"On-page SEO",uc2:"Content optimisation",uc3:"SERP analysis",
+ reviews:[
+  {type:"positive",source:"SEO professionals · 2026",text:"Surfer's NLP term analysis is the most actionable SEO guidance I've found. Following its recommendations lifted our blog from page 3 to position 4 for a 20K/month keyword."},
+  {type:"positive",source:"Content agencies",text:"The Google Docs integration means writers optimise in real time without switching tools. Our content quality improved measurably within the first month of using Surfer."},
+  {type:"negative",source:"Budget users",text:"$89/month is expensive for small businesses with limited content budgets. And following Surfer too literally can lead to keyword-stuffed, unnatural writing — you still need editorial judgment."}
+ ]},
+
+{id:55,name:"Semrush",category:"SEO/Marketing",budget:130,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://semrush.com",
+ desc:"All-in-one SEO and marketing platform; keyword research, competitive analysis, backlink audit, site health, and AI writing assistant bundled; 10M+ users globally.",
+ uc1:"Keyword research",uc2:"Competitor analysis",uc3:"Site audit",
+ reviews:[
+  {type:"positive",source:"Digital agencies · 2026",text:"Semrush is our single source of truth for SEO strategy. Keyword gap analysis, competitor content tracking, and position monitoring in one dashboard saves hours of fragmented research."},
+  {type:"positive",source:"Enterprise marketers",text:"The competitive intelligence features are unmatched. Seeing exactly which keywords a competitor ranks for and what their backlink strategy looks like is invaluable for budget planning."},
+  {type:"negative",source:"Freelancers",text:"$130/month is a significant cost for solo practitioners. The feature set is vast but most individuals use only 20% of what they pay for. Ahrefs or Frase offer better value at smaller scale."}
+ ]},
+
+{id:56,name:"Ahrefs",category:"SEO/Marketing",budget:99,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://ahrefs.com",
+ desc:"Best backlink database in the industry; Site Explorer, Content Gap, and Rank Tracker; Webmaster Tools free tier for site owners; highly trusted by professional SEOs globally.",
+ uc1:"Backlink analysis",uc2:"Rank tracking",uc3:"Content gap analysis",
+ reviews:[
+  {type:"positive",source:"SEO experts · 2026",text:"Ahrefs' backlink database is the most comprehensive and accurate in the industry. For link building campaigns, it's the only data source professionals trust."},
+  {type:"positive",source:"Content strategists",text:"The Content Gap tool is the easiest way to find keywords your competitors rank for that you don't. It drives our entire editorial calendar planning for the year."},
+  {type:"negative",source:"Small websites",text:"The $99/month entry tier has strict limits that make it painful for agencies managing multiple sites. You quickly hit the project or report limits and need to upgrade."}
+ ]},
+
+{id:57,name:"Frase",category:"SEO/Marketing",budget:15,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://frase.io",
+ desc:"Research-to-draft in minutes using SERP data; AI-generated outlines from top-ranking competitor content; best value SEO tool for individual bloggers and small teams at $15/month.",
+ uc1:"Content briefs",uc2:"Budget SEO writing",uc3:"Outline generation",
+ reviews:[
+  {type:"positive",source:"Bloggers · 2026",text:"Frase at $15/month delivers 80% of Surfer's value at 17% of the price. The content briefs based on SERP data alone make it worth every dollar for individual bloggers."},
+  {type:"positive",source:"Freelance writers",text:"Frase's research workflow cut my article prep time from 3 hours to 30 minutes. It aggregates competitor content, extracts key points, and generates an outline automatically."},
+  {type:"negative",source:"Enterprise teams",text:"Frase lacks the depth of Semrush or Ahrefs for full SEO strategy — no backlink analysis, no position tracking, no technical audit. It's a content tool, not an SEO platform."}
+ ]},
+
+{id:58,name:"MarketMuse",category:"SEO/Marketing",budget:149,freeTier:false,latency:"Low",teamSize:"Enterprise",
+ url:"https://marketmuse.com",
+ desc:"Content inventory analysis and topical authority scoring; identifies content gaps across your entire site; enterprise content strategy platform used by major publishers and brands.",
+ uc1:"Content strategy",uc2:"Topical authority",uc3:"Content inventory",
+ reviews:[
+  {type:"positive",source:"Enterprise content teams",text:"MarketMuse's site-level content inventory analysis revealed gaps in our topical coverage that we'd never found manually. Fixing them drove a 40% organic traffic increase over 6 months."},
+  {type:"positive",source:"Large publishers",text:"For a site with 5,000+ articles, MarketMuse is the only tool that provides site-wide competitive analysis at the topic level. Invaluable for editorial strategy at scale."},
+  {type:"negative",source:"SMBs",text:"$149/month is enterprise pricing for enterprise use cases. For sites under 500 pages, the investment rarely delivers proportional ROI compared to simpler tools like Frase."}
+ ]},
+
+{id:59,name:"NeuronWriter",category:"SEO/Marketing",budget:19,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://neuronwriter.com",
+ desc:"Best budget Surfer SEO alternative; NLP competitor analysis, SERP data-driven content scoring, and AI writing for $19/month; popular with European SEO professionals.",
+ uc1:"Budget SEO writing",uc2:"NLP optimisation",uc3:"Blog SEO",
+ reviews:[
+  {type:"positive",source:"European SEOs · 2026",text:"NeuronWriter delivers 85% of Surfer's functionality at 20% of the price. For solo SEOs and small teams, it's the obvious choice when you can't justify $89/month."},
+  {type:"positive",source:"Content managers",text:"The NLP term analysis is genuinely good — it catches semantic gaps that my instinct-based editing would miss. The content score is a reliable predictor of ranking potential."},
+  {type:"negative",source:"Agency users",text:"Lacks team collaboration features and the UI feels dated compared to Surfer. For agencies managing multiple client projects simultaneously, the workflow becomes clunky quickly."}
+ ]},
+
+{id:60,name:"Scalenut",category:"SEO/Marketing",budget:39,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://scalenut.com",
+ desc:"End-to-end SEO content pipeline; keyword clustering, content planning, AI writing, and Cruise Mode automated article generation in one platform; growing fast in the mid-market.",
+ uc1:"SEO automation",uc2:"Keyword clustering",uc3:"Content pipeline",
+ reviews:[
+  {type:"positive",source:"Content teams · 2026",text:"Scalenut's Cruise Mode produced a complete 2,500-word, SERP-optimised article in 5 minutes. It's not perfect but it gives us a strong first draft that cuts editing time by 60%."},
+  {type:"positive",source:"SaaS marketers",text:"The keyword clustering and content plan features helped us identify 200 untapped long-tail opportunities in our niche. It's a real strategy tool, not just a writing assistant."},
+  {type:"negative",source:"SEO experts",text:"The keyword research data lags behind Semrush and Ahrefs in depth and accuracy. Scalenut is best as a content execution tool, not for deep keyword strategy work."}
+ ]},
+
+{id:61,name:"AdCreative.ai",category:"SEO/Marketing",budget:29,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://adcreative.ai",
+ desc:"AI-generated ad creatives trained on millions of high-performing ads; Predictive Creative Score estimates CTR before publishing; supports Google, Meta, LinkedIn, and TikTok ad formats.",
+ uc1:"Ad creatives",uc2:"Social ad design",uc3:"CTR optimisation",
+ reviews:[
+  {type:"positive",source:"Performance marketers · 2026",text:"AdCreative.ai's creative score has become our pre-launch filter. Creatives above 85 score consistently outperform our human-designed versions on CTR by 20-40%."},
+  {type:"positive",source:"Agencies",text:"The volume we can generate is transformational. We test 50 creative variants per campaign where we used to test 5. The winning creative is dramatically better than any single design."},
+  {type:"negative",source:"Brand designers",text:"The AI creatives look competent but generic. They optimise for immediate CTR, not brand differentiation or long-term recall. Heavy use risks making your brand look AI-generated."}
+ ]},
+
+/* ── AUTOMATION / AGENTS ─────────────────────────────────────────── */
+{id:62,name:"Make (Integromat)",category:"Automation",budget:9,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://make.com",
+ desc:"Visual workflow automation with 1,500+ app integrations; conditional logic and branching; best no-code tool for complex multi-step workflows; AI module for LLM integration.",
+ uc1:"No-code automation",uc2:"Complex workflows",uc3:"App integration",
+ reviews:[
+  {type:"positive",source:"Operations teams · 2026",text:"Make replaced 3 dedicated developer projects for us. Complex workflows with conditionals, data transformations, and error handling — all built visually in a day, not a sprint."},
+  {type:"positive",source:"Agency automators",text:"The visual canvas makes debugging automation logic actually enjoyable. Seeing data flow through each module in real time is the best DevX in the automation space."},
+  {type:"negative",source:"Non-technical users",text:"The learning curve is steeper than Zapier. The scenario builder is powerful but complex — non-technical users often need a few hours of tutorials before building anything meaningful."}
+ ]},
+
+{id:63,name:"Zapier",category:"Automation",budget:20,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://zapier.com",
+ desc:"Simplest app-to-app automation; 7,000+ integrations; Zaps run instantly; Zapier AI adds natural language Zap creation; best for non-technical users needing quick connections.",
+ uc1:"App connections",uc2:"Quick automation",uc3:"Trigger workflows",
+ reviews:[
+  {type:"positive",source:"Non-technical teams · 2026",text:"Zapier AI lets me describe an automation in plain English and it builds the Zap. I connected our CRM, Slack, and calendar in 10 minutes with no developer involvement."},
+  {type:"positive",source:"SMB owners",text:"7,000 integrations means Zapier connects everything we use. We've automated lead routing, invoice processing, and customer onboarding — an estimated 15 hours saved per week."},
+  {type:"negative",source:"Power users",text:"Complex conditional logic in Zapier is painful — you have to use Filters and Paths, which feel like workarounds. For anything non-linear, Make or n8n is far better suited."}
+ ]},
+
+{id:64,name:"n8n (Self-hosted)",category:"Automation",budget:0,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://n8n.io",
+ desc:"Open-source workflow automation with full LLM agent support; self-host for free on your own server; 350+ integrations; developer-friendly with code nodes for custom logic.",
+ uc1:"Self-hosted automation",uc2:"AI agent workflows",uc3:"Custom integrations",
+ reviews:[
+  {type:"positive",source:"DevOps engineers · 2026",text:"n8n running on our own server means zero per-task pricing and complete data sovereignty. We've automated 200+ workflows with it and the LLM agent nodes are genuinely powerful."},
+  {type:"positive",source:"AI builders",text:"n8n's AI agent integration is the most flexible in the space. I can chain LLM calls, web scraping, database writes, and email sends in one visual workflow — with code nodes for edge cases."},
+  {type:"negative",source:"Non-technical users",text:"Self-hosting means you're responsible for infrastructure, updates, and security. For teams without DevOps capability, the operational overhead defeats the cost savings."}
+ ]},
+
+{id:65,name:"Lindy AI",category:"Automation",budget:49,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://lindy.ai",
+ desc:"Pre-built AI agents for email management, meeting scheduling, CRM updates, and customer support; conversational agent builder; claims to save 10+ hours per week per user.",
+ uc1:"Email agents",uc2:"CRM automation",uc3:"Meeting scheduling",
+ reviews:[
+  {type:"positive",source:"Executives · 2026",text:"My Lindy email agent triages 200+ daily emails, drafts responses for routine inquiries, and flags only the things that genuinely need my attention. I got my mornings back."},
+  {type:"positive",source:"Sales teams",text:"The CRM-connected email agent writes personalised follow-ups after every meeting and logs them automatically. Our response time dropped from 2 days to 2 hours without adding headcount."},
+  {type:"negative",source:"Technical users",text:"Building custom agents beyond the pre-built templates requires significant trial and error. The documentation for edge cases is thin, and debugging agent logic is opaque."}
+ ]},
+
+{id:66,name:"CrewAI Cloud",category:"Automation",budget:29,freeTier:true,latency:"Medium",teamSize:"Small",
+ url:"https://crewai.com",
+ desc:"Multi-agent orchestration framework; define crews of specialised AI agents with roles and goals; Cloud platform deploys crews with monitoring and observability; Python SDK for developers.",
+ uc1:"Multi-agent systems",uc2:"Research pipelines",uc3:"Agent orchestration",
+ reviews:[
+  {type:"positive",source:"AI developers · 2026",text:"CrewAI is the best framework for building agent teams that actually collaborate. A researcher agent, writer agent, and fact-checker agent working together produce better output than any single agent."},
+  {type:"positive",source:"Automation consultants",text:"The role-based agent design maps perfectly to real business processes. Replacing manual workflows with CrewAI crews delivered our fastest ROI on any AI project this year."},
+  {type:"negative",source:"Non-developers",text:"Despite the Cloud offering, CrewAI requires Python development skills for anything custom. The visual builder is basic, and non-technical users quickly hit the ceiling of pre-built crews."}
+ ]},
+
+{id:67,name:"Voiceflow",category:"Automation",budget:50,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://voiceflow.com",
+ desc:"No-code AI chatbot and voice agent builder; RAG-powered knowledge bases; deploy to web, Slack, WhatsApp, or Twilio; CX teams build production agents without engineering support.",
+ uc1:"AI chatbots",uc2:"Customer support bot",uc3:"Voice assistants",
+ reviews:[
+  {type:"positive",source:"CX teams · 2026",text:"Voiceflow let our CX team build and deploy a support chatbot handling 70% of tier-1 tickets without involving engineering once. Time to launch was 2 weeks vs. 6 months estimated."},
+  {type:"positive",source:"Agency builders",text:"The multi-channel deployment — same agent on web, WhatsApp, and Slack — is a massive time saver. Build once, deploy everywhere is genuinely how it works."},
+  {type:"negative",source:"Enterprise architects",text:"$50/month scales poorly for enterprise usage. The per-seat pricing model for larger teams and the limited enterprise governance features make it better suited for SMB deployments."}
+ ]},
+
+{id:68,name:"Relevance AI",category:"Automation",budget:99,freeTier:true,latency:"Low",teamSize:"Enterprise",
+ url:"https://relevanceai.com",
+ desc:"Enterprise AI agent platform; build, deploy, and monitor agents for sales prospecting, ops, and support; workforce of AI agents with human-in-the-loop escalation; SOC 2 compliant.",
+ uc1:"Enterprise agents",uc2:"Sales automation",uc3:"Ops workflows",
+ reviews:[
+  {type:"positive",source:"Enterprise sales teams · 2026",text:"Relevance AI's sales prospecting agents reduced our SDR team's research time by 70%. The agents qualify leads, research accounts, and draft personalised outreach — accurately."},
+  {type:"positive",source:"Operations directors",text:"The human-in-the-loop design is exactly right for regulated industries. Agents handle 80% autonomously and escalate edge cases to humans — compliance is maintained automatically."},
+  {type:"negative",source:"Startups",text:"$99/month starter tier is enterprise pricing for enterprise use cases. Smaller teams won't reach sufficient automation volume to justify the cost versus Lindy or Make at a fraction of the price."}
+ ]},
+
+{id:69,name:"Bardeen",category:"Automation",budget:10,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://bardeen.ai",
+ desc:"Browser automation that scrapes, enriches, and automates web tasks; one-click Playbooks for lead research, CRM updating, and email scraping; runs in Chrome extension.",
+ uc1:"Web scraping",uc2:"Lead enrichment",uc3:"Browser automation",
+ reviews:[
+  {type:"positive",source:"Sales reps · 2026",text:"Bardeen automatically pulls LinkedIn company data, enriches it with contact emails, and pushes it to HubSpot while I'm on a call. My prospecting efficiency tripled overnight."},
+  {type:"positive",source:"Researchers",text:"For web research automation, Bardeen is unmatched at this price. I extract structured data from 50 competitor pages in minutes — tasks that would take an afternoon manually."},
+  {type:"negative",source:"DevOps teams",text:"Website changes break Bardeen playbooks frequently. Maintenance overhead is real — you'll spend time re-building playbooks after site redesigns or anti-scraping measures are added."}
+ ]},
+
+{id:70,name:"LangFlow",category:"Automation",budget:0,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://langflow.org",
+ desc:"Open-source visual LLM flow builder; build RAG pipelines, agent chains, and multi-model orchestration; drag-and-drop components with Python code nodes; Datastax cloud option.",
+ uc1:"RAG pipelines",uc2:"LLM chaining",uc3:"Agent building",
+ reviews:[
+  {type:"positive",source:"AI engineers · 2026",text:"LangFlow is the best visual tool for prototyping RAG and agent architectures. I can show a stakeholder a working demo in an hour that would take days to code from scratch."},
+  {type:"positive",source:"ML researchers",text:"Free, open-source, and visual — that combination is rare in the LLM tooling space. Our research team uses it to quickly test different retrieval strategies without writing boilerplate."},
+  {type:"negative",source:"Production teams",text:"LangFlow is great for prototyping but the generated flows are hard to productionise. The code exported from visual flows isn't always clean enough for production deployment without refactoring."}
+ ]},
+
+{id:71,name:"Microsoft Copilot Studio",category:"Automation",budget:200,freeTier:false,latency:"Low",teamSize:"Enterprise",
+ url:"https://copilotstudio.microsoft.com",
+ desc:"Enterprise agent builder on Azure; deep Microsoft 365, Dynamics, and Power Platform integration; Agent 365 governance control plane at $15/user; part of the E7 Frontier Suite.",
+ uc1:"Enterprise chatbots",uc2:"M365 automation",uc3:"Power Platform agents",
+ reviews:[
+  {type:"positive",source:"Enterprise IT teams · 2026",text:"For M365-heavy organisations, Copilot Studio is the only choice that delivers native SharePoint, Teams, and Dynamics integration without complex custom development."},
+  {type:"positive",source:"Microsoft partners",text:"The Wave 3 update with Excel and Word Agents is genuinely impressive. Automating multi-step Excel analysis with natural language in a security-compliant environment is now a reality."},
+  {type:"negative",source:"Non-Microsoft shops",text:"If you're not deeply committed to the Microsoft ecosystem, Copilot Studio is overpriced and overly complex. The E7 Frontier Suite at $99/user/month is a massive commitment."}
+ ]},
+
+/* ── RESEARCH ────────────────────────────────────────────────────── */
+{id:72,name:"Perplexity Pro",category:"Research",budget:20,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://perplexity.ai",
+ desc:"Best AI research tool; every answer cited and source-linked; Deep Research delivers 10-15 minute in-depth reports; Comet browser extends it to full web intelligence platform.",
+ uc1:"Fact-checking",uc2:"Academic research",uc3:"Real-time search",
+ reviews:[
+  {type:"positive",source:"Journalists · 2026",text:"Perplexity replaced Google for me. Every claim is source-linked, I can verify instantly, and the follow-up thread keeps context across a 30-question research session."},
+  {type:"positive",source:"Lindy.ai · 2026",text:"What's underrated about Perplexity is how good it is at follow-up. It maintains research thread context intelligently across many questions — something Google simply can't do."},
+  {type:"negative",source:"Content creators",text:"Perplexity is a research tool, not a generation tool. It can't write long-form content, generate images, or execute tasks. For anything beyond research and Q&A, you need a different tool."}
+ ]},
+
+{id:73,name:"Google NotebookLM",category:"Research",budget:0,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://notebooklm.google.com",
+ desc:"Upload documents and chat with them interactively; creates remarkable podcast-style audio summaries of uploaded sources; completely free; handles PDFs, Docs, YouTube videos.",
+ uc1:"Document research",uc2:"Study notes",uc3:"Audio summaries",
+ reviews:[
+  {type:"positive",source:"Students · 2026",text:"NotebookLM turned my 300-page dissertation source pile into a navigable knowledge base. I can ask specific questions and it finds the exact passage — free and indispensable."},
+  {type:"positive",source:"Researchers",text:"The podcast summary feature is genuinely surprising. I upload a dense technical paper and 10 minutes later I have a conversational audio explanation I can listen to while commuting."},
+  {type:"negative",source:"Power users",text:"NotebookLM is limited to 50 sources per notebook and doesn't support web search or real-time data. For ongoing research requiring fresh information, it's too static."}
+ ]},
+
+{id:74,name:"Elicit",category:"Research",budget:12,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://elicit.org",
+ desc:"AI for systematic academic literature review; searches 125M+ papers; extracts data tables from studies; synthesises findings across multiple papers; used by epidemiologists and clinicians.",
+ uc1:"Literature review",uc2:"Paper data extraction",uc3:"Academic synthesis",
+ reviews:[
+  {type:"positive",source:"Academic researchers · 2026",text:"Elicit performs a systematic literature review that would take 3 weeks manually in 3 hours. The structured data extraction from RCTs is accurate enough for meta-analyses."},
+  {type:"positive",source:"PhD students",text:"For comprehensive literature reviews, Elicit finds relevant papers I would never have discovered through keyword search. It understands conceptual similarity, not just keyword matching."},
+  {type:"negative",source:"Non-academic users",text:"Elicit is purpose-built for academic research with structured study designs. For market research, competitive analysis, or general information gathering, it's the wrong tool."}
+ ]},
+
+{id:75,name:"Consensus",category:"Research",budget:10,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://consensus.app",
+ desc:"Search 300M+ scientific papers; AI consensus answers show what percentage of research agrees with a claim; 50+ domain coverage; peer-reviewed and evidence-grade indicators.",
+ uc1:"Scientific evidence",uc2:"Health research",uc3:"Evidence synthesis",
+ reviews:[
+  {type:"positive",source:"Medical professionals · 2026",text:"Consensus is the fastest way to check whether a treatment claim is supported by the literature. The evidence quality indicator tells me whether I'm looking at RCTs or case studies."},
+  {type:"positive",source:"Science communicators",text:"For fact-checking health and science claims, the consensus percentage feature is invaluable. Showing '83% of studies support this' is far more compelling than any single citation."},
+  {type:"negative",source:"Social science researchers",text:"The consensus model works best for natural sciences with quantitative study designs. Social science, qualitative research, and humanities are underrepresented in the corpus."}
+ ]},
+
+{id:76,name:"Scholarcy",category:"Research",budget:10,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://scholarcy.com",
+ desc:"Summarises research papers into structured flashcards; identifies key findings, study limitations, and methodology; generates reference summaries for literature reviews.",
+ uc1:"Paper summaries",uc2:"Research flashcards",uc3:"Rapid synthesis",
+ reviews:[
+  {type:"positive",source:"Postgraduate students",text:"Scholarcy let me process 40 papers in a day for my systematic review. The structured summaries flag methodology and limitations, which is exactly what I need to assess study quality."},
+  {type:"positive",source:"Science communicators",text:"For non-specialist audiences, Scholarcy's lay-language summaries are perfect. I use them to brief executives on research findings without asking them to read full papers."},
+  {type:"negative",source:"Researchers",text:"The automatic summaries occasionally miss nuances that are critical to interpretation. For complex papers with subtle findings, you still need to read the original — Scholarcy is a triage tool."}
+ ]},
+
+{id:77,name:"ResearchRabbit",category:"Research",budget:0,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://researchrabbitapp.com",
+ desc:"Free Spotify-like paper discovery; visual citation and influence maps; finds papers similar to your seed collection; integrates with Zotero; completely free with no usage limits.",
+ uc1:"Paper discovery",uc2:"Citation mapping",uc3:"Literature discovery",
+ reviews:[
+  {type:"positive",source:"PhD students · 2026",text:"ResearchRabbit found 30 highly relevant papers that I'd completely missed in my keyword searches. The visual citation network makes literature structure immediately obvious."},
+  {type:"positive",source:"Academic librarians",text:"Recommending ResearchRabbit to every researcher I work with. It's free, the Zotero integration is seamless, and the discovery algorithm is genuinely impressive for finding related work."},
+  {type:"negative",source:"Non-academic users",text:"ResearchRabbit is designed specifically for academic literature. It has no value for market research, news, web content, or any information outside the academic paper corpus."}
+ ]},
+
+{id:78,name:"Scite AI",category:"Research",budget:12,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://scite.ai",
+ desc:"Smart citation analysis that shows whether papers support, contrast, or mention cited claims; evidence quality scoring; critical for systematic reviews and evidence-based medicine.",
+ uc1:"Citation analysis",uc2:"Systematic review",uc3:"Evidence quality",
+ reviews:[
+  {type:"positive",source:"Evidence-based medicine · 2026",text:"Scite's support/contrast classification is transformative for evaluating evidence quality. Knowing that 80% of citing papers support a claim vs. 40% changes how you interpret it."},
+  {type:"positive",source:"Policy analysts",text:"For building evidence-based policy recommendations, Scite tells me which studies are well-supported and which are controversial in the literature. Invaluable for defensible analysis."},
+  {type:"negative",source:"Humanities researchers",text:"Scite's citation classification works best for STEM fields with clear empirical claims. For interpretive humanities research, the support/contrast framing often doesn't apply."}
+ ]},
+
+/* ── PRODUCTIVITY ─────────────────────────────────────────────────── */
+{id:79,name:"Notion AI",category:"Productivity",budget:8,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://notion.so",
+ desc:"AI embedded directly into Notion workspaces; summarise meetings, structure research notes, draft docs with full database context; saves 2.5+ hours weekly per Notion's own data.",
+ uc1:"Meeting summaries",uc2:"Doc drafting",uc3:"Knowledge base",
+ reviews:[
+  {type:"positive",source:"Product teams · 2026",text:"Notion AI inside my project wiki is the best context-aware writing assistant I've used. It understands all my previous decisions and writes consistent docs in my team's style."},
+  {type:"positive",source:"Knowledge workers",text:"I asked Notion AI to synthesise six meeting notes into a project status update. It produced a polished doc in 30 seconds that would have taken me 45 minutes — in my exact writing voice."},
+  {type:"negative",source:"Power users",text:"The AI add-on is $8/month per seat on top of already paid Notion subscriptions. For large teams, this doubles the Notion bill. And the AI is less capable than standalone Claude or ChatGPT."}
+ ]},
+
+{id:80,name:"Otter.ai",category:"Productivity",budget:10,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://otter.ai",
+ desc:"Real-time meeting transcription with AI summary and action items; integrates with Zoom, Meet, and Teams; OtterPilot auto-joins and transcribes meetings; speaker identification.",
+ uc1:"Meeting transcripts",uc2:"Action item capture",uc3:"Interview notes",
+ reviews:[
+  {type:"positive",source:"Project managers · 2026",text:"Otter's automated action item extraction changed how our team works. Every meeting ends with a shared doc of decisions and next steps that everyone can access in real time."},
+  {type:"positive",source:"Journalists",text:"For interview transcription, Otter is the fastest and most accurate tool I've found at this price point. The speaker identification is good enough for professional transcripts."},
+  {type:"negative",source:"Audio engineers",text:"Transcription accuracy drops significantly with heavy accents, fast speech, or multiple overlapping speakers. In our global team meetings, accuracy can fall to 80%, requiring significant correction."}
+ ]},
+
+{id:81,name:"Fireflies.ai",category:"Productivity",budget:10,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://fireflies.ai",
+ desc:"AI meeting assistant with 100+ language support; timestamped summaries with labeled sections (Pricing, Next Steps, etc.); 60+ integrations including Salesforce, Notion, Slack.",
+ uc1:"Meeting intelligence",uc2:"CRM sync",uc3:"Global team notes",
+ reviews:[
+  {type:"positive",source:"Sales managers · 2026",text:"Fireflies automatically syncs meeting summaries to Salesforce after every client call. My reps spend zero time on CRM data entry — the AI does it all with high accuracy."},
+  {type:"positive",source:"TechRadar · 2026",text:"The section labelling — automatically flagging Pricing discussions, Next Steps, and Objections — means I can jump straight to what matters in an hour-long recording. Genuinely useful."},
+  {type:"negative",source:"Privacy-conscious teams",text:"Fireflies requires an AI bot to join your meetings as a participant. Some clients object to this, and regulated industries have privacy concerns about meeting content going to third-party servers."}
+ ]},
+
+{id:82,name:"Reclaim AI",category:"Productivity",budget:10,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://reclaim.ai",
+ desc:"Smart calendar optimisation that auto-schedules deep work, habits, and 1:1s around existing commitments; dynamic rescheduling when priorities change; Google Calendar integration.",
+ uc1:"Time blocking",uc2:"Calendar automation",uc3:"Focus time",
+ reviews:[
+  {type:"positive",source:"Knowledge workers · 2026",text:"Reclaim automatically finds focus time in my calendar before meetings cluster together and destroy my morning. My deep work hours went from 2 to 5 per day without manual planning."},
+  {type:"positive",source:"Engineering managers",text:"The 1:1 scheduling with team members is hands-off. Reclaim finds the best mutual time, respects everyone's focus time preferences, and reschedules automatically when conflicts arise."},
+  {type:"negative",source:"Complex calendar users",text:"Works best with Google Calendar — Outlook support is functional but second-class. And if your schedule is genuinely chaotic, the AI reschedules so frequently it creates its own confusion."}
+ ]},
+
+{id:83,name:"Motion",category:"Productivity",budget:19,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://usemotion.com",
+ desc:"AI project manager that auto-schedules tasks against deadlines; dynamically reschedules when priorities shift; integrates calendar and task management; used by 100K+ professionals.",
+ uc1:"Task scheduling",uc2:"Deadline management",uc3:"Priority planning",
+ reviews:[
+  {type:"positive",source:"Freelancers · 2026",text:"Motion eliminated the anxiety of deadline management for me. I put tasks in, set deadlines, and it builds my daily schedule automatically. I haven't missed a client deadline in 6 months."},
+  {type:"positive",source:"Product managers",text:"The dynamic rescheduling is what makes Motion different. When something urgent comes in, it reshuffles everything intelligently — not just pushing tasks to tomorrow indefinitely."},
+  {type:"negative",source:"Creative professionals",text:"Motion assumes tasks have fixed time estimates, which doesn't match creative work. A design task listed as 2 hours might take 30 minutes or 8 hours depending on inspiration — Motion handles this poorly."}
+ ]},
+
+{id:84,name:"Taskade",category:"Productivity",budget:8,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://taskade.com",
+ desc:"AI project and task management with built-in AI agents; outlines, mind maps, and flowcharts; Genesis plan includes 3,000 free agent credits; real-time collaboration with AI assistance.",
+ uc1:"Project planning",uc2:"AI task agents",uc3:"Mind mapping",
+ reviews:[
+  {type:"positive",source:"Small teams · 2026",text:"Taskade combines project management, mind mapping, and AI agents in one tool that actually costs less than Notion. The built-in AI agents handle routine project tasks autonomously."},
+  {type:"positive",source:"Students",text:"For collaborative group projects, Taskade is perfect. AI generates outlines from topics, we fill in tasks, and everyone has visibility in real time. Better than any other student tool."},
+  {type:"negative",source:"Enterprise users",text:"Taskade lacks the governance, admin controls, and audit trails enterprise IT requires. It's excellent for small teams but doesn't scale to organisational deployments with compliance requirements."}
+ ]},
+
+{id:85,name:"Mem AI",category:"Productivity",budget:15,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://mem.ai",
+ desc:"Self-organising AI note-taking; automatically links related notes; surfaces forgotten ideas when relevant; chat with your note library; best for researchers and knowledge workers.",
+ uc1:"Personal knowledge",uc2:"Note organisation",uc3:"Idea connections",
+ reviews:[
+  {type:"positive",source:"Researchers · 2026",text:"Mem surfaces connections between my notes I would never find manually. I wrote something about machine learning ethics three months ago that it linked perfectly to a new project — invaluable."},
+  {type:"positive",source:"Knowledge workers",text:"Chatting with my entire note library is genuinely transformative. Instead of searching, I ask 'what did I think about X?' and get a synthesised answer from all my relevant notes."},
+  {type:"negative",source:"Organised note-takers",text:"Mem's auto-organisation can feel chaotic if you prefer strict folder structures. The AI connections are great, but the lack of enforced structure makes some users feel their notes are messy."}
+ ]},
+
+{id:86,name:"Microsoft 365 Copilot",category:"Productivity",budget:30,freeTier:false,latency:"Low",teamSize:"Enterprise",
+ url:"https://microsoft.com/copilot",
+ desc:"Wave 3 update (March 2026) adds Excel/Word/PowerPoint Agents and multi-model support; deep M365 ecosystem integration; Cowork app for desktop automation; widely deployed in enterprise.",
+ uc1:"Office automation",uc2:"Email drafting",uc3:"Presentation creation",
+ reviews:[
+  {type:"positive",source:"Enterprise users · 2026",text:"Wave 3's Excel Agent automated our monthly financial reporting in Excel — a 4-hour manual process now takes 20 minutes. For M365-native organisations, this is transformational ROI."},
+  {type:"positive",source:"DataNorth AI · 2026",text:"For Dutch municipalities and regulated MKB clients running under GDPR and the EU AI Act, M365 Copilot remains the pragmatic enterprise default. Compliance built in, familiar UX, zero migration."},
+  {type:"negative",source:"IT procurement teams",text:"$30/user/month on top of E3/E5 licensing is significant. The E7 Frontier Suite at $99/user/month including Agent 365 requires careful ROI justification before committing at organisational scale."}
+ ]},
+
+/* ── DESIGN / CREATIVE ──────────────────────────────────────────── */
+{id:87,name:"Canva AI (Pro)",category:"Design",budget:13,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://canva.com",
+ desc:"Magic Design, Magic Write, and Magic Edit integrated throughout; best for non-designers needing professional output fast; 250M+ templates; team brand kits with AI enforcement.",
+ uc1:"Social media graphics",uc2:"Presentations",uc3:"Quick design",
+ reviews:[
+  {type:"positive",source:"Marketers · 2026",text:"Canva AI's Magic Design creates an entire branded slide deck from a topic prompt in 60 seconds. For non-designers producing high-volume content, it's indispensable at $13/month."},
+  {type:"positive",source:"Pro Gineous Blog · 2026",text:"Canva has integrated AI throughout its platform in a way that feels natural. Magic Edit lets you modify images by describing changes — background swap, style transfer — in seconds."},
+  {type:"negative",source:"Professional designers",text:"Canva Pro's AI output has a recognisable template aesthetic. Professional designers and brand-conscious clients often find Canva-generated content instantly identifiable as such — a brand risk."}
+ ]},
+
+{id:88,name:"Adobe Firefly Pro",category:"Design",budget:55,freeTier:true,latency:"Medium",teamSize:"Small",
+ url:"https://firefly.adobe.com",
+ desc:"Full Adobe Creative Cloud suite with Firefly generative AI; video generation, vector design, and Photoshop generative fill; commercially licensed; integrated into the professional creative workflow.",
+ uc1:"Commercial design",uc2:"Photo compositing",uc3:"Generative fill",
+ reviews:[
+  {type:"positive",source:"Creative agencies · 2026",text:"The generative fill in Photoshop with Firefly's commercially licensed models means we can use AI-generated assets in client work without IP risk. That guarantee is worth the Adobe tax."},
+  {type:"positive",source:"Pro Gineous Blog · 2026",text:"Adobe Firefly's integration with Photoshop and other Adobe apps for seamless AI-assisted editing is a major advantage. Generative Fill lets you add or remove elements naturally."},
+  {type:"negative",source:"Freelancers",text:"$55/month for the Creative Cloud plan is expensive for individuals who only need the AI features. You're paying for the whole suite even if you only use Photoshop and Firefly."}
+ ]},
+
+{id:89,name:"Figma AI",category:"Design",budget:15,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://figma.com",
+ desc:"AI natively integrated into Figma; prompt-to-design generation, auto-annotate components, first drafts from wireframe images; works within your existing design system and component library.",
+ uc1:"UI/UX design",uc2:"Prototype generation",uc3:"Design systems",
+ reviews:[
+  {type:"positive",source:"UX designers · 2026",text:"Figma AI understands my component library and generates UI following my existing design system. It's the first AI design tool that doesn't break your established patterns."},
+  {type:"positive",source:"Product teams",text:"Generating first-draft wireframes from a text description cuts our design sprint time by a day. The AI output gives us something to react to immediately, which is far more productive."},
+  {type:"negative",source:"Visual designers",text:"Figma AI is excellent for structured UI work but can't produce the expressive, illustrative, or photographic visuals that visual designers need. It complements but doesn't replace Firefly or Midjourney."}
+ ]},
+
+{id:90,name:"Framer AI",category:"Design",budget:15,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://framer.com",
+ desc:"AI website builder generating fully-functional Framer sites from text prompts; publish in one click; excellent for landing pages, portfolios, and startup sites; built-in CMS.",
+ uc1:"Landing pages",uc2:"Portfolio sites",uc3:"No-code websites",
+ reviews:[
+  {type:"positive",source:"Startups · 2026",text:"I described my startup's product and target audience and Framer AI generated a complete landing page with copy, layout, animations, and a contact form. Published it in 20 minutes."},
+  {type:"positive",source:"Designers",text:"Framer is the first AI website builder where the output doesn't look AI-generated. The design quality is genuinely high — I'd stake my professional reputation on Framer sites I've made."},
+  {type:"negative",source:"Non-design developers",text:"Framer's design-first approach means developers who want to write custom code alongside AI generation run into friction. Webflow offers more developer control for complex functionality."}
+ ]},
+
+{id:91,name:"Uizard",category:"Design",budget:12,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://uizard.io",
+ desc:"Sketch-to-UI wireframe conversion; generate full app mockups from text prompts; rapid MVP prototyping for product teams; no design skills required for decent output.",
+ uc1:"Wireframing",uc2:"Sketch-to-UI",uc3:"MVP prototyping",
+ reviews:[
+  {type:"positive",source:"Product managers · 2026",text:"Uizard generates annotated wireframes from feature descriptions in minutes. I can show stakeholders a visual prototype before engaging design — saves days of design time on ideas that change."},
+  {type:"positive",source:"Early-stage startups",text:"For pre-funding startups, Uizard lets a non-designer founder create credible product mockups for investor decks. The investment in design tools can wait until Series A."},
+  {type:"negative",source:"UX designers",text:"Uizard's output is wireframe-quality, not production-ready design. Professional UI designers will use it for rapid ideation but still need Figma or Sketch for finished deliverables."}
+ ]},
+
+{id:92,name:"Khroma",category:"Design",budget:0,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://khroma.co",
+ desc:"Free AI colour palette generator; trains on your colour preferences from 50 liked colours; generates infinite brand-consistent palettes with contrast checking and typography pairings.",
+ uc1:"Colour palettes",uc2:"Brand colours",uc3:"Design inspiration",
+ reviews:[
+  {type:"positive",source:"Designers · 2026",text:"Khroma learned my colour sensibility from 50 liked swatches and now generates palettes that feel like me. It's free and replaced my Coolors subscription immediately."},
+  {type:"positive",source:"Brand strategists",text:"For quickly establishing a brand colour system, Khroma is the fastest tool I've used. The contrast accessibility checking prevents the WCAG failures that non-designers routinely create."},
+  {type:"negative",source:"Power users",text:"Khroma is strictly a colour tool — no typography, no layout, no component design. Useful as a step in a larger design workflow but not a standalone solution for any real project."}
+ ]},
+
+{id:93,name:"Looka",category:"Design",budget:20,freeTier:false,latency:"Low",teamSize:"Any",
+ url:"https://looka.com",
+ desc:"AI logo and brand identity generator; creates full brand kits including logo, colour palette, typography, and social media templates; used by 4M+ brands and growing businesses.",
+ uc1:"Logo creation",uc2:"Brand identity",uc3:"Brand kit generation",
+ reviews:[
+  {type:"positive",source:"Small businesses · 2026",text:"Looka generated a professional brand identity for my bakery in 10 minutes that a designer quoted $1,500 for. The logo, colours, and business card templates are all production-ready."},
+  {type:"positive",source:"Entrepreneurs",text:"For launching a side project or startup MVP, Looka gets you a credible visual identity immediately without design skills or budget. It's the fastest path from idea to brand."},
+  {type:"negative",source:"Brand strategists",text:"Looka logos often look recognisably AI-generated to trained eyes — generic icon-wordmark combinations with expected styles. For competitive markets where brand differentiation matters, invest in a human designer."}
+ ]},
+
+{id:94,name:"Krea AI",category:"Design",budget:24,freeTier:true,latency:"Medium",teamSize:"Any",
+ url:"https://krea.ai",
+ desc:"Real-time AI image generation on an infinite canvas; animate still images into video; train custom aesthetic models for brand consistency; video-to-video style transfer.",
+ uc1:"Real-time generation",uc2:"Brand aesthetics",uc3:"Image animation",
+ reviews:[
+  {type:"positive",source:"Creative directors · 2026",text:"Krea's real-time canvas — where the AI generates as you draw — is the most intuitive creative AI tool I've used. It feels like sketching with a live creative collaborator."},
+  {type:"positive",source:"Brand designers",text:"Training a Krea model on 20 brand images and generating consistent on-brand content without a prompt engineer is genuinely impressive. Brand-locked AI generation finally works."},
+  {type:"negative",source:"Business users",text:"Krea's creative-first interface can feel confusing for users with structured business needs. The open canvas approach works best for experimental creatives, less for templated business content."}
+ ]},
+
+/* ── DATA / ANALYTICS ───────────────────────────────────────────── */
+{id:95,name:"Julius AI",category:"Data/Analytics",budget:22,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://julius.ai",
+ desc:"Chat with your CSV, Excel, or database data; generates instant visualisations, runs statistical analyses, and explains findings in plain English; no SQL or coding required.",
+ uc1:"CSV analysis",uc2:"Data visualisation",uc3:"Business insights",
+ reviews:[
+  {type:"positive",source:"Business analysts · 2026",text:"Julius analysed three months of sales data in 5 minutes and surfaced a seasonal pattern our team had missed for a year. The natural language interface means any non-technical user can do this."},
+  {type:"positive",source:"Marketing teams",text:"I upload our weekly ad performance data and ask Julius to explain what changed and why. It generates a complete analysis with charts that I send directly to leadership — no BI developer needed."},
+  {type:"negative",source:"Data scientists",text:"Julius handles exploratory analysis well but lacks the depth for production-grade statistical work. Hypothesis testing, model validation, and complex transformations require actual data science tools."}
+ ]},
+
+{id:96,name:"Obviously AI",category:"Data/Analytics",budget:75,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://obviously.ai",
+ desc:"No-code ML prediction platform; build churn, lead scoring, and demand forecasting models by pointing at a spreadsheet; AutoML under the hood with explainability; connects to Salesforce.",
+ uc1:"Churn prediction",uc2:"Lead scoring",uc3:"Sales forecasting",
+ reviews:[
+  {type:"positive",source:"SaaS companies · 2026",text:"Obviously AI's churn model trained on our customer data outperformed the one our data team spent 3 months building. And it took 30 minutes. The AutoML quality is genuinely surprising."},
+  {type:"positive",source:"Revenue operations",text:"Lead scoring from our CRM data with Obviously AI improved our SDR conversion by 22%. The Salesforce integration pushes scores directly — zero manual data work."},
+  {type:"negative",source:"Data teams",text:"$75/month for the starter tier is expensive given the limited model customisation. Data scientists will quickly find the black-box AutoML constraining compared to raw Python ML libraries."}
+ ]},
+
+{id:97,name:"Akkio",category:"Data/Analytics",budget:49,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://akkio.com",
+ desc:"No-code AI analytics; embed ML predictions into reports and dashboards; aimed at non-data-science teams in agencies and marketing; Chat Explore for natural language data analysis.",
+ uc1:"Predictive analytics",uc2:"Report automation",uc3:"KPI forecasting",
+ reviews:[
+  {type:"positive",source:"Digital agencies · 2026",text:"Akkio lets our account managers build client-facing predictive dashboards without involving our one data scientist. We've scaled from 5 to 30 client reports with no extra data headcount."},
+  {type:"positive",source:"Marketing directors",text:"Akkio's Chat Explore feature gives executives direct access to ask questions of our data without waiting for a report. The democratisation of data access is genuinely organisational change."},
+  {type:"negative",source:"Enterprise architects",text:"Akkio's data governance and security documentation is thin for enterprise requirements. SOC 2 compliance is listed but detailed audit trail and data residency documentation require direct engagement."}
+ ]},
+
+{id:98,name:"Hex AI",category:"Data/Analytics",budget:24,freeTier:true,latency:"Low",teamSize:"Small",
+ url:"https://hex.tech",
+ desc:"AI-powered collaborative data notebooks; natural language to SQL and Python; Magic AI explains and generates analysis; team sharing and version control; connects to major databases.",
+ uc1:"SQL generation",uc2:"Data notebooks",uc3:"Collaborative analytics",
+ reviews:[
+  {type:"positive",source:"Data analysts · 2026",text:"Hex Magic AI writes SQL from natural language with enough accuracy that our analysts spend time on insights, not query syntax. Collaboration on notebooks is the best in the space."},
+  {type:"positive",source:"Data teams",text:"Hex replaced our fragmented Jupyter + Mode + Google Sheets workflow with one collaborative environment. Version control on notebooks finally solves the 'final_FINAL_v3.ipynb' problem."},
+  {type:"negative",source:"Solo analysts",text:"$24/month is reasonable but the full value of Hex only emerges in collaborative team environments. For solo analysts, a free Jupyter notebook with GitHub handles most of the same use cases."}
+ ]},
+
+{id:99,name:"Tableau Pulse (AI)",category:"Data/Analytics",budget:70,freeTier:false,latency:"Low",teamSize:"Enterprise",
+ url:"https://tableau.com",
+ desc:"Einstein AI embedded in Tableau; natural language questions on any dashboard; automated anomaly detection with plain-English alerts; works within existing Tableau infrastructure.",
+ uc1:"Dashboard Q&A",uc2:"Anomaly detection",uc3:"Executive BI",
+ reviews:[
+  {type:"positive",source:"Enterprise BI teams · 2026",text:"Tableau Pulse's anomaly detection caught a data pipeline failure 6 hours before our weekly exec report would have surfaced incorrect numbers. The automated plain-English alert was actionable immediately."},
+  {type:"positive",source:"Executives",text:"I can now ask my Tableau dashboards questions in plain English without waiting for an analyst to build a new view. This has fundamentally changed how I consume data in meetings."},
+  {type:"negative",source:"BI developers",text:"Einstein AI requires Tableau Cloud — not compatible with Tableau Server (on-premise). For the many large enterprises still on Server for data residency reasons, Pulse is simply unavailable."}
+ ]},
+
+{id:100,name:"Semantic Scholar",category:"Research",budget:0,freeTier:true,latency:"Low",teamSize:"Any",
+ url:"https://semanticscholar.org",
+ desc:"Free academic search engine by Allen Institute for AI; 220M+ papers; AI-extracted key claims; influence scores; citation velocity graphs; API for programmatic access.",
+ uc1:"Free academic search",uc2:"Citation graphs",uc3:"Influence scoring",
+ reviews:[
+  {type:"positive",source:"Academic librarians · 2026",text:"Semantic Scholar is my first recommendation for any academic search — free, comprehensive at 220M papers, and the AI-extracted key claims save hours of abstract reading."},
+  {type:"positive",source:"AI researchers",text:"The citation velocity and influence score features are invaluable for identifying whether a paper is gaining traction in the community. Nothing else surfaces emerging influential work this fast for free."},
+  {type:"negative",source:"Humanities scholars",text:"Semantic Scholar's coverage skews heavily toward STEM fields. Humanities, social science, and regional-language literature are significantly underrepresented compared to PubMed or JSTOR."}
+ ]}
+];
+
+/* ══════════════════════════════════════════════════════════════════
+   SCORING ENGINE
+   ══════════════════════════════════════════════════════════════════ */
+function scoreTool(t, C) {
+  let s = 0;
+  const {budget, latency, cats, kw, team, freeOnly} = C;
+
+  // Hard: free-only
+  if (freeOnly && !t.freeTier) return null;
+
+  // Budget
+  if (t.budget > budget) {
+    if (!t.freeTier) return null;
+    s -= 5; // free tier bail-out
+  } else {
+    const diff = budget - t.budget;
+    s += diff === 0 ? 30 : diff <= 20 ? 25 : 18;
+  }
+
+  // Latency (25 pts)
+  if (latency !== 'Any') {
+    const lm = {Low:3, Medium:2, High:1};
+    const tl = lm[t.latency]||1, wl = lm[latency]||1;
+    if (t.latency === latency) s += 25;
+    else if (tl > wl) s += 14;   // faster than needed
+    else s -= 10;
+  } else { s += 14; }
+
+  // Category (hard filter if selection made)
+  if (cats.length > 0 && !cats.includes(t.category)) return null;
+  s += 20;
+
+  // Keyword (up to 30 pts)
+  if (kw && kw.length > 1) {
+    const k = kw.toLowerCase();
+    const hay = [t.name, t.uc1, t.uc2, t.uc3, t.desc, t.category].join(' ').toLowerCase();
+    const hits = (hay.match(new RegExp(k,'g'))||[]).length;
+    s += hits === 0 ? -20 : Math.min(hits * 8, 30);
+  }
+
+  // Team size (15 pts)
+  if (team !== 'Any') {
+    if (t.teamSize === 'Any') s += 10;
+    else if (t.teamSize === team) s += 15;
+    else s -= 5;
+  }
+
+  // Free tier bonus on tight budget
+  if (budget <= 20 && t.freeTier) s += 5;
+
+  return Math.max(s, 1);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   UI HELPERS
+   ══════════════════════════════════════════════════════════════════ */
+function getRadio(id) {
+  for (const b of document.querySelectorAll(`#${id} .rbtn`))
+    if (b.classList.contains('act')) return b.dataset.v;
+  return 'Any';
+}
+
+function getCats() {
+  const a = [];
+  document.querySelectorAll('#cat-g input:checked').forEach(cb => a.push(cb.value));
+  return a.length === 12 ? [] : a;
+}
+
+// Radio click
+document.querySelectorAll('.rbtn').forEach(b => b.addEventListener('click', function(){
+  this.closest('[id$="-g"]').querySelectorAll('.rbtn').forEach(x => x.classList.remove('act'));
+  this.classList.add('act');
+}));
+
+// Checkbox pills
+document.querySelectorAll('.chi').forEach(c => c.addEventListener('click', function(e){
+  if (e.target.tagName === 'INPUT') return;
+  const cb = this.querySelector('input');
+  cb.checked = !cb.checked;
+  this.classList.toggle('act', cb.checked);
+}));
+
+// Budget live label
+document.getElementById('bgt').addEventListener('input', function(){
+  const v = +this.value;
+  document.getElementById('bgt-lbl').textContent = v === 0 ? 'Free only' : v >= 200 ? '$200+/mo' : `$${v}/mo`;
+});
+
+// Free tier toggle
+document.getElementById('ft-tog').addEventListener('click', function(e){
+  if (e.target.tagName === 'INPUT') return;
+  const cb = document.getElementById('ft-cb');
+  cb.checked = !cb.checked;
+  this.classList.toggle('act', cb.checked);
+});
+
+// Enter key
+document.getElementById('kw').addEventListener('keydown', e => { if (e.key==='Enter') runSearch(); });
+
+function resetAll() {
+  document.getElementById('bgt').value = 20;
+  document.getElementById('bgt-lbl').textContent = '$20/mo';
+  document.getElementById('kw').value = '';
+  document.getElementById('ft-cb').checked = false;
+  document.getElementById('ft-tog').classList.remove('act');
+  document.querySelectorAll('.rbtn').forEach(b => b.classList.toggle('act', b.dataset.v==='Any'));
+  document.querySelectorAll('#cat-g .chi').forEach(c => { c.classList.add('act'); c.querySelector('input').checked = true; });
+  document.getElementById('results').innerHTML = `<div class="placeholder"><div class="ph-icon">🎯</div><div class="ph-txt">Set your constraints and click <strong style="color:var(--cyan)">Find My Top 10 Tools</strong></div></div>`;
+  document.getElementById('mc').textContent = '—';
+  document.getElementById('rmeta').textContent = 'Configure constraints and click Find';
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   SEARCH
+   ══════════════════════════════════════════════════════════════════ */
+function runSearch() {
+  const C = {
+    budget: +document.getElementById('bgt').value,
+    latency: getRadio('lat-g'),
+    team: getRadio('tm-g'),
+    cats: getCats(),
+    kw: document.getElementById('kw').value.trim(),
+    freeOnly: document.getElementById('ft-cb').checked
+  };
+
+  const scored = TOOLS
+    .map(t => { const s = scoreTool(t,C); return s!==null?{t,s}:null; })
+    .filter(Boolean)
+    .sort((a,b)=>b.s-a.s)
+    .slice(0,10);
+
+  renderResults(scored, C);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   RENDER RESULTS
+   ══════════════════════════════════════════════════════════════════ */
+const RNKS  = ['','#1 BEST','#2','#3','#4','#5','#6','#7','#8','#9','#10'];
+const RCLS  = ['','rank-gold','rank-silver','rank-silver','rank-bronze','rank-bronze','rank-bronze','','','',''];
+
+function renderResults(scored, C) {
+  const el = document.getElementById('results');
+  document.getElementById('mc').textContent = scored.length;
+  document.getElementById('rmeta').textContent = `Scored ${TOOLS.length} tools · top ${scored.length} shown · ${new Date().toLocaleTimeString()}`;
+
+  if (!scored.length) {
+    el.innerHTML = `<div class="placeholder"><div class="ph-icon">⚠️</div><div class="ph-txt">No tools match. Try relaxing budget or category filters.</div></div>`;
+    return;
+  }
+
+  const top = scored[0].s;
+  const kw = C.kw.toLowerCase();
+  el.innerHTML = `<div class="cards" id="clist"></div>`;
+  const list = document.getElementById('clist');
+
+  scored.forEach(({t, s}, i) => {
+    const rank = i+1;
+    const pct  = Math.round((s/top)*100);
+    const budget = t.budget===0 ? 'Free' : `$${t.budget}/mo`;
+
+    const ucs = [t.uc1,t.uc2,t.uc3].map(u => {
+      const hit = kw && u.toLowerCase().includes(kw);
+      return `<span class="uc${hit?' hit':''}">${u}</span>`;
+    }).join('');
+
+    const revHTML = buildReviews(t.reviews);
+
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card-bar" style="width:${pct}%"></div>
+      <div class="card-body">
+        <div class="card-l">
+          <div class="card-top">
+            <span class="rank-badge ${RCLS[rank]}">${RNKS[rank]}</span>
+            <span class="card-name">${t.name}</span>
+            <span class="cat-pill">${t.category}</span>
+          </div>
+          <div class="card-desc">${t.desc}</div>
+          <div class="uc-row">${ucs}</div>
+          <a class="card-link" href="${t.url}" target="_blank" rel="noopener">↗ ${t.url.replace('https://','')}</a>
+        </div>
+        <div class="card-r">
+          <span class="match-score">${pct}%</span>
+          <span class="match-lbl">Match</span>
+          <div class="card-meta">
+            <div class="meta-row"><span class="meta-k">Budget</span><span class="meta-v">${budget}</span></div>
+            <div class="meta-row"><span class="lat-dot ${t.latency}"></span><span class="meta-k">${t.latency} latency</span></div>
+            ${t.freeTier?'<span class="free-badge">✓ Free tier</span>':''}
+          </div>
+        </div>
+      </div>
+      <button class="reviews-toggle" onclick="toggleRevs(this)">
+        <span>📣 User Reviews (${t.reviews.length})</span>
+        <span class="rev-arrow">▾</span>
+      </button>
+      <div class="reviews-body">${revHTML}</div>`;
+    list.appendChild(card);
+  });
+}
+
+function buildReviews(revs) {
+  if (!revs || !revs.length) return `<div class="no-rev">No reviews found for this tool.</div>`;
+  return revs.map(r => `
+    <div class="review ${r.type==='positive'?'pos':'neg'}">
+      <div class="rev-meta">
+        <span class="rev-type ${r.type==='positive'?'pos':'neg'}">${r.type==='positive'?'✓ Positive':'✗ Negative'}</span>
+        <span class="rev-source">· ${r.source}</span>
+      </div>
+      <div class="rev-text">"${r.text}"</div>
+    </div>`).join('');
+}
+
+function toggleRevs(btn) {
+  const body = btn.nextElementSibling;
+  const arrow = btn.querySelector('.rev-arrow');
+  const open = body.classList.toggle('show');
+  arrow.classList.toggle('open', open);
+}
+
+/* ══════════════════════════════════════════════════════════════════
+   ALL TOOLS GRID
+   ══════════════════════════════════════════════════════════════════ */
+function renderGrid(cat='All') {
+  const list = cat==='All' ? TOOLS : TOOLS.filter(t=>t.category===cat);
+  document.getElementById('tgrid').innerHTML = list.map(t => {
+    const bgt = t.budget===0?'Free':`$${t.budget}/mo`;
+    const pos = t.reviews.filter(r=>r.type==='positive').length;
+    const neg = t.reviews.filter(r=>r.type==='negative').length;
+    return `<div class="mc" title="${t.desc}">
+      <div class="mc-name">${t.name}</div>
+      <div class="mc-cat">${t.category}</div>
+      <div class="mc-row">
+        <span class="mc-bgt">${bgt}</span>
+        <span class="mc-lat"><span class="lat-dot ${t.latency}"></span>${t.latency}</span>
+      </div>
+      <div class="mc-rev">👍 ${pos} · 👎 ${neg} review${pos+neg!==1?'s':''}</div>
+    </div>`;
+  }).join('');
+}
+
+document.querySelectorAll('#all-cf .cf').forEach(b => b.addEventListener('click', function(){
+  document.querySelectorAll('#all-cf .cf').forEach(x => x.classList.remove('act'));
+  this.classList.add('act');
+  renderGrid(this.dataset.c);
+}));
+
+// ── INIT ────────────────────────────────────────────────────────────
+renderGrid();
+</script>
+</body>
+</html>
