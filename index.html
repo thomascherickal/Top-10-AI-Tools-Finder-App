@@ -1993,7 +1993,7 @@ const TOOLS = [
     "url": "https://claude.ai",
     "score": 95,
     "costs": "Free tier available with message limits. Pro tier is $20/month. Team plan is $25/user/month. API is $3.00/M input, $15.00/M output tokens.",
-    "desc": "Claude Sonnet 4.6 by Anthropic is highly optimized for technical writing, logical analysis, and coding tasks. It features a 200K token context window and includes 'Artifacts'\u2014a dedicated UI panel for real-time code rendering, vector manipulation, and document editing. Sonnet maintains a conversational, empathetic tone, making it perfect for creative writing, educational tutoring, and software refactoring pipelines."
+    "desc": "Claude Sonnet 4.6 by Anthropic is highly optimized for technical writing, logical analysis, and coding tasks. It features a 200K token context window and includes 'Artifacts'—a dedicated UI panel for real-time code rendering, vector manipulation, and document editing. Sonnet maintains a conversational, empathetic tone, making it perfect for creative writing, educational tutoring, and software refactoring pipelines."
   },
   {
     "reviews": [
@@ -2240,30 +2240,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "VentureBeat",
-        "text": "Llama 3.3 is the ultimate baseline for corporate AI projects. It's safe, open, and incredibly reliable."
+        "text": "Llama 4 Maverick is a massive open-source breakthrough. The MoE architecture delivers frontier-level logic at zero licensing cost."
       },
       {
         "type": "positive",
         "source": "Reddit",
-        "text": "Running this quantized on a local workstation gives an enterprise-grade AI chatbot with zero monthly fees."
+        "text": "The 1M token context and native image-to-text make Llama 4 a dream. It runs localized with incredible precision."
       },
       {
         "type": "negative",
         "source": "Product Hunt",
-        "text": "The Meta licensing terms require explicit approval if you have over 700M active monthly users."
+        "text": "Running the full 400B parameter model requires enterprise-grade hardware, though quantized versions run locally."
       }
     ],
     "id": 11,
-    "name": "Llama 3.3 70B",
+    "name": "Llama 4 Maverick (400B)",
     "category": "LLM/Chat",
     "budget": 0.0,
     "freeTier": true,
     "latency": "Low",
     "teamSize": "Any",
     "url": "https://llama.meta.com",
-    "score": 90,
-    "costs": "Free open-source weights under Meta Llama 3 License. Free to use via Meta AI web app.",
-    "desc": "Llama 3.3 70B is Meta's flagship open-weights model designed for general-purpose chatbot creation, document summaries, and enterprise automation. It utilizes an expanded 128K context window and offers outstanding capabilities in reasoning, instruction following, and structured JSON outputs, making it the industry standard for custom corporate workflows."
+    "score": 93,
+    "costs": "100% Free open-source weights under Meta Llama 4 License. Free to use via Meta AI web app or self-hosted API.",
+    "desc": "Llama 4 Maverick (400B) is Meta's flagship open-weights Mixture-of-Experts (MoE) model. Released in April 2025, it features a 1-million-token context window and excels at agentic reasoning, multimodal tasks, and coding. It is designed to run efficiently on standard local workstations while matching closed frontier performance."
   },
   {
     "reviews": [
@@ -2960,30 +2960,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "G2",
-        "text": "Unbelievable visual quality. The texture, lighting, and artistic depth are far ahead of other image models."
+        "text": "Midjourney v8.1 is unbelievably fast. The personal style profiles yield exactly the cinematic texture I want every time."
       },
       {
         "type": "positive",
         "source": "Reddit",
-        "text": "The consistent style and pan/zoom panning controls make it perfect for conceptual illustrators."
+        "text": "The native HD 2K resolution is stellar. Panning, zooming, and consistent character rendering are refined."
       },
       {
         "type": "negative",
         "source": "Hacker News",
-        "text": "Lacks direct API support, and the dependency on Discord can be highly annoying for enterprise teams."
+        "text": "Gated behind monthly subscriptions with strict commercial terms, and the Discord wrapper is still default for many features."
       }
     ],
     "id": 35,
-    "name": "Midjourney v6",
+    "name": "Midjourney v8.1",
     "category": "Image Gen",
     "budget": 10.0,
     "freeTier": false,
-    "latency": "High",
+    "latency": "Low",
     "teamSize": "Any",
     "url": "https://midjourney.com",
-    "score": 96,
-    "costs": "Basic plan is $10/month. Standard is $30/month for unlimited relaxed generations.",
-    "desc": "Midjourney v6 is the industry benchmark for highly artistic, photorealistic, and visually stunning AI image generation. It runs primarily via a Discord bot interface and a dedicated web UI. In 2026, it excels at cinematic lighting, historical art styles, text rendering within images, and maintaining consistent character faces across sequential prompt batches."
+    "score": 97,
+    "costs": "Basic plan is $10/month. Standard is $30/month for unlimited generations. Pro plan is $60/month.",
+    "desc": "Midjourney v8.1 is the flagship generation model featuring 4-5x faster generation speeds and HD 2K native image support. It implements a revolutionary Personalization Profile system that customizes aesthetic weights to the user's taste. V8.1 excels in photorealism, spatial layout rendering, and character visual consistency."
   },
   {
     "reviews": [
@@ -3050,30 +3050,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "Hacker News",
-        "text": "Finally, an image generator that writes legible text and generates realistic human hands consistently."
+        "text": "FLUX.2 Pro's multi-reference character consistency is a game changer for storyboarding and ads."
       },
       {
         "type": "positive",
         "source": "Reddit",
-        "text": "Flux dev running on my local PC beats Midjourney for pure photorealism. Absolute masterpiece."
+        "text": "The 32B model runs surprisingly fast. Realism, hand geometries, and text placement are virtually flawless."
       },
       {
         "type": "negative",
         "source": "Product Hunt",
-        "text": "The high-quality version requires significant local GPU hardware (minimum 16GB VRAM)."
+        "text": "Running the open-source FLUX.2 Dev locally requires a high-end GPU with at least 24GB of VRAM."
       }
     ],
     "id": 38,
-    "name": "Flux.1",
+    "name": "FLUX.2 [Pro]",
     "category": "Image Gen",
     "budget": 0.0,
     "freeTier": true,
     "latency": "Low",
     "teamSize": "Any",
     "url": "https://blackforestlabs.ai",
-    "score": 95,
-    "costs": "Free open-source versions (Flux.1 [dev]/[schnell]). Pro version is paid via API providers like fal.ai.",
-    "desc": "Flux.1 by Black Forest Labs (created by the original SD creators) is a state-of-the-art image model. It achieves unmatched realism, outstanding hand-rendering, and perfect typography spelling. It has become highly popular for generating highly convincing human portraits, marketing flyers, and graphic layouts."
+    "score": 96,
+    "costs": "Free open-source local versions (FLUX.2 Dev/Flex). Pro is paid via API providers ($0.04/image) or subscription.",
+    "desc": "FLUX.2 [Pro] by Black Forest Labs is a flagship 32-billion parameter model utilizing a latent flow matching transformer. It yields gorgeous 4-megapixel images with native support for up to 10 image references to maintain character, product, and style consistency. It sets a new benchmark in photorealism and typographic spelling."
   },
   {
     "reviews": [
@@ -3230,30 +3230,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "PCMag",
-        "text": "Unbeatable for typography. It renders paragraphs of complex text without spelling errors."
+        "text": "Ideogram 3.0's typographic layout is the best. It maps paragraphs of text onto curved or 3D surfaces beautifully."
       },
       {
         "type": "positive",
-        "source": "Indie Hackers",
-        "text": "Perfect for generating print-on-demand t-shirt designs. The text layout matches professional vectors."
+        "source": "Design Lead",
+        "text": "Magic Fill and Style References let us lock in brand assets in seconds. The vector output is extremely clean."
       },
       {
         "type": "negative",
         "source": "G2",
-        "text": "Photorealistic backgrounds are sometimes slightly noisy compared to dedicated models like Flux."
+        "text": "While graphics design is unmatched, photorealistic portraits are sometimes slightly over-processed compared to FLUX.2."
       }
     ],
     "id": 44,
-    "name": "Ideogram 2.0",
+    "name": "Ideogram 3.0",
     "category": "Image Gen",
     "budget": 8.0,
     "freeTier": true,
     "latency": "Medium",
     "teamSize": "Any",
     "url": "https://ideogram.ai",
-    "score": 93,
-    "costs": "Free tier with daily limits. Pro plans start at $8/month.",
-    "desc": "Ideogram 2.0 is highly celebrated for its state-of-the-art typography and graphic design capabilities. It places crisp, perfectly spelled text within generated graphics, logos, and signs in multiple styles, making it highly valuable for branding, apparel design, and poster layouts."
+    "score": 95,
+    "costs": "Free basic tier. Pro tier is $8/month. Premier plan is $20/month with unlimited fast generations.",
+    "desc": "Ideogram 3.0 represents a massive leap in typographic design and photorealism. It features advanced creative controllers like Style References and Magic Fill/Extend, allowing designers to blend text and graphic styles. It excels at rendering complex, paragraphs-long spelling within layouts."
   },
   {
     "reviews": [
@@ -3469,31 +3469,31 @@ const TOOLS = [
     "reviews": [
       {
         "type": "positive",
-        "source": "Hollywood VFX",
-        "text": "The cinematic physics and consistent lighting of Sora are light-years ahead of the competition."
+        "source": "Hollywood",
+        "text": "Sora was a wonderful research milestone. It proved text-to-video consistency was possible."
       },
       {
         "type": "positive",
         "source": "Wired",
-        "text": "Absolutely stunning clip consistency. It simulates complex physical collisions realistically."
+        "text": "A legendary visual pioneer that inspired an entire wave of competitive video generators."
       },
       {
         "type": "negative",
         "source": "TechRadar",
-        "text": "Extremely high render times and currently gated behind high premium or enterprise tiers."
+        "text": "High compute costs made consumer deployment unsustainable, leading to its sudden discontinuation."
       }
     ],
     "id": 52,
-    "name": "Sora",
+    "name": "Sora (Discontinued)",
     "category": "Video Gen",
-    "budget": 200.0,
+    "budget": 0.0,
     "freeTier": false,
     "latency": "High",
     "teamSize": "Any",
     "url": "https://openai.com/sora",
-    "score": 96,
-    "costs": "Enterprise pricing starting around $200/month or usage-based pricing on premium clouds.",
-    "desc": "Sora is OpenAI's flagship text-to-video foundation model. It generates up to 60-second video clips featuring complex camera motions, multiple characters, highly detailed physics, and absolute visual consistency, serving as the cinematic standard for AI video generation."
+    "score": 50,
+    "costs": "Discontinued. Standalone web and mobile applications officially shut down on April 26, 2026.",
+    "desc": "Sora was OpenAI's flagship text-to-video foundation model. Due to massive computational costs and OpenAI's strategic realignment towards agentic robotics and general world simulation, the standalone Sora platform was officially shut down on April 26, 2026. API access remains active for legacy developers until September 2026."
   },
   {
     "reviews": [
@@ -3530,30 +3530,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "VFX Lead",
-        "text": "The motion brush is spectacular. I can isolate a specific river in my scene and make it flow."
+        "text": "Gen-4.5's camera motion curves are incredibly smooth. Character persistence across complex cuts is unmatched."
       },
       {
         "type": "positive",
         "source": "G2",
-        "text": "Replaced expensive studio setup shots. Generating complex B-roll takes minutes instead of days."
+        "text": "The new Runway Characters and Aleph 2.0 integrations have completely transformed our post-production pipeline."
       },
       {
         "type": "negative",
         "source": "Reddit",
-        "text": "Credits deplete extremely fast. Iterating on a 10-second shot can cost $20-30 in credits."
+        "text": "The rendering pipeline is computationally heavy, and unlimited plans still experience queue delays during peak hours."
       }
     ],
     "id": 54,
-    "name": "Runway Gen-3 Alpha",
+    "name": "Runway Gen-4.5",
     "category": "Video Gen",
     "budget": 15.0,
     "freeTier": true,
     "latency": "High",
     "teamSize": "Any",
     "url": "https://runwayml.com",
-    "score": 94,
-    "costs": "Free credits on sign-up. Basic plan is $15/month. Unlimited plan is $95/month.",
-    "desc": "Runway Gen-3 Alpha is a powerful AI video generation system that offers state-of-the-art temporal consistency, character persistence, and motion fidelity. Deeply integrated with advanced director controls like camera motion curves and regional motion brush editing, it is highly popular for professional VFX suites."
+    "score": 95,
+    "costs": "Free basic credits. Standard is $15/month. Unlimited plan is $95/month.",
+    "desc": "Runway Gen-4.5 is a professional-grade video generation system offering unparalleled temporal realism and camera controls. It includes advanced tools such as Runway Characters for audio-driven, real-time avatar animation and Aleph 2.0 for frame-based editing inside Edit Studio, setting the standard for VFX suites."
   },
   {
     "reviews": [
@@ -4010,30 +4010,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "Billboard",
-        "text": "Suno has democratized music. The songwriting and vocal mixing are studio quality."
+        "text": "Suno v5.5's isolated stem exports and MIDI data allow seamless integration into professional DAWs."
       },
       {
         "type": "positive",
-        "source": "Indie Dev",
-        "text": "Swapped expensive licensing loops for Suno. Designed our entire custom game soundtrack in a weekend."
+        "source": "Producer",
+        "text": "The custom voice capture is mind-blowing. Being able to sing my own song through the AI generator is incredible."
       },
       {
         "type": "negative",
         "source": "Reddit",
-        "text": "The vocal generation can occasionally carry a slightly compressed, digital texture."
+        "text": "Custom model training on personal sound catalogs can take several hours to compile."
       }
     ],
     "id": 70,
-    "name": "Suno v4",
+    "name": "Suno v5.5",
     "category": "Audio/Voice",
     "budget": 8.0,
     "freeTier": true,
     "latency": "Medium",
     "teamSize": "Any",
     "url": "https://suno.com",
-    "score": 96,
-    "costs": "Free basic limits. Pro plan is $8/month. Premier plan is $24/month.",
-    "desc": "Suno v4 is the leading AI music generation platform. It converts simple text descriptions into complete, radio-ready songs including custom vocals, instrumental tracks, and high-fidelity production arrangements. Suno v4 introduces a Covers mode for reinterpreting existing melodies."
+    "score": 97,
+    "costs": "Free basic tier. Pro plan is $8/month. Premier plan is $24/month.",
+    "desc": "Suno v5.5 represents a massive leap in creative music generation (released March 26, 2026). It introduces custom model training on personal music catalogs, isolated stem exports (vocals, bass, drums), MIDI outputs, and voice identity capture to record and use your own vocal timbre."
   },
   {
     "reviews": [
@@ -4303,7 +4303,7 @@ const TOOLS = [
     "url": "https://resemble.ai",
     "score": 91,
     "costs": "Basic usage plan is $0.006/second. Pro tier starts at $29/month.",
-    "desc": "Resemble AI is an enterprise-grade voice cloning and security platform. It provides high-fidelity, real-time voice synthesis and integrates advanced security filters like 'Resemble Detect'\u2014an AI system that scans audio inputs to verify deepfakes and secure databases."
+    "desc": "Resemble AI is an enterprise-grade voice cloning and security platform. It provides high-fidelity, real-time voice synthesis and integrates advanced security filters like 'Resemble Detect'—an AI system that scans audio inputs to verify deepfakes and secure databases."
   },
   {
     "reviews": [
@@ -4633,7 +4633,7 @@ const TOOLS = [
     "url": "https://sudowrite.com",
     "score": 93,
     "costs": "Free trial available. Student plan is $10/month. Professional is $20/month.",
-    "desc": "Sudowrite is a premier AI platform engineered specifically for creative writers, novelists, and screenwriters. It houses unique visual features like 'Story Engine'\u2014which generates outlines, character bibles, and drafts\u2014and sensory expansion prompts to enhance dialogue."
+    "desc": "Sudowrite is a premier AI platform engineered specifically for creative writers, novelists, and screenwriters. It houses unique visual features like 'Story Engine'—which generates outlines, character bibles, and drafts—and sensory expansion prompts to enhance dialogue."
   },
   {
     "reviews": [
@@ -5203,7 +5203,7 @@ const TOOLS = [
     "url": "https://scalenut.com",
     "score": 90,
     "costs": "Free trial available. Essential plan is $39/month. Growth plan starts at $79/month.",
-    "desc": "Scalenut is an end-to-end SEO content pipeline platform. It clusters target keywords, builds SEO strategies, compiles detailed competitor analyses, and features 'Cruise Mode'\u2014an automated generator that drafts 2,000-word articles matching SERP layouts in minutes."
+    "desc": "Scalenut is an end-to-end SEO content pipeline platform. It clusters target keywords, builds SEO strategies, compiles detailed competitor analyses, and features 'Cruise Mode'—an automated generator that drafts 2,000-word articles matching SERP layouts in minutes."
   },
   {
     "reviews": [
@@ -5540,17 +5540,17 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "G2",
-        "text": "Central is amazing. I explained an automation scenario in plain English and it built the pipeline."
+        "text": "Zapier Central's PII redaction and security guardrails make AI automation extremely safe for enterprise client data."
       },
       {
         "type": "positive",
-        "source": "Sales Ops",
-        "text": "Connecting CRM, email, and slack in 10 minutes without developer tickets is brilliant."
+        "source": "Tech Lead",
+        "text": "The new templates hub and Zapier MCP server integration are outstanding. I can build safe multi-app agents in minutes."
       },
       {
         "type": "negative",
         "source": "Hacker News",
-        "text": "Complex branching scenarios get expensive quickly due to step-count pricing rules."
+        "text": "While basic agents are simple, handling highly nested, multi-model branching processes can consume credits quickly."
       }
     ],
     "id": 121,
@@ -5561,39 +5561,39 @@ const TOOLS = [
     "latency": "Low",
     "teamSize": "Any",
     "url": "https://zapier.com",
-    "score": 95,
-    "costs": "Free basic limits. Professional starts at $20/month. Central agents use custom task credits.",
-    "desc": "Zapier is the global standard for no-code app integration, connecting 7,000+ platforms. Zapier Central introduces natural-language AI bots that monitor data shifts, write drafts, triage files, and execute Zaps automatically in conversational workflows."
+    "score": 96,
+    "costs": "Free basic limits. Professional starts at $20/month. Central agents utilize AI Guardrails and custom credits.",
+    "desc": "Zapier Central is an autonomous AI assistant builder integrated with 9,000+ app connectors. It features advanced AI Guardrails to detect and redact PII, prompt injection prevention, a templates hub, and Zapier MCP support allowing external models to take secure actions on your calendar and calendar data."
   },
   {
     "reviews": [
       {
         "type": "positive",
         "source": "DevOps",
-        "text": "Self-hosting on our servers means zero per-run fees and complete data security. Amazing."
+        "text": "n8n's self-hosting guarantees total data sovereignty. Building agent pipelines using community stable v2.21+ is extremely robust."
       },
       {
         "type": "positive",
         "source": "AI Engineer",
-        "text": "The dedicated AI agent nodes make chaining vector memory and tools visual and simple."
+        "text": "The `@n8n/agents` SDK and visual MCP tool connections allow us to deploy complex, memory-persistent agents in days."
       },
       {
         "type": "negative",
         "source": "Reddit",
-        "text": "Self-hosting requires developer experience to manage server scale and database updates."
+        "text": "Implementing complex self-hosted agent clusters requires deep Docker configuration and database load scaling."
       }
     ],
     "id": 122,
-    "name": "n8n",
+    "name": "n8n AI agent builder",
     "category": "Automation",
     "budget": 0.0,
     "freeTier": true,
     "latency": "Medium",
     "teamSize": "Any",
     "url": "https://n8n.io",
-    "score": 95,
-    "costs": "100% Free self-hosted version. Cloud hosted plans start at $20/month.",
-    "desc": "n8n is an open-source visual workflow automation tool highly favored by developers. By offering full self-hosting, it guarantees complete data sovereignty. n8n features dedicated nodes to chain LLMs, vector store integrations, custom Python/JS code, and complex APIs."
+    "score": 96,
+    "costs": "100% Free self-hosted community version (v2.21+ stable). Cloud plans start at $20/month.",
+    "desc": "n8n is a visual, open-weights orchestration builder optimized for AI agents. Featuring the `@n8n/agents` SDK, persistent memory, and native MCP support, it allows engineering teams to construct deterministic, production-grade agents with concurrent editing protection and human-in-the-loop manual review gates."
   },
   {
     "reviews": [
@@ -5629,31 +5629,31 @@ const TOOLS = [
     "reviews": [
       {
         "type": "positive",
-        "source": "AI Builder",
-        "text": "The role-based collaborative agents produce output far superior to a single prompt loop."
+        "source": "Architect",
+        "text": "The persistent Sqlite CheckpointConfig lets our multi-agent Crews resume long-running flows instantly after server hiccups."
       },
       {
         "type": "positive",
         "source": "Github",
-        "text": "Outstanding framework. Chaining agent handoffs using the Python SDK is elegant and robust."
+        "text": "Using crewai-cli makes scaffolding and project version control clean. Collaborative role handoffs are super robust."
       },
       {
         "type": "negative",
         "source": "Reddit",
-        "text": "Setting up tool permissions and preventing endless agent loops requires python expertise."
+        "text": "Fine-tuning token efficiency and managing concurrent async agent tool calls still requires deep Python expertise."
       }
     ],
     "id": 124,
-    "name": "CrewAI",
+    "name": "CrewAI v1.14+",
     "category": "Automation",
     "budget": 29.0,
     "freeTier": true,
     "latency": "Medium",
     "teamSize": "Small",
     "url": "https://crewai.com",
-    "score": 94,
-    "costs": "Free open-source SDK. CrewAI Cloud monitoring starts at $29/month.",
-    "desc": "CrewAI is a powerful framework for orchestrating collaborative groups of specialized AI agents. It allows developers to define agents with unique roles, goals, and tools, letting them collaborate (e.g. researcher, writer, proofreader) to resolve complex, long-horizon pipelines."
+    "score": 95,
+    "costs": "Free open-source SDK via crewai-cli. Enterprise Control Plane and Cloud monitoring start at $29/month.",
+    "desc": "CrewAI v1.14+ is an enterprise-grade agent orchestration framework. It features standalone scaffolding via `crewai-cli`, persistent Sqlite CheckpointConfig pipelines to survive system crashes, A2A agent protocols, and an Enterprise Control Plane with observability dashboards."
   },
   {
     "reviews": [
@@ -6170,30 +6170,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "Wired",
-        "text": "Perplexity has completely replaced Google for my daily research. The citations are solid."
+        "text": "The Perplexity Computer agent built and deployed a custom data dashboard for my report in seconds. Solid citations."
       },
       {
         "type": "positive",
         "source": "G2",
-        "text": "The capability to upload a spreadsheet and ask the search engine to cross-reference data is stellar."
+        "text": "Having GPT-5.5 as the default research orchestrator makes deep, multi-step academic searches unbelievably thorough and fast."
       },
       {
         "type": "negative",
         "source": "Reddit",
-        "text": "During major breaking news, it can occasionally summarize inaccurate initial reports."
+        "text": "The agentic shopping feature works smoothly in the US but is currently restricted for international shipping queries."
       }
     ],
     "id": 142,
-    "name": "Perplexity Pro",
+    "name": "Perplexity Pro (Computer Agent)",
     "category": "Research",
     "budget": 20.0,
     "freeTier": true,
     "latency": "Low",
     "teamSize": "Any",
     "url": "https://perplexity.ai",
-    "score": 96,
-    "costs": "Free basic searches. Pro plan is $20/month for unlimited advanced reasoning models.",
-    "desc": "Perplexity is the leading conversational AI search engine. It bypasses traditional blue-link search boxes, directly scanning web databases, extracting accurate data, and outputting cited summaries. Perplexity Pro offers access to advanced reasoning models (like Claude Opus) and file analysis."
+    "score": 97,
+    "costs": "Free basic searches. Pro plan is $20/month for GPT-5.5 default orchestration and Perplexity Computer.",
+    "desc": "Perplexity Pro is a cited conversational search engine powered by GPT-5.5. It includes Perplexity Computer, an agentic cloud workspace that builds and publishes custom websites (to pplx.app URLs), snaps to shop visual lookups, in-app checkout, and shared Space \"Skills\" to automate reports."
   },
   {
     "reviews": [
@@ -6343,7 +6343,7 @@ const TOOLS = [
     "url": "https://openread.academy",
     "score": 87,
     "costs": "Free trial available. Premium plan is $9.99/month.",
-    "desc": "OpenRead is an interactive academic workspace. It features 'Paper Espresso'\u2014which extracts diagrams and charts into structured data modules\u2014and a conversational search assistant to query academic papers, draft bibliography summaries, and organize libraries."
+    "desc": "OpenRead is an interactive academic workspace. It features 'Paper Espresso'—which extracts diagrams and charts into structured data modules—and a conversational search assistant to query academic papers, draft bibliography summaries, and organize libraries."
   },
   {
     "reviews": [
@@ -6493,37 +6493,37 @@ const TOOLS = [
     "url": "https://typeset.io",
     "score": 93,
     "costs": "Free basic tier. Premium plan starts at $12/month.",
-    "desc": "SciSpace (Typeset.io) is a comprehensive research workspace. It hosts a database of 270M+ scientific articles, featuring 'Copilot'\u2014an inline conversational assistant that explains dense paragraphs, translates academic terms, and drafts structured literature reviews in real time."
+    "desc": "SciSpace (Typeset.io) is a comprehensive research workspace. It hosts a database of 270M+ scientific articles, featuring 'Copilot'—an inline conversational assistant that explains dense paragraphs, translates academic terms, and drafts structured literature reviews in real time."
   },
   {
     "reviews": [
       {
         "type": "positive",
         "source": "G2",
-        "text": "Swapped regular notes for Notion AI. Finding specific meeting details across our wiki is a breeze."
+        "text": "Notion's new Plan Mode is outstanding. I can preview bulk database modifications before the agent executes them."
       },
       {
         "type": "positive",
-        "source": "TechCrunch",
-        "text": "The Q&A feature is spectacular. It queries our complete company wiki instantly."
+        "source": "Developer",
+        "text": "The Notion Workers runtime and Markdown API make it extremely easy to build custom agent tools and sync code."
       },
       {
         "type": "negative",
         "source": "Reddit",
-        "text": "The generative writing suggestions can feel slightly robotic without manual styling changes."
+        "text": "Setting up workspace-scoped OAuth and managing Slack connector permissions requires explicit admin configurations."
       }
     ],
     "id": 153,
-    "name": "Notion AI",
+    "name": "Notion AI (v3.5 Developers)",
     "category": "Productivity",
     "budget": 10.0,
     "freeTier": true,
     "latency": "Low",
     "teamSize": "Any",
     "url": "https://notion.so",
-    "score": 95,
-    "costs": "Requires Notion subscription + $10/user/month AI add-on.",
-    "desc": "Notion AI is a deeply integrated workspace companion. Notion AI reads your entire wiki database, notes, and task tables to answer questions, summarize long meeting transcripts, write blog posts, convert tabular data, and update task statuses autonomously."
+    "score": 96,
+    "costs": "Requires Notion subscription + $10/user/month AI add-on. Includes API Connectors.",
+    "desc": "Notion AI is an agent-based workspace powered by the v3.5 Developer platform. It features Plan Mode (Plan -> Approve -> Execute workflows), Database Agents, Notion Workers to run custom sync scripts, personal access tokens (PATs), and Slack/Drive connectors."
   },
   {
     "reviews": [
@@ -7310,30 +7310,30 @@ const TOOLS = [
       {
         "type": "positive",
         "source": "Creator",
-        "text": "Tone is outstanding. Visual layouts feel highly modern and dynamic. Perfect for pitch decks."
+        "text": "Tome was a wonderful pitch deck builder while it lasted. The tile layouts were highly minimalist and modern."
       },
       {
         "type": "positive",
         "source": "G2",
-        "text": "love the minimalist interface. It allows us to compile structured slideshows quickly."
+        "text": "A pioneering presentation tool that set the initial standard for narrative-first slides generation."
       },
       {
         "type": "negative",
-        "source": "Reddit",
-        "text": "Visual components library is small compared to mature slide managers like Canva."
+        "source": "Designer",
+        "text": "The shutdown resulted in all slideshow data being deleted, requiring users to migrate to alternative tools like Gamma."
       }
     ],
     "id": 180,
-    "name": "Tome",
+    "name": "Tome (Discontinued)",
     "category": "Design",
-    "budget": 8.0,
-    "freeTier": true,
+    "budget": 0.0,
+    "freeTier": false,
     "latency": "Low",
     "teamSize": "Solo",
     "url": "https://tome.app",
-    "score": 91,
-    "costs": "Free basic limits. Pro plan is $8/month.",
-    "desc": "Tome is an AI-powered visual storytelling platform. Tome builds interactive presentation decks, product plans, and portfolio blocks, incorporating generative visual assets and natural language layout refactoring in a sleek minimalist dashboard."
+    "score": 50,
+    "costs": "Discontinued. The original AI presentation storytelling tool was officially sunsetted on April 30, 2025.",
+    "desc": "Tome was an AI-powered visual storytelling platform that generated presentation slides, layouts, and pitch decks. Effective April 30, 2025, Tome officially sunsetted its presentation product to pivot its focus to automated enterprise sales and marketing operations. Original presentation features are no longer active."
   },
   {
     "reviews": [
@@ -7459,31 +7459,31 @@ const TOOLS = [
     "reviews": [
       {
         "type": "positive",
-        "source": "Data Analyst",
-        "text": "Julius is incredible. It cleans raw spreadsheet rows and builds regression plots instantly."
+        "source": "Analyst",
+        "text": "Julius 1.2 Ultra's reasoning level selection is spectacular. It builds highly detailed SQL queries and statistical slides."
       },
       {
         "type": "positive",
         "source": "G2",
-        "text": "love the Python output window. Seeing the actual code Julius runs makes the results transparent."
+        "text": "The prompt intent Postgres connector makes live database analysis a breeze. The Python output window remains unmatched."
       },
       {
         "type": "negative",
         "source": "Reddit",
-        "text": "Advanced statistical queries can occasionally require manual coordinate overrides in plots."
+        "text": "Generating large slide decks directly from massive datasets can sometimes take several minutes to compile."
       }
     ],
     "id": 185,
-    "name": "Julius AI",
+    "name": "Julius 1.2 Ultra",
     "category": "Data/Analytics",
     "budget": 20.0,
     "freeTier": true,
     "latency": "Low",
     "teamSize": "Solo",
     "url": "https://julius.ai",
-    "score": 96,
+    "score": 97,
     "costs": "Free basic limits. Premium plan starts at $20/month. Professional is $45/month.",
-    "desc": "Julius AI is a advanced conversational data scientist companion. It connects to spreadsheets (Excel, Google Sheets) and SQL databases, writes custom Python script blocks under the hood, clean datasets, creates complex graphs (regression models, scatter plots), and summaries metrics."
+    "desc": "Julius 1.2 Ultra is an advanced conversational data workspace powered by GPT-5.5. It features reasoning level selection, prompt intent suggestions for Postgres/MySQL connectors, in-app slides and visual reports generation, Python code executors, and sub-agents that adapt to database structures."
   },
   {
     "reviews": [

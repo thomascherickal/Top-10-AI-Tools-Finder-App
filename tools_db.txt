@@ -150,19 +150,19 @@ REVIEW_POSITIVE_2: DevOps: We self-host Qwen on our local GPU cluster. Zero data
 REVIEW_NEGATIVE_1: Hacker News: Running a 72B model locally requires substantial hardware (dual high-end VRAM GPUs).
 ==================================================
 ID: 11
-NAME: Llama 3.3 70B
+NAME: Llama 4 Maverick (400B)
 CATEGORY: LLM/Chat
 BUDGET: 0
 FREE_TIER: Yes
 LATENCY: Low
 TEAM_SIZE: Any
 URL: https://llama.meta.com
-SCORE: 90
-COSTS: Free open-source weights under Meta Llama 3 License. Free to use via Meta AI web app.
-DESCRIPTION: Llama 3.3 70B is Meta's flagship open-weights model designed for general-purpose chatbot creation, document summaries, and enterprise automation. It utilizes an expanded 128K context window and offers outstanding capabilities in reasoning, instruction following, and structured JSON outputs, making it the industry standard for custom corporate workflows.
-REVIEW_POSITIVE_1: VentureBeat: Llama 3.3 is the ultimate baseline for corporate AI projects. It's safe, open, and incredibly reliable.
-REVIEW_POSITIVE_2: Reddit: Running this quantized on a local workstation gives an enterprise-grade AI chatbot with zero monthly fees.
-REVIEW_NEGATIVE_1: Product Hunt: The Meta licensing terms require explicit approval if you have over 700M active monthly users.
+SCORE: 93
+COSTS: 100% Free open-source weights under Meta Llama 4 License. Free to use via Meta AI web app or self-hosted API.
+DESCRIPTION: Llama 4 Maverick (400B) is Meta's flagship open-weights Mixture-of-Experts (MoE) model. Released in April 2025, it features a 1-million-token context window and excels at agentic reasoning, multimodal tasks, and coding. It is designed to run efficiently on standard local workstations while matching closed frontier performance.
+REVIEW_POSITIVE_1: VentureBeat: Llama 4 Maverick is a massive open-source breakthrough. The MoE architecture delivers frontier-level logic at zero licensing cost.
+REVIEW_POSITIVE_2: Reddit: The 1M token context and native image-to-text make Llama 4 a dream. It runs localized with incredible precision.
+REVIEW_NEGATIVE_1: Product Hunt: Running the full 400B parameter model requires enterprise-grade hardware, though quantized versions run locally.
 ==================================================
 ID: 12
 NAME: Cohere Command R+
@@ -510,19 +510,19 @@ REVIEW_POSITIVE_2: Reddit: Having complete terminal execution and file writing a
 REVIEW_NEGATIVE_1: Product Hunt: Can occasionally loop recursively if compile errors are complex, burning API tokens.
 ==================================================
 ID: 35
-NAME: Midjourney v6
+NAME: Midjourney v8.1
 CATEGORY: Image Gen
 BUDGET: 10
 FREE_TIER: No
-LATENCY: High
+LATENCY: Low
 TEAM_SIZE: Any
 URL: https://midjourney.com
-SCORE: 96
-COSTS: Basic plan is $10/month. Standard is $30/month for unlimited relaxed generations.
-DESCRIPTION: Midjourney v6 is the industry benchmark for highly artistic, photorealistic, and visually stunning AI image generation. It runs primarily via a Discord bot interface and a dedicated web UI. In 2026, it excels at cinematic lighting, historical art styles, text rendering within images, and maintaining consistent character faces across sequential prompt batches.
-REVIEW_POSITIVE_1: G2: Unbelievable visual quality. The texture, lighting, and artistic depth are far ahead of other image models.
-REVIEW_POSITIVE_2: Reddit: The consistent style and pan/zoom panning controls make it perfect for conceptual illustrators.
-REVIEW_NEGATIVE_1: Hacker News: Lacks direct API support, and the dependency on Discord can be highly annoying for enterprise teams.
+SCORE: 97
+COSTS: Basic plan is $10/month. Standard is $30/month for unlimited generations. Pro plan is $60/month.
+DESCRIPTION: Midjourney v8.1 is the flagship generation model featuring 4-5x faster generation speeds and HD 2K native image support. It implements a revolutionary Personalization Profile system that customizes aesthetic weights to the user's taste. V8.1 excels in photorealism, spatial layout rendering, and character visual consistency.
+REVIEW_POSITIVE_1: G2: Midjourney v8.1 is unbelievably fast. The personal style profiles yield exactly the cinematic texture I want every time.
+REVIEW_POSITIVE_2: Reddit: The native HD 2K resolution is stellar. Panning, zooming, and consistent character rendering are refined.
+REVIEW_NEGATIVE_1: Hacker News: Gated behind monthly subscriptions with strict commercial terms, and the Discord wrapper is still default for many features.
 ==================================================
 ID: 36
 NAME: DALL-E 3
@@ -555,19 +555,19 @@ REVIEW_POSITIVE_2: AI Weekly: The multi-subject logic is amazing. It places mult
 REVIEW_NEGATIVE_1: Reddit: The local setup requires substantial technical expertise and a heavy VRAM graphics card.
 ==================================================
 ID: 38
-NAME: Flux.1
+NAME: FLUX.2 [Pro]
 CATEGORY: Image Gen
 BUDGET: 0
 FREE_TIER: Yes
 LATENCY: Low
 TEAM_SIZE: Any
 URL: https://blackforestlabs.ai
-SCORE: 95
-COSTS: Free open-source versions (Flux.1 [dev]/[schnell]). Pro version is paid via API providers like fal.ai.
-DESCRIPTION: Flux.1 by Black Forest Labs (created by the original SD creators) is a state-of-the-art image model. It achieves unmatched realism, outstanding hand-rendering, and perfect typography spelling. It has become highly popular for generating highly convincing human portraits, marketing flyers, and graphic layouts.
-REVIEW_POSITIVE_1: Hacker News: Finally, an image generator that writes legible text and generates realistic human hands consistently.
-REVIEW_POSITIVE_2: Reddit: Flux dev running on my local PC beats Midjourney for pure photorealism. Absolute masterpiece.
-REVIEW_NEGATIVE_1: Product Hunt: The high-quality version requires significant local GPU hardware (minimum 16GB VRAM).
+SCORE: 96
+COSTS: Free open-source local versions (FLUX.2 Dev/Flex). Pro is paid via API providers ($0.04/image) or subscription.
+DESCRIPTION: FLUX.2 [Pro] by Black Forest Labs is a flagship 32-billion parameter model utilizing a latent flow matching transformer. It yields gorgeous 4-megapixel images with native support for up to 10 image references to maintain character, product, and style consistency. It sets a new benchmark in photorealism and typographic spelling.
+REVIEW_POSITIVE_1: Hacker News: FLUX.2 Pro's multi-reference character consistency is a game changer for storyboarding and ads.
+REVIEW_POSITIVE_2: Reddit: The 32B model runs surprisingly fast. Realism, hand geometries, and text placement are virtually flawless.
+REVIEW_NEGATIVE_1: Product Hunt: Running the open-source FLUX.2 Dev locally requires a high-end GPU with at least 24GB of VRAM.
 ==================================================
 ID: 39
 NAME: Leonardo AI
@@ -645,19 +645,19 @@ REVIEW_POSITIVE_2: G2: Simple, intuitive, and handles multiple art styles (carto
 REVIEW_NEGATIVE_1: Reddit: The control options are basic; you cannot edit specific regions of the image easily.
 ==================================================
 ID: 44
-NAME: Ideogram 2.0
+NAME: Ideogram 3.0
 CATEGORY: Image Gen
 BUDGET: 8
 FREE_TIER: Yes
 LATENCY: Medium
 TEAM_SIZE: Any
 URL: https://ideogram.ai
-SCORE: 93
-COSTS: Free tier with daily limits. Pro plans start at $8/month.
-DESCRIPTION: Ideogram 2.0 is highly celebrated for its state-of-the-art typography and graphic design capabilities. It places crisp, perfectly spelled text within generated graphics, logos, and signs in multiple styles, making it highly valuable for branding, apparel design, and poster layouts.
-REVIEW_POSITIVE_1: PCMag: Unbeatable for typography. It renders paragraphs of complex text without spelling errors.
-REVIEW_POSITIVE_2: Indie Hackers: Perfect for generating print-on-demand t-shirt designs. The text layout matches professional vectors.
-REVIEW_NEGATIVE_1: G2: Photorealistic backgrounds are sometimes slightly noisy compared to dedicated models like Flux.
+SCORE: 95
+COSTS: Free basic tier. Pro tier is $8/month. Premier plan is $20/month with unlimited fast generations.
+DESCRIPTION: Ideogram 3.0 represents a massive leap in typographic design and photorealism. It features advanced creative controllers like Style References and Magic Fill/Extend, allowing designers to blend text and graphic styles. It excels at rendering complex, paragraphs-long spelling within layouts.
+REVIEW_POSITIVE_1: PCMag: Ideogram 3.0's typographic layout is the best. It maps paragraphs of text onto curved or 3D surfaces beautifully.
+REVIEW_POSITIVE_2: Design Lead: Magic Fill and Style References let us lock in brand assets in seconds. The vector output is extremely clean.
+REVIEW_NEGATIVE_1: G2: While graphics design is unmatched, photorealistic portraits are sometimes slightly over-processed compared to FLUX.2.
 ==================================================
 ID: 45
 NAME: Playground AI
@@ -765,19 +765,19 @@ REVIEW_POSITIVE_2: G2: The genetic morphing features are extremely fun and produ
 REVIEW_NEGATIVE_1: Reddit: The control model is highly specialized; it is difficult to build specific scenes from scratch.
 ==================================================
 ID: 52
-NAME: Sora
+NAME: Sora (Discontinued)
 CATEGORY: Video Gen
-BUDGET: 200
+BUDGET: 0
 FREE_TIER: No
 LATENCY: High
 TEAM_SIZE: Any
 URL: https://openai.com/sora
-SCORE: 96
-COSTS: Enterprise pricing starting around $200/month or usage-based pricing on premium clouds.
-DESCRIPTION: Sora is OpenAI's flagship text-to-video foundation model. It generates up to 60-second video clips featuring complex camera motions, multiple characters, highly detailed physics, and absolute visual consistency, serving as the cinematic standard for AI video generation.
-REVIEW_POSITIVE_1: Hollywood VFX: The cinematic physics and consistent lighting of Sora are light-years ahead of the competition.
-REVIEW_POSITIVE_2: Wired: Absolutely stunning clip consistency. It simulates complex physical collisions realistically.
-REVIEW_NEGATIVE_1: TechRadar: Extremely high render times and currently gated behind high premium or enterprise tiers.
+SCORE: 50
+COSTS: Discontinued. Standalone web and mobile applications officially shut down on April 26, 2026.
+DESCRIPTION: Sora was OpenAI's flagship text-to-video foundation model. Due to massive computational costs and OpenAI's strategic realignment towards agentic robotics and general world simulation, the standalone Sora platform was officially shut down on April 26, 2026. API access remains active for legacy developers until September 2026.
+REVIEW_POSITIVE_1: Hollywood: Sora was a wonderful research milestone. It proved text-to-video consistency was possible.
+REVIEW_POSITIVE_2: Wired: A legendary visual pioneer that inspired an entire wave of competitive video generators.
+REVIEW_NEGATIVE_1: TechRadar: High compute costs made consumer deployment unsustainable, leading to its sudden discontinuation.
 ==================================================
 ID: 53
 NAME: Google Veo
@@ -795,19 +795,19 @@ REVIEW_POSITIVE_2: Google User: Outstanding understanding of lighting, weather p
 REVIEW_NEGATIVE_1: Hacker News: Gated inside the Google ecosystem; developer integrations are restricted.
 ==================================================
 ID: 54
-NAME: Runway Gen-3 Alpha
+NAME: Runway Gen-4.5
 CATEGORY: Video Gen
 BUDGET: 15
 FREE_TIER: Yes
 LATENCY: High
 TEAM_SIZE: Any
 URL: https://runwayml.com
-SCORE: 94
-COSTS: Free credits on sign-up. Basic plan is $15/month. Unlimited plan is $95/month.
-DESCRIPTION: Runway Gen-3 Alpha is a powerful AI video generation system that offers state-of-the-art temporal consistency, character persistence, and motion fidelity. Deeply integrated with advanced director controls like camera motion curves and regional motion brush editing, it is highly popular for professional VFX suites.
-REVIEW_POSITIVE_1: VFX Lead: The motion brush is spectacular. I can isolate a specific river in my scene and make it flow.
-REVIEW_POSITIVE_2: G2: Replaced expensive studio setup shots. Generating complex B-roll takes minutes instead of days.
-REVIEW_NEGATIVE_1: Reddit: Credits deplete extremely fast. Iterating on a 10-second shot can cost $20-30 in credits.
+SCORE: 95
+COSTS: Free basic credits. Standard is $15/month. Unlimited plan is $95/month.
+DESCRIPTION: Runway Gen-4.5 is a professional-grade video generation system offering unparalleled temporal realism and camera controls. It includes advanced tools such as Runway Characters for audio-driven, real-time avatar animation and Aleph 2.0 for frame-based editing inside Edit Studio, setting the standard for VFX suites.
+REVIEW_POSITIVE_1: VFX Lead: Gen-4.5's camera motion curves are incredibly smooth. Character persistence across complex cuts is unmatched.
+REVIEW_POSITIVE_2: G2: The new Runway Characters and Aleph 2.0 integrations have completely transformed our post-production pipeline.
+REVIEW_NEGATIVE_1: Reddit: The rendering pipeline is computationally heavy, and unlimited plans still experience queue delays during peak hours.
 ==================================================
 ID: 55
 NAME: Kling AI
@@ -1035,19 +1035,19 @@ REVIEW_POSITIVE_2: Audible Reader: Converted our entire catalog of historical bo
 REVIEW_NEGATIVE_1: Wired: The ease of voice cloning creates significant deepfake safety concerns if left unchecked.
 ==================================================
 ID: 70
-NAME: Suno v4
+NAME: Suno v5.5
 CATEGORY: Audio/Voice
 BUDGET: 8
 FREE_TIER: Yes
 LATENCY: Medium
 TEAM_SIZE: Any
 URL: https://suno.com
-SCORE: 96
-COSTS: Free basic limits. Pro plan is $8/month. Premier plan is $24/month.
-DESCRIPTION: Suno v4 is the leading AI music generation platform. It converts simple text descriptions into complete, radio-ready songs including custom vocals, instrumental tracks, and high-fidelity production arrangements. Suno v4 introduces a Covers mode for reinterpreting existing melodies.
-REVIEW_POSITIVE_1: Billboard: Suno has democratized music. The songwriting and vocal mixing are studio quality.
-REVIEW_POSITIVE_2: Indie Dev: Swapped expensive licensing loops for Suno. Designed our entire custom game soundtrack in a weekend.
-REVIEW_NEGATIVE_1: Reddit: The vocal generation can occasionally carry a slightly compressed, digital texture.
+SCORE: 97
+COSTS: Free basic tier. Pro plan is $8/month. Premier plan is $24/month.
+DESCRIPTION: Suno v5.5 represents a massive leap in creative music generation (released March 26, 2026). It introduces custom model training on personal music catalogs, isolated stem exports (vocals, bass, drums), MIDI outputs, and voice identity capture to record and use your own vocal timbre.
+REVIEW_POSITIVE_1: Billboard: Suno v5.5's isolated stem exports and MIDI data allow seamless integration into professional DAWs.
+REVIEW_POSITIVE_2: Producer: The custom voice capture is mind-blowing. Being able to sing my own song through the AI generator is incredible.
+REVIEW_NEGATIVE_1: Reddit: Custom model training on personal sound catalogs can take several hours to compile.
 ==================================================
 ID: 71
 NAME: Udio
@@ -1807,27 +1807,27 @@ FREE_TIER: Yes
 LATENCY: Low
 TEAM_SIZE: Any
 URL: https://zapier.com
-SCORE: 95
-COSTS: Free basic limits. Professional starts at $20/month. Central agents use custom task credits.
-DESCRIPTION: Zapier is the global standard for no-code app integration, connecting 7,000+ platforms. Zapier Central introduces natural-language AI bots that monitor data shifts, write drafts, triage files, and execute Zaps automatically in conversational workflows.
-REVIEW_POSITIVE_1: G2: Central is amazing. I explained an automation scenario in plain English and it built the pipeline.
-REVIEW_POSITIVE_2: Sales Ops: Connecting CRM, email, and slack in 10 minutes without developer tickets is brilliant.
-REVIEW_NEGATIVE_1: Hacker News: Complex branching scenarios get expensive quickly due to step-count pricing rules.
+SCORE: 96
+COSTS: Free basic limits. Professional starts at $20/month. Central agents utilize AI Guardrails and custom credits.
+DESCRIPTION: Zapier Central is an autonomous AI assistant builder integrated with 9,000+ app connectors. It features advanced AI Guardrails to detect and redact PII, prompt injection prevention, a templates hub, and Zapier MCP support allowing external models to take secure actions on your calendar and calendar data.
+REVIEW_POSITIVE_1: G2: Zapier Central's PII redaction and security guardrails make AI automation extremely safe for enterprise client data.
+REVIEW_POSITIVE_2: Tech Lead: The new templates hub and Zapier MCP server integration are outstanding. I can build safe multi-app agents in minutes.
+REVIEW_NEGATIVE_1: Hacker News: While basic agents are simple, handling highly nested, multi-model branching processes can consume credits quickly.
 ==================================================
 ID: 122
-NAME: n8n
+NAME: n8n AI agent builder
 CATEGORY: Automation
 BUDGET: 0
 FREE_TIER: Yes
 LATENCY: Medium
 TEAM_SIZE: Any
 URL: https://n8n.io
-SCORE: 95
-COSTS: 100% Free self-hosted version. Cloud hosted plans start at $20/month.
-DESCRIPTION: n8n is an open-source visual workflow automation tool highly favored by developers. By offering full self-hosting, it guarantees complete data sovereignty. n8n features dedicated nodes to chain LLMs, vector store integrations, custom Python/JS code, and complex APIs.
-REVIEW_POSITIVE_1: DevOps: Self-hosting on our servers means zero per-run fees and complete data security. Amazing.
-REVIEW_POSITIVE_2: AI Engineer: The dedicated AI agent nodes make chaining vector memory and tools visual and simple.
-REVIEW_NEGATIVE_1: Reddit: Self-hosting requires developer experience to manage server scale and database updates.
+SCORE: 96
+COSTS: 100% Free self-hosted community version (v2.21+ stable). Cloud plans start at $20/month.
+DESCRIPTION: n8n is a visual, open-weights orchestration builder optimized for AI agents. Featuring the `@n8n/agents` SDK, persistent memory, and native MCP support, it allows engineering teams to construct deterministic, production-grade agents with concurrent editing protection and human-in-the-loop manual review gates.
+REVIEW_POSITIVE_1: DevOps: n8n's self-hosting guarantees total data sovereignty. Building agent pipelines using community stable v2.21+ is extremely robust.
+REVIEW_POSITIVE_2: AI Engineer: The `@n8n/agents` SDK and visual MCP tool connections allow us to deploy complex, memory-persistent agents in days.
+REVIEW_NEGATIVE_1: Reddit: Implementing complex self-hosted agent clusters requires deep Docker configuration and database load scaling.
 ==================================================
 ID: 123
 NAME: Lindy AI
@@ -1845,19 +1845,19 @@ REVIEW_POSITIVE_2: G2: Very easy to build custom agents. The visual interface is
 REVIEW_NEGATIVE_1: Medium: Debugging complex loops when an agent takes wrong actions can feel highly opaque.
 ==================================================
 ID: 124
-NAME: CrewAI
+NAME: CrewAI v1.14+
 CATEGORY: Automation
 BUDGET: 29
 FREE_TIER: Yes
 LATENCY: Medium
 TEAM_SIZE: Small
 URL: https://crewai.com
-SCORE: 94
-COSTS: Free open-source SDK. CrewAI Cloud monitoring starts at $29/month.
-DESCRIPTION: CrewAI is a powerful framework for orchestrating collaborative groups of specialized AI agents. It allows developers to define agents with unique roles, goals, and tools, letting them collaborate (e.g. researcher, writer, proofreader) to resolve complex, long-horizon pipelines.
-REVIEW_POSITIVE_1: AI Builder: The role-based collaborative agents produce output far superior to a single prompt loop.
-REVIEW_POSITIVE_2: Github: Outstanding framework. Chaining agent handoffs using the Python SDK is elegant and robust.
-REVIEW_NEGATIVE_1: Reddit: Setting up tool permissions and preventing endless agent loops requires python expertise.
+SCORE: 95
+COSTS: Free open-source SDK via crewai-cli. Enterprise Control Plane and Cloud monitoring start at $29/month.
+DESCRIPTION: CrewAI v1.14+ is an enterprise-grade agent orchestration framework. It features standalone scaffolding via `crewai-cli`, persistent Sqlite CheckpointConfig pipelines to survive system crashes, A2A agent protocols, and an Enterprise Control Plane with observability dashboards.
+REVIEW_POSITIVE_1: Architect: The persistent Sqlite CheckpointConfig lets our multi-agent Crews resume long-running flows instantly after server hiccups.
+REVIEW_POSITIVE_2: Github: Using crewai-cli makes scaffolding and project version control clean. Collaborative role handoffs are super robust.
+REVIEW_NEGATIVE_1: Reddit: Fine-tuning token efficiency and managing concurrent async agent tool calls still requires deep Python expertise.
 ==================================================
 ID: 125
 NAME: Voiceflow
@@ -2115,19 +2115,19 @@ REVIEW_POSITIVE_2: Reddit: Totally free, and the automatic recommendations for n
 REVIEW_NEGATIVE_1: G2: Visual maps can get extremely dense and heavy when building collections of over 200 papers.
 ==================================================
 ID: 142
-NAME: Perplexity Pro
+NAME: Perplexity Pro (Computer Agent)
 CATEGORY: Research
 BUDGET: 20
 FREE_TIER: Yes
 LATENCY: Low
 TEAM_SIZE: Any
 URL: https://perplexity.ai
-SCORE: 96
-COSTS: Free basic searches. Pro plan is $20/month for unlimited advanced reasoning models.
-DESCRIPTION: Perplexity is the leading conversational AI search engine. It bypasses traditional blue-link search boxes, directly scanning web databases, extracting accurate data, and outputting cited summaries. Perplexity Pro offers access to advanced reasoning models (like Claude Opus) and file analysis.
-REVIEW_POSITIVE_1: Wired: Perplexity has completely replaced Google for my daily research. The citations are solid.
-REVIEW_POSITIVE_2: G2: The capability to upload a spreadsheet and ask the search engine to cross-reference data is stellar.
-REVIEW_NEGATIVE_1: Reddit: During major breaking news, it can occasionally summarize inaccurate initial reports.
+SCORE: 97
+COSTS: Free basic searches. Pro plan is $20/month for GPT-5.5 default orchestration and Perplexity Computer.
+DESCRIPTION: Perplexity Pro is a cited conversational search engine powered by GPT-5.5. It includes Perplexity Computer, an agentic cloud workspace that builds and publishes custom websites (to pplx.app URLs), snaps to shop visual lookups, in-app checkout, and shared Space "Skills" to automate reports.
+REVIEW_POSITIVE_1: Wired: The Perplexity Computer agent built and deployed a custom data dashboard for my report in seconds. Solid citations.
+REVIEW_POSITIVE_2: G2: Having GPT-5.5 as the default research orchestrator makes deep, multi-step academic searches unbelievably thorough and fast.
+REVIEW_NEGATIVE_1: Reddit: The agentic shopping feature works smoothly in the US but is currently restricted for international shipping queries.
 ==================================================
 ID: 143
 NAME: ChatPDF
@@ -2280,19 +2280,19 @@ REVIEW_POSITIVE_2: G2: Excellent tool for organizing bibliography records and dr
 REVIEW_NEGATIVE_1: Reddit: The page loading speed can slightly drag when compiling large bibliography indices.
 ==================================================
 ID: 153
-NAME: Notion AI
+NAME: Notion AI (v3.5 Developers)
 CATEGORY: Productivity
 BUDGET: 10
 FREE_TIER: Yes
 LATENCY: Low
 TEAM_SIZE: Any
 URL: https://notion.so
-SCORE: 95
-COSTS: Requires Notion subscription + $10/user/month AI add-on.
-DESCRIPTION: Notion AI is a deeply integrated workspace companion. Notion AI reads your entire wiki database, notes, and task tables to answer questions, summarize long meeting transcripts, write blog posts, convert tabular data, and update task statuses autonomously.
-REVIEW_POSITIVE_1: G2: Swapped regular notes for Notion AI. Finding specific meeting details across our wiki is a breeze.
-REVIEW_POSITIVE_2: TechCrunch: The Q&A feature is spectacular. It queries our complete company wiki instantly.
-REVIEW_NEGATIVE_1: Reddit: The generative writing suggestions can feel slightly robotic without manual styling changes.
+SCORE: 96
+COSTS: Requires Notion subscription + $10/user/month AI add-on. Includes API Connectors.
+DESCRIPTION: Notion AI is an agent-based workspace powered by the v3.5 Developer platform. It features Plan Mode (Plan -> Approve -> Execute workflows), Database Agents, Notion Workers to run custom sync scripts, personal access tokens (PATs), and Slack/Drive connectors.
+REVIEW_POSITIVE_1: G2: Notion's new Plan Mode is outstanding. I can preview bulk database modifications before the agent executes them.
+REVIEW_POSITIVE_2: Developer: The Notion Workers runtime and Markdown API make it extremely easy to build custom agent tools and sync code.
+REVIEW_NEGATIVE_1: Reddit: Setting up workspace-scoped OAuth and managing Slack connector permissions requires explicit admin configurations.
 ==================================================
 ID: 154
 NAME: Coda AI
@@ -2685,19 +2685,19 @@ REVIEW_POSITIVE_2: Product Hunt: Replaced dry PowerPoint briefs. Gamma compiles 
 REVIEW_NEGATIVE_1: Reddit: Exporting slides to PPT format can occasionally shift specialized layout elements.
 ==================================================
 ID: 180
-NAME: Tome
+NAME: Tome (Discontinued)
 CATEGORY: Design
-BUDGET: 8
-FREE_TIER: Yes
+BUDGET: 0
+FREE_TIER: No
 LATENCY: Low
 TEAM_SIZE: Solo
 URL: https://tome.app
-SCORE: 91
-COSTS: Free basic limits. Pro plan is $8/month.
-DESCRIPTION: Tome is an AI-powered visual storytelling platform. Tome builds interactive presentation decks, product plans, and portfolio blocks, incorporating generative visual assets and natural language layout refactoring in a sleek minimalist dashboard.
-REVIEW_POSITIVE_1: Creator: Tone is outstanding. Visual layouts feel highly modern and dynamic. Perfect for pitch decks.
-REVIEW_POSITIVE_2: G2: love the minimalist interface. It allows us to compile structured slideshows quickly.
-REVIEW_NEGATIVE_1: Reddit: Visual components library is small compared to mature slide managers like Canva.
+SCORE: 50
+COSTS: Discontinued. The original AI presentation storytelling tool was officially sunsetted on April 30, 2025.
+DESCRIPTION: Tome was an AI-powered visual storytelling platform that generated presentation slides, layouts, and pitch decks. Effective April 30, 2025, Tome officially sunsetted its presentation product to pivot its focus to automated enterprise sales and marketing operations. Original presentation features are no longer active.
+REVIEW_POSITIVE_1: Creator: Tome was a wonderful pitch deck builder while it lasted. The tile layouts were highly minimalist and modern.
+REVIEW_POSITIVE_2: G2: A pioneering presentation tool that set the initial standard for narrative-first slides generation.
+REVIEW_NEGATIVE_1: Designer: The shutdown resulted in all slideshow data being deleted, requiring users to migrate to alternative tools like Gamma.
 ==================================================
 ID: 181
 NAME: Designs.ai
@@ -2760,19 +2760,19 @@ REVIEW_POSITIVE_2: G2: Simple browser drag-and-drop tool that handles bulk folde
 REVIEW_NEGATIVE_1: Hacker News: API pricing can be relatively expensive when auditing tens of thousands of assets.
 ==================================================
 ID: 185
-NAME: Julius AI
+NAME: Julius 1.2 Ultra
 CATEGORY: Data/Analytics
 BUDGET: 20
 FREE_TIER: Yes
 LATENCY: Low
 TEAM_SIZE: Solo
 URL: https://julius.ai
-SCORE: 96
+SCORE: 97
 COSTS: Free basic limits. Premium plan starts at $20/month. Professional is $45/month.
-DESCRIPTION: Julius AI is a advanced conversational data scientist companion. It connects to spreadsheets (Excel, Google Sheets) and SQL databases, writes custom Python script blocks under the hood, clean datasets, creates complex graphs (regression models, scatter plots), and summaries metrics.
-REVIEW_POSITIVE_1: Data Analyst: Julius is incredible. It cleans raw spreadsheet rows and builds regression plots instantly.
-REVIEW_POSITIVE_2: G2: love the Python output window. Seeing the actual code Julius runs makes the results transparent.
-REVIEW_NEGATIVE_1: Reddit: Advanced statistical queries can occasionally require manual coordinate overrides in plots.
+DESCRIPTION: Julius 1.2 Ultra is an advanced conversational data workspace powered by GPT-5.5. It features reasoning level selection, prompt intent suggestions for Postgres/MySQL connectors, in-app slides and visual reports generation, Python code executors, and sub-agents that adapt to database structures.
+REVIEW_POSITIVE_1: Analyst: Julius 1.2 Ultra's reasoning level selection is spectacular. It builds highly detailed SQL queries and statistical slides.
+REVIEW_POSITIVE_2: G2: The prompt intent Postgres connector makes live database analysis a breeze. The Python output window remains unmatched.
+REVIEW_NEGATIVE_1: Reddit: Generating large slide decks directly from massive datasets can sometimes take several minutes to compile.
 ==================================================
 ID: 186
 NAME: Polymer Search

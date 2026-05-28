@@ -46,9 +46,9 @@ graph TD
 * **`/index.html`** — The compiled monolithic single-page application. This is the production asset for users and deployment.
 * **`/index.css`** — The global stylesheet housing variables, linear card gradients, custom neon category color definitions, sliders, and responsive layout queries.
 * **`/app.js`** — The raw segregated clientside script implementing the constraint matching, scoring algorithms, details modals, and explorer card grid routines.
-* **`/tools_db.txt`** — The plain-text database containing all 200 real, verified AI tools (updated with versions like GPT-5.5, Claude Sonnet 4.6, Claude Opus 4.7, Gemini 3.5 Flash, Gemini 3.1 Pro valid as of **May 20, 2026**) with scores, prices, descriptions, and exactly three reviews (two positive, one negative) each.
+* **`/tools_db.txt`** — The plain-text database containing all 200 real, verified AI tools (updated with versions like GPT-5.5, Claude Sonnet 4.6, Claude Opus 4.7, Gemini 3.5 Flash, Gemini 3.1 Pro, Midjourney v8.1, Suno v5.5, FLUX.2, Llama 4 Maverick, Runway Gen-4.5, Perplexity Pro, Zapier Central, n8n, CrewAI, Notion AI, Julius 1.2 Ultra, and the discontinuations of Sora and Tome valid as of **May 28, 2026**) with scores, prices, descriptions, and exactly three reviews (two positive, one negative) each.
 * **`/package.json`** — Standard npm metadata providing local developer serving scripts.
-* **`/.system_generated/scratch/compile_html.py`** — The Python compiler pipeline that parses `tools_db.txt`, wraps scripts, embeds CSS, and compiles the production `index.html`.
+* **`/compile_html.py`** — The Python compiler pipeline that parses `tools_db.txt` and compiles the production `index.html` asset.
 
 ---
 
@@ -108,4 +108,4 @@ python3 compile_html.py
 * **Expertise:** Gen AI · SLMs/LLMs · AI Agents · RAG · Quantum Computing · Blockchain · Web3 · Cybersecurity · Python · Golang · Rust · Mojo
 * **Consulting:** [📅 Book a 1-on-1 Consult](https://topmate.io/thomascherickal)
 * **Products:** [🛒 Digital Products Store](https://thomascherickal.gumroad.com)
-* **Exclusive Content:** [🎗 Patreon Page](https://www.patreon.com/c/thomascherickal)
+* **Exclusive Content:** [🎗 Patreon Page](https://www.patreon.com/thomascherickal)
