@@ -92,13 +92,13 @@ function scoreTool(t, C) {
   // Hard filter: free-only
   if (freeOnly && !t.freeTier) return null;
 
-  // Budget
-  if (t.budget > budget) {
+  // Budget ($200 slider position represents $200+/mo uncapped)
+  if (budget < 200 && t.budget > budget) {
     if (!t.freeTier) return null;
     s -= 5; // Free tier bail-out penalty if it's over absolute budget but has free tier
   } else {
     const diff = budget - t.budget;
-    s += diff === 0 ? 30 : diff <= 20 ? 25 : 18;
+    s += diff === 0 ? 30 : (diff > 0 && diff <= 20) ? 25 : 18;
   }
 
   // Latency (25 pts)
@@ -372,7 +372,7 @@ window.toggleRevs = function(btn) {
 };
 
 /* ══════════════════════════════════════════════════════════════════
-   EXPLORER GRID (ALL 200 TOOLS)
+   EXPLORER GRID (ALL 300 TOOLS)
    ══════════════════════════════════════════════════════════════════ */
 function renderGrid(cat = 'All') {
   const list = cat === 'All' ? TOOLS : TOOLS.filter(t => t.category === cat);

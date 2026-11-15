@@ -1,7 +1,7 @@
 {
   "name": "top-10-ai-tools-finder",
-  "version": "1.0.0",
-  "description": "An interactive glassmorphic utility matching and rating 200 real AI tools across 12 categories, backed by a plain-text database.",
+  "version": "1.1.0",
+  "description": "An interactive glassmorphic utility matching and rating 300 real AI tools across 12 categories, backed by a plain-text database (Updated November 2026).",
   "main": "app.js",
   "scripts": {
     "dev": "npx -y http-server . -p 8080"

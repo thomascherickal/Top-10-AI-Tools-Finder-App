@@ -1,6 +1,6 @@
 # AI Tool Finder 2026 — The Digital Futurist
 
-A premium, highly interactive, cyber-punk themed search and discovery directory indexing **exactly 200 real, verified real-world AI tools** across 12 distinct categories. Built with modern clientside scoring algorithms, a robust, accessible HTML5 `<dialog>` details popup, dynamic neon category color coding, and a high-fidelity filter visual sync system.
+A premium, highly interactive, cyber-punk themed search and discovery directory indexing **exactly 300 real, verified real-world AI tools** across 12 distinct categories (25 tools per category). Built with modern clientside scoring algorithms, a robust, accessible HTML5 `<dialog>` details popup, dynamic neon category color coding, and a high-fidelity filter visual sync system.
 
 This application is fully responsive and completely self-contained within a monolithic production asset, allowing it to execute offline directly under standard browser `file://` protocols with **zero external server dependencies, CORS restrictions, or Node runtime requirements**.
 
@@ -9,7 +9,7 @@ This application is fully responsive and completely self-contained within a mono
 ## 🚀 Key Features
 
 * **Multi-Constraint Intelligent Scoring Engine**
-  * Evaluates and ranks all 200 tools dynamically in real-time according to user-selected monthly budgets (via neon range slider), latency requirements, team sizes, and specific category checkboxes.
+  * Evaluates and ranks all 300 tools dynamically in real-time according to user-selected monthly budgets (via neon range slider), latency requirements, team sizes, and specific category checkboxes.
   * Performs weighted keyword search queries across tool names, feature descriptions, pricing structures, and raw user reviews to surface the **Top 10 Best Matches** with calculated percentage scores.
 * **Flawless Filter Selection UX**
   * Built using native clientside checkbox `change` event listeners that visual-sync instantly with active CSS status classes.
@@ -46,7 +46,7 @@ graph TD
 * **`/index.html`** — The compiled monolithic single-page application. This is the production asset for users and deployment.
 * **`/index.css`** — The global stylesheet housing variables, linear card gradients, custom neon category color definitions, sliders, and responsive layout queries.
 * **`/app.js`** — The raw segregated clientside script implementing the constraint matching, scoring algorithms, details modals, and explorer card grid routines.
-* **`/tools_db.txt`** — The plain-text database containing all 200 real, verified AI tools (updated with versions like GPT-5.5, Claude Sonnet 4.6, Claude Opus 4.7, Gemini 3.5 Flash, Gemini 3.1 Pro, Midjourney v8.1, Suno v5.5, FLUX.2, Llama 4 Maverick, Runway Gen-4.5, Perplexity Pro, Zapier Central, n8n, CrewAI, Notion AI, Julius 1.2 Ultra, and the discontinuations of Sora and Tome valid as of **May 28, 2026**) with scores, prices, descriptions, and exactly three reviews (two positive, one negative) each.
+* **`/tools_db.txt`** — The plain-text database containing all 300 real, verified AI tools across 12 categories (updated for **November 2026** with GPT-6 Astra / 6.1, Claude Fable 5.2 / Sonnet 5.5, Gemini 4 Carbon / Hydrogen, Grok 4.7, Mistral Large 4, DeepSeek V4, Qwen 3.8, Kimi, GLM-5, Google Antigravity, OpenAI Codex CLI, AWS Kiro, Devin Desktop, Lovable, Bolt.new, v0.dev, Midjourney v8.2, FLUX.3, Recraft V4, Ideogram 4.0, Google Veo 3.1, Kling 3.0/4.0, Seedance 2.5, Wan 3.0, ElevenLabs v3, Suno v6, Cartesia, Hume AI, Manus AI, Genspark, Perplexity Comet, Dia Browser, Databricks Genie, Snowflake Cortex, Langfuse, and documented discontinuations/acquisitions including Sora, Tome, Phind, Supermaven, Galileo AI -> Google Stitch, and MonkeyLearn) with scores, prices, descriptions, and exactly three reviews (two positive, one negative) each.
 * **`/package.json`** — Standard npm metadata providing local developer serving scripts.
 * **`/compile_html.py`** — The Python compiler pipeline that parses `tools_db.txt` and compiles the production `index.html` asset.
 

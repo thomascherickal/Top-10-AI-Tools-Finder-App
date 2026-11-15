@@ -15,7 +15,7 @@ Most online AI directories suffer from critical structural and ethical limitatio
 ---
 
 ## ⚡ The Solution: AI Tool Finder 2026
-The **AI Tool Finder 2026** is a visually stunning, high-performance, dark-theme glassmorphic single-page application that ranks and scores **exactly 200 real, verified AI tools** across 12 distinct categories with 100% transparency. 
+The **AI Tool Finder 2026** is a visually stunning, high-performance, dark-theme glassmorphic single-page application that ranks and scores **exactly 300 real, verified AI tools** across 12 distinct categories with 100% transparency. 
 
 It is completely self-contained within a monolithic production asset (`index.html`), allowing it to execute offline directly under standard browser `file://` protocols with **zero external server dependencies or CORS restrictions**.
 
@@ -32,18 +32,17 @@ At the heart of the application is a multi-constraint search and ranking engine 
 * **Smart Keyword Matcher:** Scans the search bar query against tool names, descriptions, categories, pricing, and all user reviews using custom regular expression matching, awarding up to `+30` bonus points.
 * **Strict Category & Free-Tier Flags:** Category checkbox pills allow granular directory restriction, while checking "Free Tier Only" filters out paid-only systems instantly.
 
-### 2. Fully Audited 200 AI Database
-Our plain-text database (`tools_db.txt`) houses exactly 200 verified, active systems (fully updated as of **May 28, 2026**). It eliminates obsolete systems and features accurate specifications for frontier platforms:
-* **OpenAI ChatGPT & Perplexity:** Outlined using latest **GPT-5.5** reasoning and orchestration models, pricing, and consumer caps, including **Perplexity Pro (Computer Agent)** cloud workspace and shared Spaces "Skills".
-* **Anthropic Claude:** Updated with **Claude Sonnet 4.6** and the flagship **Claude Opus 4.7** reasoning model, with updated API rates and consumer subscription details.
-* **Google Gemini:** Integrated the newly launched **Gemini 3.5 Flash** (May 19, 2026) and high-context **Gemini 3.1 Pro** systems.
-* **Midjourney & FLUX.2:** Features **Midjourney v8.1** (released April 30, 2026 with 4-5x speed and Personalization Profiles) and Black Forest Labs' **FLUX.2 [Pro]** (32B parameter latent flow matching transformer with multi-image character consistency).
-* **Suno v5.5 & Runway Gen-4.5:** Includes **Suno v5.5** (custom catalog music training, stem/MIDI exports, and voice capture) and **Runway Gen-4.5** (Runway Characters real-time avatar animation and camera motion curves).
-* **Llama 4 Maverick:** Integrated Meta's flagship **Llama 4 Maverick (400B)** open-source Mixture-of-Experts (MoE) model featuring a 1-million-token context window.
-* **The Discontinuations (Sora & Tome):** Documented the formal shutdown of OpenAI's standalone Sora video generator on April 26, 2026, and the sunsetting of the original Tome presentation storytelling builder on April 30, 2025 (pivoting to automated sales).
-* **Advanced Automation & Productivity:** Updated **Zapier Central** (with AI Guardrails for PII redaction and templates hub), **n8n AI agent builder** (v2.21+ stable visual MCP agent builder and `@n8n/agents` TypeScript SDK), **CrewAI v1.14+** (crewai-cli scaffolding and persistent Sqlite workflows), and **Notion AI (v3.5 Developers)** (Plan Mode "Plan -> Approve -> Execute" and Database Agents).
-* **Julius 1.2 Ultra:** Upgraded to **Julius 1.2 Ultra** (released May 12, 2026) featuring reasoning level selection, prompt intent Postgres connectors, and visual slide report builders.
-* **Authentic Reviews:** Every single tool entry includes exactly **three user reviews** (two positive, one negative) sourced from G2, Reddit, and expert audits to deliver unbiased, transparent feedback.
+### 2. Fully Audited 300 AI Database
+Our plain-text database (`tools_db.txt`) houses exactly 300 verified systems (25 per category, fully updated as of **November 15, 2026**). It flags discontinued/acquired tools and features accurate specifications for frontier platforms:
+* **OpenAI ChatGPT & Codex:** Updated with **GPT-6 Astra**, **GPT-6.1 Sol/Terra**, **ChatGPT Images 2.6**, **OpenAI Codex CLI**, and current Go ($8) / Plus ($20) / Pro ($100-$500) tiers, plus **Perplexity Pro & Comet Browser**.
+* **Anthropic Claude:** Updated with **Claude Fable 5.2** (Nov 9, 2026), **Claude Sonnet 5.5**, **Opus 5.5**, and **Claude Code** with current Pro/Max/Ultra & API rates.
+* **Google Gemini 4 & Ecosystem:** Integrated **Gemini 4 Carbon**, **Gemini 4 Hydrogen** (Nov 12, 2026), **Google Antigravity (AGY)**, **Google Stitch** (successor to Galileo AI), **Google Imagen 4 / Nano Banana**, and **Google Veo 3.1**.
+* **Image & Video Generation:** Features **Midjourney v8.2**, **FLUX.3 [Max/Pro]**, **Ideogram 4.0**, **Recraft V4**, **Seedream**, **Krea AI**, **Magnific AI**, **ComfyUI**, **Kling AI 3.0/4.0**, **Seedance 2.5**, **Wan 3.0**, **Higgsfield AI**, and **Runway Gen-4.5**.
+* **Audio, Voice & Music:** Includes **ElevenLabs v3 (Scribe v2 & ElevenMusic)**, **Suno v6**, **Cartesia (Sonic)**, **Hume AI (EVI)**, **MiniMax Audio**, **Sesame**, **Deepgram Nova-3**, and **AssemblyAI**.
+* **Coding & Vibe Coding:** Added **Google Antigravity**, **OpenAI Codex CLI**, **AWS Kiro**, **Devin Desktop** (formerly Windsurf), **OpenHands** (formerly OpenDevin), **Lovable**, **Bolt.new**, **v0.dev**, **Roo Code**, and **Aider**.
+* **Discontinuations & Acquisitions:** Documented the shutdown of **Sora** (app Apr 2026, API Sep 24, 2026), **Phind** (Jan 16, 2026), **Supermaven** (merged into Cursor Tab), **Galileo AI** (acquired by Google -> Stitch), **Tome**, **MonkeyLearn**, and **MultiOn** (pivoted to AGI, Inc.).
+* **Agents, GEO, Productivity & Data:** Added **Manus AI**, **Genspark**, **Fellou AI**, **Dify**, **LangGraph**, **Temporal**, **Trigger.dev**, **Inngest**, **Salesforce Agentforce**, **Intercom Fin**, **AthenaHQ**, **Profound AI**, **Peec AI**, **AirOps**, **Clay**, **HubSpot Breeze**, **Wispr Flow**, **Superhuman Mail**, **Linear AI**, **Dia Browser**, **Databricks Genie**, **Snowflake Cortex**, **MotherDuck**, **Langfuse**, **LangSmith**, and **Weights & Biases**.
+* **Authentic Reviews:** Every single tool entry includes **three user reviews** (two positive, one negative) sourced from G2, Reddit, Hacker News, and technical reviews to deliver unbiased, transparent feedback.
 
 ### 3. Modern Cyberpunk Neon Aesthetics
 To provide a state-of-the-art developer-friendly interface, we styled the app with high-impact vanilla CSS tokens:
