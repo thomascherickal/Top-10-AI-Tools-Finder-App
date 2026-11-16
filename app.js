@@ -119,16 +119,21 @@ function scoreTool(t, C) {
   // Keyword (up to 30 pts)
   if (kw && kw.length > 1) {
     const k = kw.toLowerCase();
-    const hay = [
-      t.name, 
-      t.desc, 
-      t.category, 
-      t.costs,
-      t.reviews.map(r => r.text).join(' ')
-    ].join(' ').toLowerCase();
-    
-    // Simple count of hits
-    const hits = (hay.match(new RegExp(k.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'), 'g')) || []).length;
+    if (!t._hay) {
+      t._hay = [
+        t.name,
+        t.desc,
+        t.category,
+        t.costs,
+        t.reviews.map(r => r.text).join(' ')
+      ].join(' ').toLowerCase();
+    }
+    let hits = 0, pos = 0;
+    while ((pos = t._hay.indexOf(k, pos)) !== -1) {
+      hits++;
+      pos += k.length;
+      if (hits >= 4) break;
+    }
     s += hits === 0 ? -20 : Math.min(hits * 8, 30);
   }
 
@@ -148,6 +153,13 @@ function scoreTool(t, C) {
 /* ══════════════════════════════════════════════════════════════════
    UI HELPERS & RETRIEVERS
    ══════════════════════════════════════════════════════════════════ */
+function formatDescHTML(desc) {
+  if (!desc) return '';
+  const parts = desc.split('•').map(s => s.trim()).filter(Boolean);
+  if (parts.length <= 1) return desc;
+  return `<ul class="desc-bullets">${parts.map(p => `<li>${p}</li>`).join('')}</ul>`;
+}
+
 function getRadio(id) {
   for (const b of document.querySelectorAll(`#${id} .rbtn`)) {
     if (b.classList.contains('act')) return b.dataset.v;
@@ -156,16 +168,20 @@ function getRadio(id) {
 }
 
 function getCats() {
+  const all = document.querySelectorAll('#cat-g input');
   const a = [];
-  document.querySelectorAll('#cat-g input:checked').forEach(cb => a.push(cb.value));
-  return a.length === 12 ? [] : a; // empty array means search all
+  all.forEach(cb => { if (cb.checked) a.push(cb.value); });
+  return a.length === all.length ? [] : a; // empty array means search all
 }
+
+let TOOLS_BY_ID = null;
 
 /* ══════════════════════════════════════════════════════════════════
    MODAL MANAGER
    ══════════════════════════════════════════════════════════════════ */
 function openToolModal(toolId) {
-  const tool = TOOLS.find(t => t.id === toolId);
+  if (!TOOLS_BY_ID) TOOLS_BY_ID = new Map(TOOLS.map(t => [t.id, t]));
+  const tool = TOOLS_BY_ID.get(toolId);
   if (!tool) return;
 
   const modal = document.getElementById('tool-modal');
@@ -179,7 +195,7 @@ function openToolModal(toolId) {
   `;
 
   // Description
-  modal.querySelector('.modal-desc').textContent = tool.desc;
+  modal.querySelector('.modal-desc').innerHTML = formatDescHTML(tool.desc);
 
   // Costs details section
   modal.querySelector('#modal-costs').textContent = tool.costs || 'No additional costs details provided.';
@@ -325,7 +341,7 @@ function renderResults(scored, C) {
             <span class="card-name">${t.name}</span>
             <span class="cat-pill">${t.category}</span>
           </div>
-          <div class="card-desc">${t.desc}</div>
+          <div class="card-desc">${formatDescHTML(t.desc)}</div>
           <div class="uc-row">${ucs}</div>
           <a class="card-link" href="${t.url}" target="_blank" rel="noopener" onclick="event.stopPropagation();">↗ ${t.url.replace('https://', '')}</a>
         </div>
@@ -372,35 +388,83 @@ window.toggleRevs = function(btn) {
 };
 
 /* ══════════════════════════════════════════════════════════════════
-   EXPLORER GRID (ALL 300 TOOLS)
+   EXPLORER GRID (ALL 1,000 TOOLS — GROUPED BY CATEGORY)
    ══════════════════════════════════════════════════════════════════ */
+const CATEGORY_CLASS_MAP = {
+  'LLM/Chat': 'cat-llm-chat',
+  'Coding': 'cat-coding',
+  'AI Agents': 'cat-ai-agents',
+  'Image Gen': 'cat-image-gen',
+  'Video Gen': 'cat-video-gen',
+  'Audio/Voice': 'cat-audio-voice',
+  'Writing': 'cat-writing',
+  'Knowledge & Docs': 'cat-knowledge-docs',
+  'Research': 'cat-research',
+  'Productivity': 'cat-productivity',
+  'Design': 'cat-design',
+  '3D & Spatial': 'cat-3d-spatial',
+  'Data/Analytics': 'cat-data-analytics',
+  'LLMOps & RAG': 'cat-llmops-rag',
+  'DevOps & Testing': 'cat-devops-testing',
+  'Automation': 'cat-automation',
+  'SEO/Marketing': 'cat-seo-marketing',
+  'Sales & Support': 'cat-sales-support',
+  'Security & Safety': 'cat-security-safety',
+  'Legal, Fin & Med': 'cat-legal-fin-med'
+};
+
+const CATEGORY_ORDER = Object.keys(CATEGORY_CLASS_MAP);
+let gridRenderToken = 0;
+
+function getCategoryClass(cat) {
+  return CATEGORY_CLASS_MAP[cat] || '';
+}
+
+function renderCardHTML(t) {
+  const bgt = t.budget === 0 ? 'Free' : `$${t.budget}/mo`;
+  const pos = t.reviews.filter(r => r.type === 'positive').length;
+  const neg = t.reviews.filter(r => r.type === 'negative').length;
+  return `<div class="mc ${getCategoryClass(t.category)}" data-id="${t.id}" title="Click to view full explanation, pricing and reviews"><div class="mc-name">${t.name}</div><div class="mc-cat">${t.category}</div><div class="mc-row"><span class="mc-bgt">${bgt}</span><span class="mc-lat"><span class="lat-dot ${t.latency}"></span>${t.latency}</span></div><div class="mc-rev">👍 ${pos} · 👎 ${neg} reviews</div></div>`;
+}
+
+function renderGroupHTML(catName, items) {
+  const cls = getCategoryClass(catName);
+  return `<section class="cat-group ${cls}"><div class="cat-group-hdr"><span class="cat-group-title">${catName}</span><span class="cat-group-count">${items.length} tools</span></div><div class="cat-group-grid">${items.map(renderCardHTML).join('')}</div></section>`;
+}
+
 function renderGrid(cat = 'All') {
-  const list = cat === 'All' ? TOOLS : TOOLS.filter(t => t.category === cat);
+  const token = ++gridRenderToken;
   const container = document.getElementById('tgrid');
-  
-  container.innerHTML = list.map(t => {
-    const bgt = t.budget === 0 ? 'Free' : `$${t.budget}/mo`;
-    const pos = t.reviews.filter(r => r.type === 'positive').length;
-    const neg = t.reviews.filter(r => r.type === 'negative').length;
-    return `
-      <div class="mc" data-id="${t.id}" title="Click to view full explanation, pricing and reviews">
-        <div class="mc-name">${t.name}</div>
-        <div class="mc-cat">${t.category}</div>
-        <div class="mc-row">
-          <span class="mc-bgt">${bgt}</span>
-          <span class="mc-lat"><span class="lat-dot ${t.latency}"></span>${t.latency}</span>
-        </div>
-        <div class="mc-rev">👍 ${pos} · 👎 ${neg} reviews</div>
-      </div>`;
-  }).join('');
-  
-  // Attach click listener to explorer grid items
-  container.querySelectorAll('.mc').forEach(el => {
-    el.addEventListener('click', () => {
-      const toolId = parseInt(el.getAttribute('data-id'), 10);
-      openToolModal(toolId);
-    });
-  });
+
+  if (cat !== 'All') {
+    const filtered = TOOLS.filter(t => t.category === cat);
+    container.innerHTML = renderGroupHTML(cat, filtered);
+    return;
+  }
+
+  const byCat = new Map();
+  for (const c of CATEGORY_ORDER) byCat.set(c, []);
+  for (const t of TOOLS) {
+    if (!byCat.has(t.category)) byCat.set(t.category, []);
+    byCat.get(t.category).push(t);
+  }
+  const groups = Array.from(byCat.entries()).filter(([, arr]) => arr.length > 0);
+
+  const INITIAL_GROUPS = 3;
+  container.innerHTML = groups.slice(0, INITIAL_GROUPS).map(([c, arr]) => renderGroupHTML(c, arr)).join('');
+  let idx = INITIAL_GROUPS;
+  const appendNextGroup = () => {
+    if (token !== gridRenderToken) return;
+    const end = Math.min(idx + 3, groups.length);
+    container.insertAdjacentHTML('beforeend', groups.slice(idx, end).map(([c, arr]) => renderGroupHTML(c, arr)).join(''));
+    idx = end;
+    if (idx < groups.length) {
+      requestAnimationFrame(appendNextGroup);
+    }
+  };
+  if (idx < groups.length) {
+    requestAnimationFrame(appendNextGroup);
+  }
 }
 
 /* ══════════════════════════════════════════════════════════════════
@@ -409,15 +473,26 @@ function renderGrid(cat = 'All') {
 document.addEventListener('DOMContentLoaded', async () => {
   // 1. Fetch & Parse database
   await loadDatabase();
-  
+  TOOLS_BY_ID = new Map(TOOLS.map(t => [t.id, t]));
+  const countByCat = new Map();
+  for (const t of TOOLS) {
+    countByCat.set(t.category, (countByCat.get(t.category) || 0) + 1);
+  }
+
   // 2. Initialize bottom explorer grid and update counters
-  const categoriesList = document.querySelectorAll('#all-cf .cf');
-  categoriesList.forEach(btn => {
+  document.querySelectorAll('#all-cf .cf').forEach(btn => {
     const c = btn.getAttribute('data-c');
-    const count = c === 'All' ? TOOLS.length : TOOLS.filter(t => t.category === c).length;
+    const count = c === 'All' ? TOOLS.length : (countByCat.get(c) || 0);
     btn.textContent = `${c === 'All' ? 'All' : c} (${count})`;
   });
-  
+
+  document.getElementById('tgrid').addEventListener('click', (e) => {
+    const card = e.target.closest('.mc');
+    if (!card) return;
+    const toolId = parseInt(card.getAttribute('data-id'), 10);
+    if (toolId) openToolModal(toolId);
+  });
+
   renderGrid('All');
   
   // 3. Event listeners for inputs

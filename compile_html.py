@@ -105,9 +105,9 @@ def compile_html(tools):
         print("Error: End marker appears before start marker in index.html")
         sys.exit(1)
         
-    print("Formatting database to JSON...")
-    # Format with custom indent for beautiful aesthetics
-    tools_json = json.dumps(tools, indent=2, ensure_ascii=False)
+    print("Formatting database to compact JSON...")
+    # Compact JSON minimizes HTML payload and JS parse time
+    tools_json = json.dumps(tools, separators=(',', ':'), ensure_ascii=False)
     
     # Reconstruct the HTML file
     new_html = html[:start_idx] + "const TOOLS = " + tools_json + ";\n\n" + html[end_idx:]

@@ -15,7 +15,7 @@ Most online AI directories suffer from critical structural and ethical limitatio
 ---
 
 ## ⚡ The Solution: AI Tool Finder 2026
-The **AI Tool Finder 2026** is a visually stunning, high-performance, dark-theme glassmorphic single-page application that ranks and scores **exactly 300 real, verified AI tools** across 12 distinct categories with 100% transparency. 
+The **AI Tool Finder 2026** is a visually stunning, high-performance, dark-theme glassmorphic single-page application that ranks and scores **exactly 1,000 active, latest-version AI tools** (including 80 LLMs) grouped across 20 distinct categories with 100% transparency. 
 
 It is completely self-contained within a monolithic production asset (`index.html`), allowing it to execute offline directly under standard browser `file://` protocols with **zero external server dependencies or CORS restrictions**.
 
@@ -32,8 +32,8 @@ At the heart of the application is a multi-constraint search and ranking engine 
 * **Smart Keyword Matcher:** Scans the search bar query against tool names, descriptions, categories, pricing, and all user reviews using custom regular expression matching, awarding up to `+30` bonus points.
 * **Strict Category & Free-Tier Flags:** Category checkbox pills allow granular directory restriction, while checking "Free Tier Only" filters out paid-only systems instantly.
 
-### 2. Fully Audited 300 AI Database
-Our plain-text database (`tools_db.txt`) houses exactly 300 verified systems (25 per category, fully updated as of **November 15, 2026**). It flags discontinued/acquired tools and features accurate specifications for frontier platforms:
+### 2. Fully Audited 1,000 AI Database
+Our plain-text database (`tools_db.txt`) houses exactly 1,000 active, latest-version systems (80 LLMs + 920 specialized tools across 15 more categories, fully updated as of **November 16, 2026**, with discontinued tools removed). It features accurate specifications for frontier platforms:
 * **OpenAI ChatGPT & Codex:** Updated with **GPT-6 Astra**, **GPT-6.1 Sol/Terra**, **ChatGPT Images 2.6**, **OpenAI Codex CLI**, and current Go ($8) / Plus ($20) / Pro ($100-$500) tiers, plus **Perplexity Pro & Comet Browser**.
 * **Anthropic Claude:** Updated with **Claude Fable 5.2** (Nov 9, 2026), **Claude Sonnet 5.5**, **Opus 5.5**, and **Claude Code** with current Pro/Max/Ultra & API rates.
 * **Google Gemini 4 & Ecosystem:** Integrated **Gemini 4 Carbon**, **Gemini 4 Hydrogen** (Nov 12, 2026), **Google Antigravity (AGY)**, **Google Stitch** (successor to Galileo AI), **Google Imagen 4 / Nano Banana**, and **Google Veo 3.1**.
